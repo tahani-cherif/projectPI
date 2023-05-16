@@ -24,10 +24,10 @@ public class ServiceTransport implements services<Transport> {
         
        public void ajouter(Transport p) {
         try {
-            String req = "INSERT INTO transport(matricule, type) VALUES (?,?);";
+            String req = "INSERT INTO transport(matricule, transportType) VALUES (?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setString(1, p.getMatricule());
-         pst.setObject(2, p.getType());
+           pst.setString(2, p.getTransportType().toString());
        
 
 
@@ -40,11 +40,11 @@ public class ServiceTransport implements services<Transport> {
        }
            public void modifier(Transport p) {
         try {
-            String req = "UPDATE hotel SET matricule=?,type=? WHERE id=?";
+            String req = "UPDATE hotel SET matricule=?,transportType=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setInt(6, p.getId());
             pst.setString(1, p.getMatricule());
-           pst.setObject(2, p.getType());
+            pst.setString(2, p.getTransportType().toString());
         
 
             pst.executeUpdate();
