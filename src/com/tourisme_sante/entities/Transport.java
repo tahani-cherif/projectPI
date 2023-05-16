@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * @author Mariem
  */
 public class Transport {
- public  enum TypeTransport {
+ public static  enum TypeTransport {
       voiture,
      car  } 
     private int id;
@@ -21,11 +21,11 @@ public class Transport {
    public Transport(int id, String matricule, TypeTransport type) {
         this.id = id;
         this.matricule = matricule;
-        this.transportType = transportType;
+        this.transportType = type;
     }
     public Transport(String matricule, TypeTransport type) {
         this.matricule = matricule;
-        this.transportType = transportType;
+        this.transportType = type;
     }
 
 
@@ -37,9 +37,6 @@ public class Transport {
         this.matricule = matricule;
     }
 
-    public void setType(TypeTransport type) {
-        this.transportType = type;
-    }
 
     public int getId() {
         return id;
@@ -49,9 +46,14 @@ public class Transport {
         return matricule;
     }
 
-    public TypeTransport getType() {
+    public TypeTransport getTransportType() {
         return transportType;
     }
+
+    public void setTransportType(TypeTransport transportType) {
+        this.transportType = transportType;
+    }
+
 
  
     @Override
