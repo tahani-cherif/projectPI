@@ -6,7 +6,6 @@ package comm.tourisme_sante.services;
 
 import com.tourisme_sante.entities.Hotel;
 import com.tourisme_sante.utils.Datasource;
-import comm.tourisme_sante.services.services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +20,7 @@ import java.util.List;
 public abstract class ServiceHotel implements services<Hotel> {
            private Connection cnx = Datasource.getInstance().getCnx();
         
+           @Override
        public void ajouter(Hotel p) {
         try {
             String req = "INSERT INTO hotel(nom, classification, adresse,email,telephone) VALUES (?,?,?,?,?);";
@@ -39,6 +39,7 @@ public abstract class ServiceHotel implements services<Hotel> {
         }
      
        }
+           @Override
            public void modifier(Hotel p) {
         try {
             String req = "UPDATE hotel SET nom=?,classification=?, adresse=?,email=?,telephone=? WHERE id=?";
@@ -57,6 +58,7 @@ public abstract class ServiceHotel implements services<Hotel> {
         }
     }
            
+           @Override
              public void supprimer(Hotel p) {
         try {
             String req = "DELETE from hotel WHERE id=?";
@@ -69,6 +71,7 @@ public abstract class ServiceHotel implements services<Hotel> {
         }
     }
              
+           @Override
               public List<Hotel> afficher() {
         List<Hotel> list = new ArrayList<>();
         

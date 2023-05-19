@@ -7,6 +7,8 @@
 package comm.tourisme_sante.services;
 
 import com.tourisme_sante.entities.Utilisateur;
+import com.tourisme_sante.entities.admin;
+import com.tourisme_sante.entities.client;
 import com.tourisme_sante.utils.Datasource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,12 +54,20 @@ public class serviceUtilisateur implements services<Utilisateur>{
      @Override
       public void ajouter(Utilisateur U) {
         try {
-            String req = "INSERT INTO Utilisateur(nom, prenom,email,MDP) VALUES (?,?,?,?);";
+            String req = "INSERT INTO Utilisateur(nom, prenom,email,MDP,role,number) VALUES (?,?,?,?,?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setString(1, U.getNom());
             pst.setString(2, U.getPrenom());
             pst.setString(3, U.getEmail());
             pst.setString(4, U.getMDP());
+            pst.setString(5, U.getRole());
+            // role= client ou admin
+            if(U.getRole().equals("client"))
+            {
+              pst.setInt(6, ((client)U).getNumber());
+            }else{
+                pst.setInt(6,0);
+            }
             pst.executeUpdate();
             System.out.println("Utilisateur ajoutée !");
         } catch (SQLException ex) {
@@ -74,7 +84,15 @@ public class serviceUtilisateur implements services<Utilisateur>{
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()) {
-                list.add(new Utilisateur(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP")));
+                Utilisateur x;
+                  if(rs.getString("role").equals("client"))
+            {
+             x=new client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getInt("number"),rs.getString("role"));
+            }else{
+                x=new admin(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getString("role"));
+            }
+
+                list.add(x);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

@@ -40,9 +40,9 @@ public class ServiceTransport implements services<Transport> {
        }
            public void modifier(Transport p) {
         try {
-            String req = "UPDATE hotel SET matricule=?,transportType=? WHERE id=?";
+            String req = "UPDATE transport SET matricule=?,transportType=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(6, p.getId());
+            pst.setInt(3, p.getId());
             pst.setString(1, p.getMatricule());
             pst.setString(2, p.getTransportType().toString());
         
@@ -69,12 +69,12 @@ public class ServiceTransport implements services<Transport> {
               public List<Transport> afficher() {
         List<Transport> list = new ArrayList<>();
         
-        String req = "SELECT * FROM agence";
+        String req = "SELECT * FROM transport";
         try {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-              //  list.add(new Transport(rs.getInt("id"), rs.getString("matriclue"),rs.getTypeTransport("type")));
+                list.add(new Transport(rs.getInt("id"), rs.getString("matricule"), rs.getString("transportType")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

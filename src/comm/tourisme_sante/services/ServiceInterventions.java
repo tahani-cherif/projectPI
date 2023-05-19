@@ -24,11 +24,11 @@ public class ServiceInterventions implements services<Interventions> {
    @Override
     public void ajouter(Interventions i) {
         try {
-            String req = "INSERT INTO interventions(nom,deescripition) VALUES (?,?,?);";
+            String req = "INSERT INTO interventions(nom,deescripition) VALUES (?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
           
-            pst.setString(2, i.getNom());
-            pst.setString(3, i.getdeescripition());
+            pst.setString(1, i.getNom());
+            pst.setString(2, i.getdeescripition());
             pst.executeUpdate();
             System.out.println("Intrvention ajoutée !");
         } catch (SQLException ex) {
@@ -39,9 +39,10 @@ public class ServiceInterventions implements services<Interventions> {
    @Override
     public void modifier(Interventions i) {
         try {
-            String req = "UPDATE interventions SET IdInter=?, nom=?, deescripition=? WHERE id=?";
+            String req = "UPDATE interventions SET Id=?, nom=?, deescripition=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setInt(1, i.getIdInter());
+            pst.setInt(4, i.getIdInter());
             pst.setString(2, i.getNom());
             pst.setString(3, i.getdeescripition());
             pst.executeUpdate();
@@ -54,7 +55,7 @@ public class ServiceInterventions implements services<Interventions> {
    @Override
     public void supprimer(Interventions i) {
         try {
-            String req = "DELETE from intrventions WHERE idInter=?";
+            String req = "DELETE from interventions WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setInt(1, i.getIdInter());
             pst.executeUpdate();
@@ -73,7 +74,7 @@ public class ServiceInterventions implements services<Interventions> {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-                list.add(new Interventions(rs.getInt("idInter"), rs.getString("nom"), rs.getString("deescripition")));
+                list.add(new Interventions(rs.getInt("id"), rs.getString("nom"), rs.getString("deescripition")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

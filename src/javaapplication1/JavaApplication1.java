@@ -4,13 +4,23 @@
  */
 package javaapplication1;
 
+import com.tourisme_sante.entities.Commande;
+import com.tourisme_sante.entities.Interventions;
+import com.tourisme_sante.entities.Offre;
 import com.tourisme_sante.entities.RDV;
+import com.tourisme_sante.entities.Reservation;
 import com.tourisme_sante.entities.Transport;
 import com.tourisme_sante.entities.TypeInterventions;
 import com.tourisme_sante.entities.Utilisateur;
 import com.tourisme_sante.entities.medecins;
 import com.tourisme_sante.entities.produit;
+import comm.tourisme_sante.services.ServiceAgence;
+import comm.tourisme_sante.services.ServiceCommande;
+import comm.tourisme_sante.services.ServiceHotel;
+import comm.tourisme_sante.services.ServiceInterventions;
+import comm.tourisme_sante.services.ServiceOffre;
 import comm.tourisme_sante.services.ServiceProduit;
+import comm.tourisme_sante.services.ServiceReservation;
 import comm.tourisme_sante.services.ServiceTransport;
 import comm.tourisme_sante.services.Services_TypeInterventions;
 import comm.tourisme_sante.services.serviceMedecin;
@@ -60,7 +70,34 @@ public class JavaApplication1 {
      //sti.supprimer(new TypeInterventions(2,"test222",10.0,"test"));
       System.out.println(sti.afficher());
       ServiceTransport st=new ServiceTransport();
-      st.ajouter(new Transport("123tn244",Transport.TypeTransport.voiture));
+      //st.ajouter(new Transport("123tn244",Transport.TypeTransport.voiture));
+      //st.modifier(new Transport(3,"123tn245",Transport.TypeTransport.voiture));
+      //st.supprimer(new Transport(3,"123tn245",Transport.TypeTransport.voiture));
+      System.out.println(st.afficher());
+      ServiceReservation srs=new ServiceReservation();
+     // srs.ajouter(new Reservation(Date.valueOf("2023-05-15"),Date.valueOf("2023-05-15"),1,1,1,1));
+     //srs.modifier(new Reservation(2,Date.valueOf("2023-05-16"),Date.valueOf("2023-05-15"),1,1,1,1));
+     //srs.supprimer(new Reservation(2,Date.valueOf("2023-05-16"),Date.valueOf("2023-05-15"),1,1,1,1));
+     System.out.println(srs.afficher());
+     ServiceOffre sof=new ServiceOffre();
+     //sof.ajouter(new Offre(10.0,10.0,"test","test"));
+     //sof.modifier(new Offre(2,10.0,10.0,"test2","test2"));
+    // sof.supprimer(new Offre(2,10.0,10.0,"test2","test2"));
+ 
+       System.out.println(sof.afficher());
+     ServiceInterventions si=new ServiceInterventions();
+//     si.ajouter(new Interventions("test","test"));
+        //si.modifier(new Interventions(2,"test2","test2"));
+       // si.supprimer(new Interventions(2,"test2","test2"));
+        System.out.println(si.afficher());
+        ServiceCommande sc=new ServiceCommande();  
+       // sc.ajouter(new Commande(10,10,10.0));
+       //sc.modifier(new Commande(2,10,10,20.0));
+       //sc.supprimer(new Commande(2,10,10,20.0));
+       //System.out.println(sc.afficher()); 
+
+        
+     
     }
     
 }

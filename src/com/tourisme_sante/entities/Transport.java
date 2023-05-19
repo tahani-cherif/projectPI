@@ -17,11 +17,17 @@ public class Transport {
     private int id;
     private String matricule;
    private TypeTransport transportType;
+   private String transportTypeaffiche;
    
    public Transport(int id, String matricule, TypeTransport type) {
         this.id = id;
         this.matricule = matricule;
         this.transportType = type;
+    }
+     public Transport(int id, String matricule, String type) {
+        this.id = id;
+        this.matricule = matricule;
+        this.transportTypeaffiche = type;
     }
     public Transport(String matricule, TypeTransport type) {
         this.matricule = matricule;

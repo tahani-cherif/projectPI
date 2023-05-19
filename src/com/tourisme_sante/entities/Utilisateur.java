@@ -8,7 +8,7 @@ package com.tourisme_sante.entities;
  *
  * @author hamza
  */
-public class Utilisateur {
+public abstract class Utilisateur {
 
 
     
@@ -17,23 +17,32 @@ public class Utilisateur {
     private String prenom;
     private String email;
     private String MDP;
+    private String role;
     
 
-    public Utilisateur(String nom, String prenom,String email, String MDP) {
+    public Utilisateur(String nom, String prenom,String email, String MDP,String role) {
          this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.MDP = MDP;
+        this.role=role;
     }
 
-    public Utilisateur(int id, String nom, String prenom, String email, String MDP) {
+    public Utilisateur(int id, String nom, String prenom, String email, String MDP,String role) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.MDP = MDP;
+        this.role=role;
+    }
+   public String getRole() {
+        return role;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
     public int getId() {
         return id;
     }
