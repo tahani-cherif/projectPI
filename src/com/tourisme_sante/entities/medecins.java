@@ -18,7 +18,6 @@ public class medecins {
     private String adresse;
     private int numero;
     private String specialite;
-    private ArrayList<Integer>  id_type_intervention;
 
     public medecins(String fullName, String email, String adresse, int numero, String specialite) {
         this.fullName = fullName;
@@ -26,8 +25,6 @@ public class medecins {
         this.adresse = adresse;
         this.numero = numero;
         this.specialite = specialite;
-        //this.id_type_intervention=id_type_intervention;
-        //,ArrayList<Integer> id_type_intervention
     }
 
    
@@ -39,8 +36,6 @@ public class medecins {
         this.adresse = adresse;
         this.numero = numero;
         this.specialite = specialite;
-       // this.id_type_intervention=id_type_intervention;
-       //,ArrayList<Integer> id_type_intervention
     }
 
     public int getId() {
@@ -90,13 +85,7 @@ public class medecins {
     public void setSpecialite(String specialite) {
         this.specialite = specialite;
     }
- public ArrayList<Integer> getId_type_intervention() {
-        return id_type_intervention;
-    }
 
-    public void setId_type_intervention(ArrayList<Integer> id_type_intervention) {
-        this.id_type_intervention = id_type_intervention;
-    }
     @Override
     public String toString() {
         return "medecins{" + "id=" + id + ", fullName=" + fullName + ", email=" + email + ", adresse=" + adresse + ", numero=" + numero + ", specialite=" + specialite + '}';
