@@ -14,6 +14,9 @@ import com.tourisme_sante.entities.TypeInterventions;
 import com.tourisme_sante.entities.Utilisateur;
 import com.tourisme_sante.entities.medecins;
 import com.tourisme_sante.entities.produit;
+import com.tourisme_sante.entities.Agence;
+import com.tourisme_sante.entities.Hotel;
+import com.tourisme_sante.entities.AgenceHotel;
 import comm.tourisme_sante.services.ServiceAgence;
 import comm.tourisme_sante.services.ServiceCommande;
 import comm.tourisme_sante.services.ServiceHotel;
@@ -26,6 +29,7 @@ import comm.tourisme_sante.services.Services_TypeInterventions;
 import comm.tourisme_sante.services.serviceMedecin;
 import comm.tourisme_sante.services.serviceRDV;
 import comm.tourisme_sante.services.serviceUtilisateur;
+import comm.tourisme_sante.services.ServiceAgenceHotel;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -45,7 +49,7 @@ public class JavaApplication1 {
         
         serviceMedecin sm=new serviceMedecin();
         
-      //  sm.ajouter(new  medecins ("tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
+       // sm.ajouter(new  medecins ("tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
         System.out.println(sm.afficher());
        // sm.modifier(new  medecins (2,"test","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
       //    sm.supprimer(new  medecins (2,"test","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
@@ -70,9 +74,9 @@ public class JavaApplication1 {
      //sti.supprimer(new TypeInterventions(2,"test222",10.0,"test"));
       System.out.println(sti.afficher());
       ServiceTransport st=new ServiceTransport();
-      //st.ajouter(new Transport("123tn244",Transport.TypeTransport.voiture));
-      //st.modifier(new Transport(3,"123tn245",Transport.TypeTransport.voiture));
-      //st.supprimer(new Transport(3,"123tn245",Transport.TypeTransport.voiture));
+      //st.ajouter(new Transport("123tn244",Transport.TypeTransport.VOITURE,5555.0f));
+      //st.modifier(new Transport(3,"123tn244",Transport.TypeTransport.VOITURE,5555.0f));
+      //st.supprimer(new Transport(3,"123tn244",Transport.TypeTransport.VOITURE,5555.0f));
       System.out.println(st.afficher());
       ServiceReservation srs=new ServiceReservation();
      // srs.ajouter(new Reservation(Date.valueOf("2023-05-15"),Date.valueOf("2023-05-15"),1,1,1,1));
@@ -95,9 +99,27 @@ public class JavaApplication1 {
        //sc.modifier(new Commande(2,10,10,20.0));
        //sc.supprimer(new Commande(2,10,10,20.0));
        //System.out.println(sc.afficher()); 
+       
+       
+         ServiceAgence sa=new ServiceAgence();
+        
+       //sa.ajouter(new  Agence ("Traveltodo","123adresse50001",802135669));
+       //System.out.println(sa.afficher());
+      //sa.modifier(new Agence (2,"Travel","123adresse501",802135669));
+      // sa.supprimer(new  Agence(1,"Traveltodo","123adresse50001",802135669));
 
         
+        ServiceHotel sh=new ServiceHotel();
+        
+       //sh.ajouter(new  Hotel ("HotelName","123adresse50001","fivestars","hotel@gmail.com",802135669,5550f));
+       System.out.println(sh.afficher());
+      //sh.modifier(new Hotel(2,"HotelName","123adresse50001","fivestars","hotel@gmail.com",802135669,5550f));
+      // sh.supprimer(new  Hotel(3,"HotelName","123adresse50001","fivestars","hotel@gmail.com",802135669,5550f));
+      
+        
      
+      
+      
     }
     
 }

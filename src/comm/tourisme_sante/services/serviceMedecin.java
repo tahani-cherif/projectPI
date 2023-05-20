@@ -4,7 +4,7 @@
  */
 package comm.tourisme_sante.services;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+//import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 import com.tourisme_sante.entities.RDV;
 import com.tourisme_sante.entities.medecins;
 import com.tourisme_sante.utils.Datasource;

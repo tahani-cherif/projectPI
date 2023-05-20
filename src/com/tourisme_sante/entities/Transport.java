@@ -11,27 +11,39 @@ import java.util.logging.Logger;
  * @author Mariem
  */
 public class Transport {
- public static  enum TypeTransport {
-      voiture,
-     car  } 
+ public static  enum TypeTransport {VOITURE,CARE  } 
     private int id;
     private String matricule;
    private TypeTransport transportType;
-   private String transportTypeaffiche;
+      private String transportTypeaffiche;
+       private float prix;
    
-   public Transport(int id, String matricule, TypeTransport type) {
+   public Transport(int id, String matricule, TypeTransport transportType,float prix) {
         this.id = id;
         this.matricule = matricule;
-        this.transportType = type;
+        this.transportType = transportType;
+        this.prix = prix;
+
     }
-     public Transport(int id, String matricule, String type) {
-        this.id = id;
+  public Transport(int id, String matricule, String transportType,float prix) {
+       this.id = id;
+       this.matricule = matricule;
+        this.transportTypeaffiche = transportType;
+        this.prix=prix;
+   }
+    public Transport(String matricule, TypeTransport transportType,float prix) {
         this.matricule = matricule;
-        this.transportTypeaffiche = type;
+        this.transportType = transportType;
+                this.prix=prix;
+
     }
-    public Transport(String matricule, TypeTransport type) {
-        this.matricule = matricule;
-        this.transportType = type;
+
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
+
+    public float getPrix() {
+        return prix;
     }
 
 
@@ -60,11 +72,13 @@ public class Transport {
         this.transportType = transportType;
     }
 
-
- 
     @Override
     public String toString() {
-        return "Transport{" + "id=" + id + ", matricule=" + matricule + ", type=" + transportType + '}';
+        return "Transport{" + "id=" + id + ", matricule=" + matricule + ", transportType=" + transportType + ", prix=" + prix + '}';
     }
+
+
+ 
+ 
 
 }

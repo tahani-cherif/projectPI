@@ -25,14 +25,11 @@ public class ServiceAgence  implements services<Agence>  {
         
        public void ajouter(Agence p) {
         try {
-            String req = "INSERT INTO agence(nom, adresse,telephone,prix) VALUES (?,?,?);";
+            String req = "INSERT INTO agence(nom, adresse,telephone) VALUES (?,?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setString(1, p.getNom());
             pst.setString(2, p.getAdresse());
             pst.setInt(3, p.getTelephone());
-            pst.setDouble(4, p.getPrix());
-
-
             pst.executeUpdate();
             System.out.println("Agence ajoutée !");
         } catch (SQLException ex) {
@@ -40,17 +37,15 @@ public class ServiceAgence  implements services<Agence>  {
         }
      
        }
+        @Override
            public void modifier(Agence p) {
         try {
-            String req = "UPDATE agence SET nom=?, adresse=?,telephone=?,prix=? WHERE id=?";
+            String req = "UPDATE agence SET nom=? , adresse=? , telephone=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(5, p.getId());
             pst.setString(1, p.getNom());
             pst.setString(2, p.getAdresse());
             pst.setInt(3, p.getTelephone());
-            pst.setDouble(4, p.getPrix());
-
-
+            pst.setInt(4, p.getId());
             pst.executeUpdate();
             System.out.println("Agence modifiée !");
         } catch (SQLException ex) {
@@ -58,6 +53,7 @@ public class ServiceAgence  implements services<Agence>  {
         }
     }
            
+        @Override
              public void supprimer(Agence p) {
         try {
             String req = "DELETE from agence WHERE id=?";
@@ -78,7 +74,7 @@ public class ServiceAgence  implements services<Agence>  {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-                list.add(new Agence(rs.getInt("id"), rs.getString("nom"), rs.getString("adresse"), rs.getInt("telephone"), rs.getInt("prix")));
+                list.add(new Agence(rs.getInt("id"), rs.getString("nom"), rs.getString("adresse"), rs.getInt("telephone")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

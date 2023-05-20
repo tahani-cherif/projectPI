@@ -15,21 +15,35 @@ public class Hotel {
     private String classification;   
     private String email;
     private int telephone;
+    private float prix;
 
-   public Hotel(int id, String nom, String classification, String email, int telephone) {
+   public Hotel(int id, String nom, String adresse,String classification, String email, int telephone,float prix) {
         this.id = id;
         this.nom = nom;
+        this.adresse=adresse;
         this.classification = classification;
         this.email = email;
         this.telephone = telephone;
+        this.prix = prix;
+
     }
 
-    public Hotel(String nom, String adresse, String classification, String email, int telephone) {
+    public Hotel(String nom, String adresse, String classification, String email, int telephone,float prix) {
         this.nom = nom;
         this.adresse = adresse;
         this.classification = classification;
         this.email = email;
         this.telephone = telephone;
+        this.prix = prix;
+
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
+
+    public float getPrix() {
+        return prix;
     }
 
     public void setId(int id) {
@@ -80,13 +94,13 @@ public class Hotel {
         return telephone;
     }
 
-  
-       @Override
+    @Override
     public String toString() {
-        return "Hotel{" + "id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", classification=" + classification + ", email=" + email + ", telephone=" + telephone + '}';
+        return "Hotel{" + "id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", classification=" + classification + ", email=" + email + ", telephone=" + telephone + ", prix=" + prix + '}';
     }
 
-    public String getMatricule() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  
+ 
+
+
 }

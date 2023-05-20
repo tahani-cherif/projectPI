@@ -17,19 +17,20 @@ import java.util.List;
  *
  * @author Mariem
  */
-public abstract class ServiceHotel implements services<Hotel> {
+public class ServiceHotel implements services<Hotel> {
            private Connection cnx = Datasource.getInstance().getCnx();
         
            @Override
        public void ajouter(Hotel p) {
         try {
-            String req = "INSERT INTO hotel(nom, classification, adresse,email,telephone) VALUES (?,?,?,?,?);";
+            String req = "INSERT INTO hotel(nom, adresse, classification,email,telephone,prix) VALUES (?,?,?,?,?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setString(1, p.getNom());
-            pst.setString(2, p.getClassification());
-            pst.setString(3, p.getAdresse());
+            pst.setString(2, p.getAdresse());
+            pst.setString(3, p.getClassification());
             pst.setString(4, p.getEmail());
             pst.setInt(5, p.getTelephone());
+            pst.setFloat(6, p.getPrix());
 
 
             pst.executeUpdate();
@@ -42,14 +43,15 @@ public abstract class ServiceHotel implements services<Hotel> {
            @Override
            public void modifier(Hotel p) {
         try {
-            String req = "UPDATE hotel SET nom=?,classification=?, adresse=?,email=?,telephone=? WHERE id=?";
+            String req = "UPDATE hotel SET nom=?, adresse=?,classification=?,email=?,telephone=?, prix=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(6, p.getId());
+            pst.setInt(7, p.getId());
             pst.setString(1, p.getNom());
             pst.setString(2, p.getClassification());
             pst.setString(3, p.getAdresse());
             pst.setString(4, p.getEmail());
             pst.setInt(5, p.getTelephone());
+            pst.setFloat(6, p.getPrix());
 
             pst.executeUpdate();
             System.out.println("Hotel modifiée !");
@@ -80,7 +82,7 @@ public abstract class ServiceHotel implements services<Hotel> {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-                list.add(new Hotel(rs.getInt("id"), rs.getString("classification"),rs.getString("adresse"),rs.getString("email"), rs.getInt("telephone")));
+                list.add(new Hotel(rs.getInt("id"), rs.getString("nom"),rs.getString("adresse"),rs.getString("classification"),rs.getString("email"), rs.getInt("telephone"),rs.getFloat("prix")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

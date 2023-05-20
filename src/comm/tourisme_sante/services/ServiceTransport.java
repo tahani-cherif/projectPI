@@ -24,11 +24,12 @@ public class ServiceTransport implements services<Transport> {
         
        public void ajouter(Transport p) {
         try {
-            String req = "INSERT INTO transport(matricule, transportType) VALUES (?,?);";
+            String req = "INSERT INTO transport(matricule, transportType,prix) VALUES (?,?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setString(1, p.getMatricule());
            pst.setString(2, p.getTransportType().toString());
-       
+                   pst.setFloat(3, p.getPrix());
+
 
 
             pst.executeUpdate();
@@ -40,11 +41,13 @@ public class ServiceTransport implements services<Transport> {
        }
            public void modifier(Transport p) {
         try {
-            String req = "UPDATE transport SET matricule=?,transportType=? WHERE id=?";
+            String req = "UPDATE transport SET matricule=?,transportType=?,prix=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(3, p.getId());
+            pst.setInt(4, p.getId());
             pst.setString(1, p.getMatricule());
             pst.setString(2, p.getTransportType().toString());
+                        pst.setFloat(3, p.getPrix());
+
         
 
             pst.executeUpdate();
@@ -74,7 +77,7 @@ public class ServiceTransport implements services<Transport> {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-                list.add(new Transport(rs.getInt("id"), rs.getString("matricule"), rs.getString("transportType")));
+                list.add(new Transport(rs.getInt("id"), rs.getString("matricule"), rs.getString("transportType"),rs.getFloat("prix")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
