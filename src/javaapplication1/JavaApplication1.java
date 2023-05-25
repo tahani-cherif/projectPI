@@ -91,18 +91,18 @@ public class JavaApplication1 {
 
        serviceMedecin sm=new serviceMedecin();
         
-      // sm.ajouter(new  medecins ("tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
+   // sm.ajouter(new  medecins ("tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
        // sm.modifier(new  medecins (3,"test","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
-         //sm.supprimer(new  medecins (4,"tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
+    //     sm.supprimer(new  medecins (6,"tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
               System.out.println(sm.afficher()); 
       serviceRDV srdv=new serviceRDV();
-     //   srdv.ajouter(new RDV(1,1,Date.valueOf("2023-05-15")));
-       //srdv.modifier(new RDV(4,3,1,Date.valueOf("2023-06-15")));
+   //  srdv.ajouter(new RDV(1,1,Date.valueOf("2023-05-15")));
+       srdv.modifier(new RDV(6,1,1,Date.valueOf("2023-06-16")));
       // srdv.supprimer(new RDV(3,1,1,Date.valueOf("2023-05-15")));
        
         System.out.println(srdv.afficher());
         ServiceMedecinIntervention smi=new ServiceMedecinIntervention();
-       // smi.ajouter(new medecin_interventions(3,4));
+       // smi.ajouter(new medecin_interventions(5,1));
      // smi.modifier(new medecin_interventions(1,3,1));
     //  smi.supprimer(new medecin_interventions(4,3,4));
       System.out.println(smi.afficher());
