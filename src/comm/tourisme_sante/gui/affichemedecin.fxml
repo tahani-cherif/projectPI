@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="533.0" prefWidth="1103.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.AffichemedecinController">
+    <stylesheets>
+        <URL value="@affichemedecin.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="IDtable" layoutX="-48.0" layoutY="45.0" prefHeight="444.0" prefWidth="1145.0">
+        <columns>
+          <TableColumn fx:id="Colfullname" prefWidth="181.0" text="Nom &amp; Prenom" />
+          <TableColumn fx:id="colmail" minWidth="0.0" prefWidth="220.0" text="E-mail" />
+            <TableColumn fx:id="coladresse" prefWidth="153.0" text="Adresse" />
+            <TableColumn fx:id="colNumero" prefWidth="170.0" text="Numero telephone" />
+            <TableColumn fx:id="colspecialite" prefWidth="157.0" text="specialite" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -4,7 +4,9 @@
  */
 package com.tourisme_sante.entities;
 
+import comm.tourisme_sante.gui.AffichemedecinController;
 import java.util.ArrayList;
+import javafx.scene.control.Button;
 
 /**
  *
@@ -25,19 +27,22 @@ public class medecins {
         this.adresse = adresse;
         this.numero = numero;
         this.specialite = specialite;
+
     }
 
-   
-
-    public medecins(int id, String fullName, String email, String adresse, int numero, String specialite) {
+  
+       public medecins(int id, String fullName, String email, String adresse, int numero, String specialite) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.adresse = adresse;
         this.numero = numero;
         this.specialite = specialite;
+  
     }
 
+    
+    
     public int getId() {
         return id;
     }
