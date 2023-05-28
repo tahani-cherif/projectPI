@@ -75,8 +75,9 @@ public class AffichemedecinController implements Initializable {
                             medecins data = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + data);
                             sm.supprimer(data);
-                              ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
-                             IDtable.setItems(medecinList);
+                            medecinList.remove(data);
+//                              ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
+//                             IDtable.setItems(medecinList);
                         });
                     }
 
