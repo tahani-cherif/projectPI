@@ -6,6 +6,7 @@ package comm.tourisme_sante.gui;
 
 import com.tourisme_sante.entities.medecins;
 import comm.tourisme_sante.services.serviceMedecin;
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.Optional;
@@ -159,7 +160,11 @@ public class InterfacemedecinController implements Initializable {
           TFNumero.setText("");
           TFSpecialite.setText("");
         } else {
-            // ... user chose CANCEL or closed the dialog
+             TFNom.setText("");
+          TFEmail.setText("");
+          TFAdresse.setText("");
+          TFNumero.setText("");
+          TFSpecialite.setText("");
         }
       
     }
@@ -172,6 +177,13 @@ public class InterfacemedecinController implements Initializable {
         TFAdresse.setText(x.getAdresse());
         TFNumero.setText(Integer.toString(x.getNumero()));
         TFSpecialite.setText(x.getSpecialite());
+    }
+
+    @FXML
+    private void returnhome(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacepremiere.fxml"));
+        Parent root = loader.load();
+        TFEmail.getScene().setRoot(root);
     }
     
 }

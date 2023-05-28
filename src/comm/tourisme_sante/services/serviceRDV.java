@@ -24,28 +24,11 @@ public  class serviceRDV implements services<RDV>{
     @Override
     public void ajouter(RDV p) {
        try {
-           String fullName = null;
-           String nomUser = null;
-            String req1 = "select fullName from medecins where id=?;";
-            PreparedStatement pst1 = cnx.prepareStatement(req1);
-             pst1.setInt(1, p.getIdmedecin());
-            ResultSet rs = pst1.executeQuery();
-              while(rs.next()) {
-            fullName=rs.getString("fullName");}
-             String req2 = "select nom,prenom from  utilisateur where id=?;";
-            PreparedStatement pst2 = cnx.prepareStatement(req2);
-             pst2.setInt(1, p.getIduser());
-            ResultSet rs2 = pst2.executeQuery();
-              while(rs2.next()) {
-            nomUser=rs2.getString("nom")+" "+rs2.getString("prenom");}
-         //   String req = "INSERT INTO RDV(idmedecin, iduser,dateRDV) VALUES (?,?,?);";
-         String req = "INSERT INTO RDV(idmedecin, iduser,dateRDV,fullName,nomuser) VALUES (?,?,?,?,?);";
+         String req = "INSERT INTO RDV(idmedecin, iduser,dateRDV) VALUES (?,?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setInt(1, p.getIdmedecin());
             pst.setInt(2, p.getIduser());
             pst.setDate(3,p.getDateRDV());
-            pst.setString(4,fullName);
-            pst.setString(5, nomUser);
             pst.executeUpdate();
             System.out.println("RDV ajoutée !");
         } catch (SQLException ex) {
