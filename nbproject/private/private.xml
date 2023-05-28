@@ -4,16 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/javaapplication1/MainGUI.java</file>
-<<<<<<< HEAD
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/comm/tourisme_sante/gui/InterfacemedecinController.java</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/comm/tourisme_sante/gui/AffichemedecinController.java</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/comm/tourisme_sante/gui/AjoutermedecinController.java</file>
-=======
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/comm/tourisme_sante/gui/AffichemedecinController.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/com/tourisme_sante/entities/medecins.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/comm/tourisme_sante/gui/AjoutermedecinController.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/comm/tourisme_sante/gui/Buttoncell.java</file>
->>>>>>> acb013c85a3607727572748c1557e0cfc778c20b
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/comm/tourisme_sante/gui/AjouterRDVController.java</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/JavaApplication1/src/comm/tourisme_sante/services/serviceMedecin.java</file>
         </group>
     </open-files>

@@ -61,7 +61,6 @@ public class InterfacemedecinController implements Initializable {
     private TableColumn<medecins, String>colNumero;
      serviceMedecin sm=new serviceMedecin();
     private  medecins x=null;
-     ObservableList<medecins> medecinList=null;
     /**
      * Initializes the controller class.
      */
@@ -73,7 +72,7 @@ public class InterfacemedecinController implements Initializable {
         coladresse.setCellValueFactory(new PropertyValueFactory<medecins,String>("adresse"));
         colspecialite.setCellValueFactory(new PropertyValueFactory<medecins,String>("specialite"));
         colNumero.setCellValueFactory(new PropertyValueFactory<medecins,String>("numero"));
-       medecinList = FXCollections.observableList(sm.afficher());
+       ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
       
       IDtable.setItems(medecinList);
       
@@ -97,7 +96,10 @@ public class InterfacemedecinController implements Initializable {
                                        medecins data = getTableView().getItems().get(getIndex());
                                                     System.out.println("selectedData: " + data);
                                                     sm.supprimer(data);
-                                                    medecinList.remove(data);
+                                                   // medecinList.remove(data);
+                                                    ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
+      
+                                                   IDtable.setItems(medecinList);
                                 } else {
                                     // ... user chose CANCEL or closed the dialog
                                 }
@@ -128,12 +130,14 @@ public class InterfacemedecinController implements Initializable {
     private void ajoutermedecin(ActionEvent event) {
         sm.ajouter(new medecins(TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
         JOptionPane.showMessageDialog(null, "Medecin ajoutée !");
-        medecinList.add(new medecins(TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
+       // medecinList.add(new medecins(TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
         TFNom.setText("");
         TFEmail.setText("");
         TFAdresse.setText("");
         TFNumero.setText("");
         TFSpecialite.setText("");
+         ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
+      IDtable.setItems(medecinList);
     }
 
     @FXML
@@ -148,8 +152,12 @@ public class InterfacemedecinController implements Initializable {
         if (result.get() == ButtonType.OK){
              sm.modifier(new medecins(x.getId(),TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
          ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
-      
-      IDtable.setItems(medecinList);
+        IDtable.setItems(medecinList);
+         TFNom.setText("");
+          TFEmail.setText("");
+          TFAdresse.setText("");
+          TFNumero.setText("");
+          TFSpecialite.setText("");
         } else {
             // ... user chose CANCEL or closed the dialog
         }
