@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,7 +36,6 @@ import javax.swing.JOptionPane;
  * @author LENOVO
  */
 public class AjouterRDVController implements Initializable {
-
     private medecins x;
     private Date date;
     @FXML
@@ -62,7 +62,10 @@ public class AjouterRDVController implements Initializable {
     private void daterdv(ActionEvent event) {
         //  date=iddate.getValue();
 
-    }
+          serviceMedecin sm=new serviceMedecin();
+      ObservableList<String> medecinList = FXCollections.observableList(sm.afficher());
+      idmedecin.setItems(medecinList);
+    }    
 
     @FXML
     private void medecin(ActionEvent event) {
@@ -79,5 +82,4 @@ public class AjouterRDVController implements Initializable {
         idmedecin.getScene().setRoot(root);
         AfficheRDVController dpc = loader.getController();
     }
-
 }

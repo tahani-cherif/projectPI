@@ -10,7 +10,11 @@
         <URL value="@affichemedecin.css" />
     </stylesheets>
    <children>
+<<<<<<< HEAD
       <TableView fx:id="IDtable" layoutX="8.0" layoutY="68.0" prefHeight="444.0" prefWidth="1068.0">
+=======
+      <TableView fx:id="IDtable" layoutX="-48.0" layoutY="45.0" prefHeight="444.0" prefWidth="1145.0">
+>>>>>>> acb013c85a3607727572748c1557e0cfc778c20b
         <columns>
           <TableColumn fx:id="Colfullname" prefWidth="181.0" text="Nom &amp; Prenom" />
           <TableColumn fx:id="colmail" minWidth="0.0" prefWidth="220.0" text="E-mail" />
