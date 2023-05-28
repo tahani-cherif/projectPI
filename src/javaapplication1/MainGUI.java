@@ -23,8 +23,8 @@ public class MainGUI extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-   FXMLLoader loader = new FXMLLoader(getClass().getResource("../comm/tourisme_sante/gui/interfacemedecin.fxml"));
-  // FXMLLoader loader = new FXMLLoader(getClass().getResource("../comm/tourisme_sante/gui/AjouterRDV.fxml"));
+ //  FXMLLoader loader = new FXMLLoader(getClass().getResource("../comm/tourisme_sante/gui/interfacemedecin.fxml"));
+   FXMLLoader loader = new FXMLLoader(getClass().getResource("../comm/tourisme_sante/gui/interfaceRDV.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

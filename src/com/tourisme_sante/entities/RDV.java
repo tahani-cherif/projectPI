@@ -16,6 +16,18 @@ public class RDV {
     private int idmedecin;
     private int iduser;
     private Date dateRDV;
+    private String fullName;
+    private String nomuser;
+
+    public RDV(int id,int idmedecin, int iduser, String fullName, String nom, Date dateRDV) {
+       this.idmedecin = idmedecin;
+        this.iduser = iduser;
+        this.id = id;
+        this.fullName = fullName;
+        this.nomuser = nom;
+        this.dateRDV = dateRDV;
+    }
+
 
     public RDV(int idmedecin, int iduser, Date dateRDV) {
         this.idmedecin = idmedecin;
@@ -58,14 +70,28 @@ public class RDV {
         return dateRDV;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getNomuser() {
+        return nomuser;
+    }
+
+    public void setNomuser(String nomuser) {
+        this.nomuser = nomuser;
+    }
+
     public void setDateRDV(Date dateRDV) {
         this.dateRDV = dateRDV;
     }
 
     @Override
     public String toString() {
-        return "RDV{" + "id=" + id + ", idmedecin=" + idmedecin + ", iduser=" + iduser + ", dateRDV=" + dateRDV + '}';
-    }
-    
-    
+        return "RDV{" + "id=" + id + ", idmedecin=" + idmedecin + ", iduser=" + iduser + ", dateRDV=" + dateRDV + ", fullName=" + fullName + ", nommedecin=" + nomuser + '}';
+    }           
 }

@@ -4,7 +4,6 @@
  */
 package com.tourisme_sante.entities;
 
-import comm.tourisme_sante.gui.AffichemedecinController;
 import java.util.ArrayList;
 import javafx.scene.control.Button;
 
