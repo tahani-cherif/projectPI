@@ -24,6 +24,7 @@ public class Offre {
 	        this.type = type;
 	    }
 
+ 
 	    public int getId() {
 	        return id;
 	    }

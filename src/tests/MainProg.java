@@ -25,7 +25,8 @@ public class MainProg {
 //        ServicePersonne sp = new ServicePersonne();
 //        System.out.println(sp.afficher());
         ServiceOffre so = new ServiceOffre();
-        ServiceReservation sr = new ServiceReservation();
-        sr.ajouter(new Reservation(Date.valueOf("2023-05-14"),Date.valueOf("2023-05-15"),1,1,1,1));
+        so.supprimer(new Offre(2,25.0, 100.0, "produit 1", "TEst 1"));
+      //  ServiceReservation sr = new ServiceReservation();
+       // sr.ajouter(new Reservation(Date.valueOf("2023-05-14"),Date.valueOf("2023-05-15"),1,1,1,1));
     }
 }
