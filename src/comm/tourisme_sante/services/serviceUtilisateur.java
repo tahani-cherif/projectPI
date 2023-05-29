@@ -27,8 +27,7 @@ public class serviceUtilisateur implements services<Utilisateur>{
      private Connection cnx = Datasource.getInstance().getCnx();
     public void modifier_M(Utilisateur U){
         try {
-            String req = "UPDATE INTO utilistaeur(MDP) VALUES ('"
-                    +U.getMDP()+"',');";
+            String req = "UPDATE  utilisateur SET MDP='"+U.getMDP()+"' WHERE id="+U.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("MDP modfier");
@@ -40,8 +39,8 @@ public class serviceUtilisateur implements services<Utilisateur>{
      @Override
     public void modifier(Utilisateur U){
         try {
-            String req = "UPDATE utilistaeur SET nom='"
-                    +U.getNom()+"', prenom='"+U.getPrenom()+"',email='"+U.getEmail()+"',MDP='"+U.getMDP()
+            String req = "UPDATE utilisateur SET nom='"
+                    +U.getNom()+"', prenom='"+U.getPrenom()+"',email='"+U.getEmail()+"',MDP='"+U.getMDP()+"',role='"+U.getRole()
                     +"' WHERE id="+U.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
@@ -54,7 +53,7 @@ public class serviceUtilisateur implements services<Utilisateur>{
      @Override
       public void ajouter(Utilisateur U) {
         try {
-            String req = "INSERT INTO 	utilistaeur(nom, prenom,email,MDP,role,number,sex,adresse) VALUES (?,?,?,?,?,?,?,?);";
+            String req = "INSERT INTO 	utilisateur(nom, prenom,email,MDP,role,number,sex,adresse) VALUES (?,?,?,?,?,?,?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setString(1, U.getNom()); 
             pst.setString(2, U.getPrenom());
@@ -87,19 +86,44 @@ public class serviceUtilisateur implements services<Utilisateur>{
     public List<Utilisateur> afficher() {
         List<Utilisateur> list = new ArrayList<>();
         
-        String req = "SELECT * FROM utilistaeur";
+        String req = "SELECT * FROM utilisateur";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()) {
-                Utilisateur x;
-            if (rs.getString("role").equals("client"))
-            {
+                Client x = null;
+                Admin y=null;
+           // if (rs.getString("role").equals("client"))
+           //  {
                x =new Client ( rs.getInt("number"), rs.getString("sex"), rs.getString("adresse"),rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getString("role"));
+          //  }
+//           else{
+//              y =new Admin (  rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getString("role"));
+//
+//           }
+               list.add(x); 
             }
-            else{
-               x =new Admin ( rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getString("role"));
-
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
+        return list;
+    }
+    
+    
+      public List<Admin> afficherAdmin() {
+        List<Admin> list = new ArrayList<>();
+        
+        String req = "SELECT * FROM utilisateur";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()) {
+                Admin x = null;
+            if (rs.getString("role").equals("Admin"))
+             {
+               x =new Admin (rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getString("role"));
             }
                list.add(x); 
             }
@@ -114,7 +138,7 @@ public class serviceUtilisateur implements services<Utilisateur>{
     @Override
     public void supprimer(Utilisateur p) {
       try {
-            String req = "DELETE from utilistaeur WHERE id=?";
+            String req = "DELETE from utilisateur WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setInt(1, p.getId());
             pst.executeUpdate();

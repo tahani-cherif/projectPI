@@ -36,15 +36,18 @@ public class JavaApplication1 {
     public static void main(String[] args) throws ParseException {
         
       serviceUtilisateur su=new serviceUtilisateur();
-    //  Utilisateur x= new Admin("achref","hamza","achref@com,fr","test","Admin");
-      // Utilisateur x= new Client(23752236,"homme","mnihla","achref","hamza","achref@com,fr","test","client");
-      //su.ajouter(x);
+   //  Utilisateur x= new Admin("achref","hamza","achref@com,fr","test","Admin");
+      // Utilisateur x= new Client(23752236,"homllme","mnihhhhhhhhhhhhla","achref","hamza","achref@com,fr","test","client");
+     // su.ajouter(x);
     //  Utilisateur x=new Admin (1,"achref222222","hamzewi","achref@gmail.com","test","Admin");
         //Utilisateur x= new Client(23752236,"homme","mnihla",3,"xwvxvx","hamza","achref@com,fr","test","client");
         //  su.modifier(x);
-     //   Utilisateur x= new Client(23752236,"homme","mnihla",3,"xwvxvx","hamza","achref@com,fr","test","client");
-        //su.supprimer(x);
+      //Utilisateur x= new Client(23752236,"homme","mnihla",3,"xwvxvx","hamza","achref@com,fr","test","client");
+       //su.supprimer(x);
       //su.supprimer(new Utilisateur(2,"achref2","hamzewi","achref@gmail.com","test"));
+      
+      Utilisateur x= new Client(23752236,"homme","mnihla",4,"xwvxvx","hamza","achref@com,fr","teetstes","client");
+         su.modifier_M(x);
       System.out.println(su.afficher());
      
     }

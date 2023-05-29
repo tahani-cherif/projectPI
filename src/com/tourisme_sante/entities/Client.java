@@ -27,6 +27,8 @@ public class Client extends Utilisateur{
         this.adresse = adresse;
     }
 
+  
+
     public int getNumber() {
         return number;
     }
@@ -53,9 +55,11 @@ public class Client extends Utilisateur{
 
     @Override
     public String toString() {
-        return "Client{" + "number=" + number + ", sex=" + sex + ", adresse=" + adresse + '}';
+        return "Client{ id=" + super.getId() + ", nom=" + super.getNom() + ", prenom=" + super.getPrenom() + ", email=" + super.getEmail() + ", MDP=" + super.getMDP() +",role=" + super.getRole()+ "number=" + number + ", sex=" + sex + ", adresse=" + adresse + '}';
     }
 
+  
+    
     
     
 }

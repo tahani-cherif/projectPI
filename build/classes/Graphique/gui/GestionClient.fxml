@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1061.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Graphique.gui.GestionAdminController">
+   <children>
+      <Label layoutX="53.0" layoutY="55.0" text="Nom" textFill="#830b7f" />
+      <Label layoutX="46.0" layoutY="115.0" text="Prenom" textFill="#7b0a8a" />
+      <Label layoutX="54.0" layoutY="166.0" text="Email" textFill="#880f90" />
+      <Label layoutX="53.0" layoutY="221.0" text="MDP" textFill="#6d0d7c" />
+      <Label layoutX="54.0" layoutY="299.0" text="Number" textFill="#78118d" />
+      <Label layoutX="57.0" layoutY="361.0" text="Sexe" textFill="#800f70" />
+      <Label layoutX="64.0" layoutY="420.0" text="Adresse" textFill="#a510c3" />
+      <TextField fx:id="nom" layoutX="183.0" layoutY="50.0" />
+      <TextField fx:id="prenom" layoutX="183.0" layoutY="110.0" />
+      <TextField fx:id="email" layoutX="183.0" layoutY="161.0" />
+      <TextField fx:id="MDP" layoutX="183.0" layoutY="216.0" />
+      <TextField fx:id="nb" layoutX="183.0" layoutY="283.0" />
+      <TextField fx:id="sx" layoutX="183.0" layoutY="346.0" />
+      <TextField fx:id="adr" layoutX="183.0" layoutY="415.0" />
+      <Button fx:id="aj1" layoutX="109.0" layoutY="528.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="58.0" prefWidth="115.0" text="Ajouter" />
+      <Button fx:id="md2" layoutX="306.0" layoutY="528.0" mnemonicParsing="false" onAction="#modifier" prefHeight="58.0" prefWidth="128.0" text="Modifier" />
+      <TableView fx:id="tab" layoutX="456.0" layoutY="43.0" onMouseClicked="#clicked" prefHeight="429.0" prefWidth="599.0">
+        <columns>
+          <TableColumn fx:id="cl1" prefWidth="75.0" text="Nom" />
+          <TableColumn fx:id="cl2" prefWidth="75.0" text="Prenom" />
+            <TableColumn fx:id="cl3" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="cl4" prefWidth="75.0" text="Mdp" />
+            <TableColumn fx:id="cl5" prefWidth="75.0" text="Role" />
+            <TableColumn fx:id="cl6" prefWidth="75.0" text="Number" />
+            <TableColumn fx:id="cl7" prefWidth="72.0" text="Sexe" />
+            <TableColumn fx:id="cl8" prefWidth="75.0" text="Adresse" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

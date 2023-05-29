@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="961.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Graphique.gui.GestionAdminisController">
+   <children>
+      <Label fx:id="lb1" layoutX="74.0" layoutY="83.0" text="Nom" />
+      <Label fx:id="lb2" layoutX="74.0" layoutY="148.0" text="Prenom" />
+      <Label fx:id="lb3" layoutX="74.0" layoutY="214.0" text="Email" />
+      <Label fx:id="lb4" layoutX="74.0" layoutY="274.0" text="MDP" />
+      <TextField fx:id="idf1" layoutX="189.0" layoutY="78.0" />
+      <TextField fx:id="idf2" layoutX="189.0" layoutY="143.0" />
+      <TextField fx:id="idf3" layoutX="189.0" layoutY="209.0" />
+      <TextField fx:id="idf4" layoutX="189.0" layoutY="269.0" />
+      <Button fx:id="ajt" layoutX="78.0" layoutY="445.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="64.0" prefWidth="117.0" text="Ajouter" />
+      <Button fx:id="md" layoutX="267.0" layoutY="445.0" mnemonicParsing="false" onAction="#modfier" prefHeight="64.0" prefWidth="128.0" text="Modifier" />
+      <TableView fx:id="tab2" layoutX="496.0" layoutY="55.0" onMouseClicked="#clikedadmin" prefHeight="325.0" prefWidth="457.0">
+        <columns>
+          <TableColumn fx:id="cln1" prefWidth="105.0" text="Nom" />
+          <TableColumn fx:id="cln2" prefWidth="71.0" text="Prenom" />
+            <TableColumn fx:id="cln3" prefWidth="105.0" text="Email" />
+            <TableColumn fx:id="cln4" prefWidth="90.0" text="MDP" />
+            <TableColumn fx:id="cln5" prefWidth="84.0" text="Role" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
