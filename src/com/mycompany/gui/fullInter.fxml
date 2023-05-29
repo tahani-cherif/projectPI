@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="839.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gui.FullInterController">
+    <stylesheets>
+        <URL value="@fullinter.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="14.0" layoutY="40.0" prefHeight="185.0" prefWidth="111.0" spacing="15.0">
+         <children>
+            <Label text="Nom" />
+            <Label text="Prix" />
+            <Label text="Descripition" />
+            <Label text="Medecins" />
+            <Label text="Type Interventions" />
+         </children>
+      </VBox>
+      <VBox layoutX="137.0" layoutY="31.0" prefHeight="200.0" prefWidth="143.0" spacing="8.0">
+         <children>
+            <TextField fx:id="nomF" />
+            <TextField fx:id="prixF" />
+            <TextField fx:id="descF" />
+            <ComboBox fx:id="combo" prefWidth="150.0" promptText="Medecins" />
+            <ComboBox fx:id="combi" prefWidth="150.0" promptText="Interventions" />
+         </children>
+      </VBox>
+      <TableView fx:id="tl" layoutX="301.0" layoutY="31.0" onMouseClicked="#showdetails" prefHeight="200.0" prefWidth="497.0">
+        <columns>
+          <TableColumn fx:id="colNom" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="colPrix" prefWidth="75.0" text="Prix" />
+            <TableColumn fx:id="colDesc" prefWidth="75.0" text="Descripition" />
+            <TableColumn fx:id="colidm" prefWidth="78.0" text="Medecin" />
+            <TableColumn fx:id="coltype" prefWidth="200.0" text="Type Interventions" />
+        </columns>
+      </TableView>
+      <Button fx:id="btA" layoutX="73.0" layoutY="245.0" mnemonicParsing="false" onAction="#AjouterIntervention" text="Ajouter" />
+      <Button fx:id="btM" layoutX="144.0" layoutY="245.0" mnemonicParsing="false" onAction="#ModifierInterventions" text="Modifier" />
+      <Button fx:id="btS" layoutX="217.0" layoutY="245.0" mnemonicParsing="false" onAction="#SupprimerInterventions" text="Supprimer" />
+   </children>
+</AnchorPane>
