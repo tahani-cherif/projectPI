@@ -13,6 +13,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,6 +64,8 @@ public class InterfacemedecinController implements Initializable {
     private TableColumn<medecins, String>colNumero;
      serviceMedecin sm=new serviceMedecin();
     private  medecins x=null;
+    @FXML
+    private TextField idsearch;
     /**
      * Initializes the controller class.
      */
@@ -125,6 +129,37 @@ public class InterfacemedecinController implements Initializable {
         colBtn.setCellFactory(cellFactory);
 
         IDtable.getColumns().add(colBtn);
+        //fltrage
+         FilteredList<medecins> filteredData = new FilteredList<>(medecinList, b -> true);
+         idsearch.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(medecin -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (medecin.getFullName().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} else if (medecin.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; 
+				}
+                                 else if (medecin.getAdresse().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; 
+				}
+                                  else if (medecin.getSpecialite().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				}
+				else if (String.valueOf(medecin.getNumero()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+				     else  
+				    	 return false;
+			});
+		});
+                 SortedList<medecins> sortedData = new SortedList<>(filteredData);
+		sortedData.comparatorProperty().bind(IDtable.comparatorProperty());
+		IDtable.setItems(sortedData);
     }    
 
     @FXML

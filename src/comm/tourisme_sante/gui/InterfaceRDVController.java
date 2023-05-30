@@ -18,6 +18,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +33,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -61,6 +64,8 @@ public class InterfaceRDVController implements Initializable {
     private TableColumn<RDV, Date> date;
     serviceRDV rdv=new serviceRDV();
     RDV x=null;
+    @FXML
+    private TextField idsearch;
 
     /**
      * Initializes the controller class.
@@ -129,6 +134,31 @@ public class InterfaceRDVController implements Initializable {
             }
 
        idmedecin.setItems(list);
+        //fltrage
+         FilteredList<RDV> filteredData = new FilteredList<>(listerdv, b -> true);
+         idsearch.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(rdv -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (rdv.getNomuser().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} else if (rdv.getFullName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; 
+				}
+				else if (String.valueOf(rdv.getDateRDV()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+				     else  
+				    	 return false;
+			});
+		});
+                 SortedList<RDV> sortedData = new SortedList<>(filteredData);
+		sortedData.comparatorProperty().bind(table.comparatorProperty());
+		table.setItems(sortedData);
       
     }    
 
