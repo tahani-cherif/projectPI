@@ -79,16 +79,7 @@ public class FullcrudController implements Initializable {
     }
     
     
-//    private void executeQuery(String query) {
-//     Connection cnx = DataSourceA.getInstance().getCnx();
-//     Statement st;
-//     try{
-//         st= cnx.createStatement();
-//         st.executeQuery(query);
-//     }catch(Exception ex){
-//         ex.printStackTrace();
-//     }
-    
+
     
     
 
@@ -134,4 +125,3 @@ public class FullcrudController implements Initializable {
     }
 
     
-

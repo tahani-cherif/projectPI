@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -23,6 +24,9 @@
             <Label text="Medecins" />
             <Label text="Type Interventions" />
          </children>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
       </VBox>
       <VBox layoutX="137.0" layoutY="31.0" prefHeight="200.0" prefWidth="143.0" spacing="8.0">
          <children>
@@ -32,8 +36,11 @@
             <ComboBox fx:id="combo" prefWidth="150.0" promptText="Medecins" />
             <ComboBox fx:id="combi" prefWidth="150.0" promptText="Interventions" />
          </children>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
       </VBox>
-      <TableView fx:id="tl" layoutX="301.0" layoutY="31.0" onMouseClicked="#showdetails" prefHeight="200.0" prefWidth="497.0">
+      <TableView fx:id="tl" layoutX="301.0" layoutY="46.0" onMouseClicked="#showdetails" prefHeight="185.0" prefWidth="497.0">
         <columns>
           <TableColumn fx:id="colNom" prefWidth="75.0" text="Nom" />
             <TableColumn fx:id="colPrix" prefWidth="75.0" text="Prix" />
@@ -45,5 +52,7 @@
       <Button fx:id="btA" layoutX="73.0" layoutY="245.0" mnemonicParsing="false" onAction="#AjouterIntervention" text="Ajouter" />
       <Button fx:id="btM" layoutX="144.0" layoutY="245.0" mnemonicParsing="false" onAction="#ModifierInterventions" text="Modifier" />
       <Button fx:id="btS" layoutX="217.0" layoutY="245.0" mnemonicParsing="false" onAction="#SupprimerInterventions" text="Supprimer" />
+      <TextField fx:id="searchField" layoutX="420.0" layoutY="14.0" prefHeight="25.0" prefWidth="342.0" />
+      <Label layoutX="329.0" layoutY="18.0" text="Search box" />
    </children>
 </AnchorPane>

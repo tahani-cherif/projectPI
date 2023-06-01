@@ -24,6 +24,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -69,12 +71,14 @@ public class FullInterController implements Initializable {
     private TextField descF;
     private TextField medecinF;
     private TextField typeF;
+   
     @FXML
     private TableView<Interventions> tl;
+     
     @FXML
     private TableColumn<Interventions, String> colNom;
     @FXML
-    private TableColumn<Interventions, Integer> colPrix;
+    private TableColumn<Interventions, Double> colPrix;
     @FXML
     private TableColumn<Interventions, String> colDesc;
     @FXML
@@ -91,6 +95,8 @@ public class FullInterController implements Initializable {
     private ComboBox<String> combo;
     @FXML
     private ComboBox<String> combi;
+    @FXML
+    private TextField searchField;
   
 
     /**
@@ -155,22 +161,62 @@ public class FullInterController implements Initializable {
         ObservableList<Interventions> listType = FXCollections.observableArrayList(ss.afficher());
        
         colNom.setCellValueFactory(new PropertyValueFactory<>("nomType"));
-         colPrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+        colPrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
         colDesc.setCellValueFactory(new PropertyValueFactory<>("descripition"));
-         colidm.setCellValueFactory(new PropertyValueFactory<>("medecin"));
-          coltype.setCellValueFactory(new PropertyValueFactory<>("nomTypeIntervention"));
+        colidm.setCellValueFactory(new PropertyValueFactory<>("medecin"));
+        coltype.setCellValueFactory(new PropertyValueFactory<>("nomTypeIntervention"));
         tl.setItems(listType);
-//    }
-//     private void executeQuery(String query) {
-//     Connection cnx = DataSourceA.getInstance().getCnx();
-//     Statement st;
-//     try{
-//         st= cnx.createStatement();
-//         st.executeQuery(query);
-//     }catch(Exception ex){
-//         ex.printStackTrace();
-//     }
-      }
+
+      
+      
+      
+      
+      // Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Interventions> filteredData = new FilteredList<>(listType, b -> true);
+		
+		// 2. Set the filter Predicate whenever the filter changes.
+		searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Interventions -> {
+				// If filter text is empty, display all persons.
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Interventions.getNomType().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; // Filter matches  name.
+				} else if (Interventions.getDescripition().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; // Filter matches descripition.
+				} else if (Interventions.getNomTypeIntervention().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; // Filter matches medecin.
+				}  else if (Interventions.getMedecin().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; // Filter matches medecin.
+				}
+                                
+                                
+				else if (String.valueOf(Interventions.getPrix()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+				     else  
+				    	 return false; // Does not match.
+			});
+                        
+                     });
+		  
+		// 3. Wrap the FilteredList in a SortedList. 
+		SortedList<Interventions> sortedData = new SortedList<>(filteredData);
+		
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		// 	  Otherwise, sorting the TableView would have no effect.
+		sortedData.comparatorProperty().bind(tl.comparatorProperty());
+		
+		// 5. Add sorted (and filtered) data to the table.
+		tl.setItems(sortedData);
+    }
+               
+                        
     
 
   
@@ -180,7 +226,7 @@ public class FullInterController implements Initializable {
 
 
    
-    @FXML
+     @FXML
     private void SupprimerInterventions(ActionEvent event) {
           ss.supprimer(ll);
           showInterventions();
@@ -241,7 +287,7 @@ public class FullInterController implements Initializable {
         s.setId(id);
         s.setNomType(nomF.getText());
         s.setDescripition(descF.getText());
-        s.setPrix(Integer.parseInt(prixF.getText()));
+        s.setPrix((int)Double.parseDouble(prixF.getText()));
         for (Map.Entry ele : map.entrySet()) {
             if(ele.getValue().equals(combo.getValue())){ 
                 s.setIdmedecin(Integer.parseInt(ele.getKey().toString()));

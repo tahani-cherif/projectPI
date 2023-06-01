@@ -30,7 +30,7 @@
             </Label>
          </children>
          <padding>
-            <Insets top="20.0" />
+            <Insets top="25.0" />
          </padding>
       </VBox>
       <VBox layoutX="116.0" layoutY="16.0" prefHeight="116.0" prefWidth="208.0" spacing="15.0">
@@ -39,7 +39,7 @@
             <TextField fx:id="descField" />
          </children>
          <padding>
-            <Insets top="20.0" />
+            <Insets top="30.0" />
          </padding>
       </VBox>
       <TableView fx:id="tb" layoutX="426.0" layoutY="24.0" onMouseClicked="#detailsTypeInterventions" prefHeight="200.0" prefWidth="200.0">

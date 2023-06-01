@@ -14,7 +14,7 @@ public class Interventions {
     
         private int id;
         private String nomType;
-        private int prix;
+        private double prix;
         private String descripition;
         private	int idmedecin;
         private int idtypeintervention;
@@ -22,14 +22,14 @@ public class Interventions {
           private String medecin;
         
 
-    public Interventions  (String nomType, int prix, String descripition, int idmedecin , int idtypeintervention ) {
+    public Interventions  (String nomType, double prix, String descripition, int idmedecin , int idtypeintervention ) {
         this.nomType = nomType;
         this.prix=prix;
         this.descripition= descripition;
         this.idmedecin= idmedecin;
         this.idtypeintervention=idtypeintervention;
     }
-      public Interventions (int id, String nomType,int prix, String descripition, int idmedecin, int idtypeintervention ) {
+      public Interventions (int id, String nomType,double prix, String descripition, int idmedecin, int idtypeintervention ) {
         this.id = id;
         this.nomType = nomType;
         this.prix=prix;
