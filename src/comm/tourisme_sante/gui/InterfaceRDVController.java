@@ -4,6 +4,7 @@
  */
 package comm.tourisme_sante.gui;
 
+import com.jfoenix.controls.JFXTimePicker;
 import com.tourisme_sante.entities.RDV;
 import com.tourisme_sante.entities.medecins;
 import comm.tourisme_sante.services.serviceMedecin;
@@ -66,6 +67,10 @@ public class InterfaceRDVController implements Initializable {
     RDV x=null;
     @FXML
     private TextField idsearch;
+    @FXML
+    private JFXTimePicker test;
+    @FXML
+    private TableColumn<RDV, String> idheure;
 
     /**
      * Initializes the controller class.
@@ -76,6 +81,7 @@ public class InterfaceRDVController implements Initializable {
          nommedecin.setCellValueFactory(new PropertyValueFactory<RDV, String>("fullName"));
         nomuser.setCellValueFactory(new PropertyValueFactory<RDV, String>("nomuser"));
         date.setCellValueFactory(new PropertyValueFactory<RDV, Date>("dateRDV"));
+           idheure.setCellValueFactory(new PropertyValueFactory<RDV, String>("heureRDV"));
          ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
         table.setItems(listerdv);
          TableColumn<RDV, Void> colBtn = new TableColumn("Suprime");
@@ -175,7 +181,7 @@ public class InterfaceRDVController implements Initializable {
      
         for (Map.Entry ele : map.entrySet()) {
             if(ele.getValue().equals(idmedecin.getValue())){     
-                RDV.ajouter(new RDV(Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue())));
+                RDV.ajouter(new RDV(Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().getHour()+":"+test.getValue().getMinute()+":"+test.getValue().getSecond()));
             }
         }
 ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());

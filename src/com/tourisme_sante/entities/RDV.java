@@ -5,6 +5,7 @@
 package com.tourisme_sante.entities;
 
 import java.sql.Date;
+import java.time.ZonedDateTime;
 
 /**
  *
@@ -16,23 +17,51 @@ public class RDV {
     private int idmedecin;
     private int iduser;
     private Date dateRDV;
+    private ZonedDateTime date;
     private String fullName;
     private String nomuser;
+    private String heureRDV;
 
-    public RDV(int id,int idmedecin, int iduser, String fullName, String nom, Date dateRDV) {
+    public RDV(int id,int idmedecin, int iduser, String fullName, String nom, Date dateRDV,String heureRDV) {
        this.idmedecin = idmedecin;
         this.iduser = iduser;
         this.id = id;
         this.fullName = fullName;
         this.nomuser = nom;
         this.dateRDV = dateRDV;
+        this.heureRDV=heureRDV;
+    }
+        public RDV(int id,int idmedecin, int iduser, String fullName, String nom, ZonedDateTime dateRDV) {
+       this.idmedecin = idmedecin;
+        this.iduser = iduser;
+        this.id = id;
+        this.fullName = fullName;
+        this.nomuser = nom;
+        this.date = dateRDV;
+    }
+
+    public ZonedDateTime getDate() {
+        return date;
+    }
+
+    public String getHeureRDV() {
+        return heureRDV;
+    }
+
+    public void setHeureRDV(String heureRDV) {
+        this.heureRDV = heureRDV;
+    }
+
+    public void setDate(ZonedDateTime date) {
+        this.date = date;
     }
 
 
-    public RDV(int idmedecin, int iduser, Date dateRDV) {
+    public RDV(int idmedecin, int iduser, Date dateRDV,String heureRDV) {
         this.idmedecin = idmedecin;
         this.iduser = iduser;
         this.dateRDV = dateRDV;
+        this.heureRDV=heureRDV;
     }
 
     public RDV(int id, int idmedecin, int iduser, Date dateRDV) {

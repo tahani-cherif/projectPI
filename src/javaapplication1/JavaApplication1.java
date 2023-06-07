@@ -46,7 +46,7 @@ public class JavaApplication1 {
      */
     public static void main(String[] args) throws ParseException {
         
-       // ServiceProduit sp=new ServiceProduit();
+       //ServiceProduit sp=new ServiceProduit();
         //sp.ajouter(new produit(10,10,10));
        // sp.modifier(new produit(2,20,20,20));
       // sp.supprimer(new produit(2,20,20,20));
@@ -91,13 +91,13 @@ public class JavaApplication1 {
 
        serviceMedecin sm=new serviceMedecin();
         
-   // sm.ajouter(new  medecins ("tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
+    sm.ajouter(new  medecins ("tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
        // sm.modifier(new  medecins (3,"test","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
     //     sm.supprimer(new  medecins (6,"tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
-              System.out.println(sm.afficher()); 
+            //  System.out.println(sm.afficher()); 
       serviceRDV srdv=new serviceRDV();
    //  srdv.ajouter(new RDV(1,1,Date.valueOf("2023-05-15")));
-       srdv.modifier(new RDV(6,1,1,Date.valueOf("2023-06-16")));
+    //   srdv.modifier(new RDV(6,1,1,Date.valueOf("2023-06-16")));
       // srdv.supprimer(new RDV(3,1,1,Date.valueOf("2023-05-15")));
        
         System.out.println(srdv.afficher());

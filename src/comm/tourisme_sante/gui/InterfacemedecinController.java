@@ -11,6 +11,8 @@ import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -129,6 +131,46 @@ public class InterfacemedecinController implements Initializable {
         colBtn.setCellFactory(cellFactory);
 
         IDtable.getColumns().add(colBtn);
+            TableColumn<medecins, Void> colplaning = new TableColumn("Planing");
+       Callback<TableColumn<medecins, Void>, TableCell<medecins, Void>> cellFactory2 = new Callback<TableColumn<medecins, Void>, TableCell<medecins, Void>>() {
+            @Override
+            public TableCell<medecins, Void> call(final TableColumn<medecins, Void> param) {
+                final TableCell<medecins, Void> cell = new TableCell<medecins, Void>() {
+
+                    private final Button btn = new Button("voir planing");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                           
+                       
+                            try {
+                                PlaningController.x=getTableView().getItems().get(getIndex());
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("planing.fxml"));
+                                Parent root = loader.load();
+                                IDtable.getScene().setRoot(root);
+                            } catch (IOException ex) {
+                                Logger.getLogger(InterfacemedecinController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        colplaning.setCellFactory(cellFactory2);
+
+        IDtable.getColumns().add(colplaning);
         //fltrage
          FilteredList<medecins> filteredData = new FilteredList<>(medecinList, b -> true);
          idsearch.textProperty().addListener((observable, oldValue, newValue) -> {
