@@ -10,6 +10,7 @@ import com.mycompany.agence_medicale.medecins;
 import com.mycompany.service.Service_TypeInterventions;
 import com.mycompany.service.ServicesInterventions;
 import com.mycompany.utils.DataSourceA;
+import java.awt.event.KeyAdapter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,15 +30,21 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 import javax.swing.JOptionPane;
 
 /**
@@ -97,6 +105,16 @@ public class FullInterController implements Initializable {
     private ComboBox<String> combi;
     @FXML
     private TextField searchField;
+    @FXML
+    private TextField NID;
+    @FXML
+    private TextField PID;
+    @FXML
+    private TextField DID;
+    @FXML
+    private TextField MID;
+    @FXML
+    private TextField IID;
   
 
     /**
@@ -105,6 +123,51 @@ public class FullInterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        showInterventions();
+       
+       
+       
+       TableColumn<Interventions, Void> colBtn = new TableColumn("Supprimé");
+       Callback<TableColumn<Interventions, Void>, TableCell<Interventions, Void>> cellFactory = new Callback<TableColumn<Interventions, Void>, TableCell<Interventions, Void>>() {
+            @Override
+            public TableCell<Interventions, Void> call(final TableColumn<Interventions, Void> param) {
+                final TableCell<Interventions, Void> cell = new TableCell<Interventions, Void>() {
+
+                    private final Button btn = new Button("Supprimé");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                               Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Confirmation de modifier RDV");
+                                alert.setHeaderText("Confirmation de modifier RDV");
+                                alert.setContentText("Êtes-vous sûr?");
+
+                                Optional<ButtonType> result = alert.showAndWait();
+                                if (result.get() == ButtonType.OK){
+                                     ss.supprimer(ll);
+                                     showInterventions();
+                                   
+                                } else {
+                                    // ... user chose CANCEL or closed the dialog
+                                }
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+colBtn.setCellFactory(cellFactory);
+tl.getColumns().add(colBtn);
        
         List<medecins> list = new ArrayList<>();
        
@@ -170,9 +233,15 @@ public class FullInterController implements Initializable {
       
       
       
-      
+      //filtrage 
       // Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<Interventions> filteredData = new FilteredList<>(listType, b -> true);
+         FilteredList<Interventions> filterbyNom = new FilteredList<>(listType, b -> true);
+          FilteredList<Interventions> filterbyPrix = new FilteredList<>(listType, b -> true);
+	
+         FilteredList<Interventions> filterbyDesc = new FilteredList<>(listType, b -> true);
+          FilteredList<Interventions> filterbyMedecin = new FilteredList<>(listType, b -> true);
+         FilteredList<Interventions> filterbyNomType = new FilteredList<>(listType, b -> true);
 		
 		// 2. Set the filter Predicate whenever the filter changes.
 		searchField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -194,16 +263,145 @@ public class FullInterController implements Initializable {
 					return true; // Filter matches medecin.
 				}  else if (Interventions.getMedecin().toLowerCase().indexOf(lowerCaseFilter) != -1) {
 					return true; // Filter matches medecin.
-				}
-                                
-                                
-				else if (String.valueOf(Interventions.getPrix()).indexOf(lowerCaseFilter)!=-1)
+                                }else if (String.valueOf(Interventions.getPrix()).indexOf(lowerCaseFilter)!=-1)
 				     return true;
 				     else  
 				    	 return false; // Does not match.
 			});
                         
-                     });
+                        
+                         // filter by nom
+                        filterbyNom.setPredicate(Interventions -> {
+				// If filter text is empty, display all persons.
+				
+                                                	   //System.out.println(tb.getItems().size());
+
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+                                   
+				
+				 if (Interventions.getNomType().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; //
+                                }else  
+				    	 return false; // Does not match.
+                                
+                        
+                        });
+                        
+                        
+                       
+                        
+                        // filter by Prix
+                        filterbyPrix.setPredicate(Interventions -> {
+				// If filter text is empty, display all persons.
+				
+                                                	  
+
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+                                   
+				
+				 if (String.valueOf(Interventions.getPrix()).indexOf(lowerCaseFilter)!=-1) {
+					return true; 
+                                }else  
+				    	 return false; // Does not match.
+                                 
+                                
+			});
+                        
+                        
+                         // filter by descripition
+                        filterbyDesc.setPredicate(Interventions -> {
+				// If filter text is empty, display all persons.
+				
+                                                	   //System.out.println(tb.getItems().size());
+
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+                                   
+				
+				 if (Interventions.getDescripition().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; //
+                                }else  
+				    	 return false; // Does not match.
+                                
+                        
+                        });
+                        
+                        
+                        // filter by medecin
+                       filterbyMedecin.setPredicate(Interventions -> {
+				// If filter text is empty, display all persons.
+				
+                                                	   //System.out.println(tb.getItems().size());
+
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+                                   
+				
+				 if (Interventions.getMedecin().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; //
+                                }else  
+				    	 return false; // Does not match.
+                                
+                        
+                        });
+                        
+                        
+                        // filter by Nomtype intervention
+                        filterbyNomType.setPredicate(Interventions -> {
+				// If filter text is empty, display all persons.
+				
+                                                	   
+
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+                                   
+				
+				 if (Interventions.getNomTypeIntervention().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; //
+                                }else  
+				    	 return false; // Does not match.
+                                
+                        
+                        });
+                        
+                       NID.setText(""+filterbyNom.size());
+                       PID.setText(""+filterbyPrix.size());
+                       DID.setText(""+filterbyDesc.size());
+                       MID.setText(""+filterbyMedecin.size());
+                       IID.setText(""+filterbyNomType.size());
+                           
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+            });         
 		  
 		// 3. Wrap the FilteredList in a SortedList. 
 		SortedList<Interventions> sortedData = new SortedList<>(filteredData);
@@ -225,17 +423,20 @@ public class FullInterController implements Initializable {
    
 
 
-   
-     @FXML
+  
+    @FXML
     private void SupprimerInterventions(ActionEvent event) {
-          ss.supprimer(ll);
-          showInterventions();
-    }
+////         ss.supprimer(ll);
+////         showInterventions();
+   }
 
     @FXML
     private void AjouterIntervention(ActionEvent event) {
         Interventions s= new Interventions(null,0,null,0,0); //lelement a ajoutet vide
         s.setNomType(nomF.getText());
+        
+        
+       
         s.setDescripition(descF.getText());
         s.setPrix(Integer.parseInt(prixF.getText()));
         for (Map.Entry ele : map.entrySet()) {
@@ -243,7 +444,6 @@ public class FullInterController implements Initializable {
                 s.setIdmedecin(Integer.parseInt(ele.getKey().toString()));
                
             }
-            
         }
         
         for (Map.Entry ele : mape.entrySet()) {
@@ -328,6 +528,16 @@ public class FullInterController implements Initializable {
         descF.setText(colDesc.getCellData(index));
         combo.setValue(colidm.getCellData(index));
         combi.setValue(coltype.getCellData(index));
+    }
+
+    @FXML
+    private void Openchat(ActionEvent event) throws IOException {
+        
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("chat.fxml"));
+            Parent root = loader.load();
+            descF.getScene().setRoot(root);
+         
+           
     }
     }
     

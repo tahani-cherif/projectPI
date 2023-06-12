@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="839.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gui.FullInterController">
+<AnchorPane id="AnchorPane" prefHeight="533.0" prefWidth="839.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gui.FullInterController">
     <stylesheets>
         <URL value="@fullinter.css" />
     </stylesheets>
@@ -54,5 +54,21 @@
       <Button fx:id="btS" layoutX="217.0" layoutY="245.0" mnemonicParsing="false" onAction="#SupprimerInterventions" text="Supprimer" />
       <TextField fx:id="searchField" layoutX="420.0" layoutY="14.0" prefHeight="25.0" prefWidth="342.0" />
       <Label layoutX="329.0" layoutY="18.0" text="Search box" />
+      <Button layoutX="735.0" layoutY="476.0" mnemonicParsing="false" onAction="#Openchat" text="Chat" />
+      <Label layoutX="376.0" layoutY="283.0" text="Le nom saisi est:" />
+      <Label layoutX="376.0" layoutY="355.0" text="La descripition saisie est:" />
+      <Label layoutX="379.0" layoutY="316.0" text="Le prix saisi est:" />
+      <Label layoutX="372.0" layoutY="388.0" text="Le medecin saisi est:" />
+      <Label layoutX="372.0" layoutY="420.0" text="Le type d'intervention est:" />
+      <TextField fx:id="NID" layoutX="531.0" layoutY="279.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextField fx:id="PID" layoutX="531.0" layoutY="312.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextField fx:id="DID" layoutX="531.0" layoutY="351.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextField fx:id="MID" layoutX="531.0" layoutY="384.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextField fx:id="IID" layoutX="531.0" layoutY="416.0" prefHeight="25.0" prefWidth="41.0" />
+      <Label layoutX="591.0" layoutY="283.0" text="foix" />
+      <Label layoutX="591.0" layoutY="316.0" text="foix" />
+      <Label layoutX="591.0" layoutY="355.0" text="foix" />
+      <Label layoutX="591.0" layoutY="388.0" text="foix" />
+      <Label layoutX="591.0" layoutY="420.0" text="foix" />
    </children>
 </AnchorPane>
