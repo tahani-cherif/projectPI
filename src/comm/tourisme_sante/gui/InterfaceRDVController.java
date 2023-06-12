@@ -93,6 +93,7 @@ public class InterfaceRDVController implements Initializable {
     private TableColumn<RDV, String> idheure;
     
     public boolean etat=false;
+    Connection cnx = Datasource.getInstance().getCnx();
 
     /**
      * Initializes the controller class.
@@ -276,7 +277,7 @@ public class InterfaceRDVController implements Initializable {
 
 // Définir le contenu du message au format HTML
      message.setContent( "<div><p>Confirmation de Rendez-vous de "
-        +liste.getNom()+" " + liste.getPrenom()+"</div>", "text/html; charset=utf-8");
+          +liste.getNom()+" " + liste.getPrenom()+" a "+iddate.getValue()+" "+test.getValue().getHour()+":"+test.getValue().getMinute()+"</div>", "text/html; charset=utf-8");
 
         // Envoi du message
         Transport.send(message);
@@ -332,77 +333,102 @@ public class InterfaceRDVController implements Initializable {
 
                                 Optional<ButtonType> result = alert.showAndWait();
                                 if (result.get() == ButtonType.OK){
+                                    
+                                    
+                                     String req2= "SELECT * FROM rdv where 	idmedecin=? and dateRDV=? and heureRDV=?;";
+                  try {
+           PreparedStatement stt = cnx.prepareStatement(req2);
+           for (Map.Entry ele : map.entrySet()) {
+            if(ele.getValue().equals(idmedecin.getValue())){     
+               stt.setInt(1,Integer.parseInt(ele.getKey().toString()));
+            }}
+           stt.setDate(2,  Date.valueOf(iddate.getValue()));
+           stt.setString(3, test.getValue().getHour()+":"+test.getValue().getMinute());
+            ResultSet rss = stt.executeQuery();
+            if(rss.next()) {
+            
+             Alert alert2 = new Alert(Alert.AlertType.WARNING);
+            alert2.setTitle("déjà rendez-vous");
+            alert2.setHeaderText(null);
+            alert2.setContentText("Changer date de rondez-vous.");
+            alert2.showAndWait();
+            }else{
                                        for (Map.Entry ele : map.entrySet()) {
                                         if(ele.getValue().equals(idmedecin.getValue())){     
                                             RDV.modifier(new RDV(x.getId(),Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().getHour()+":"+test.getValue().getMinute()));
                                         }
-//                                           //get utilisateur by id and envoi de mail
-//         Connection cnx = Datasource.getInstance().getCnx();
-//        Utilisateur liste= null;
-//        
-//        String req = "SELECT * FROM Utilisateur where id=?;";
-//        try {
-//           PreparedStatement st = cnx.prepareStatement(req);
-//             st.setInt(1,Integer.valueOf("1"));
-//            ResultSet rs = st.executeQuery();
-//            if(rs.next()) {
-//                Utilisateur x;
-//             liste=new client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getInt("number"),rs.getString("role"));
-//               // Envoi de l'e-mail
-//    String host = "smtp.live.com";
-//    final String user = "cheriftahani92@gmail.com"; // Remplacez par votre adresse e-mail Outlook/Hotmail
-//    final String password = "tahani123"; // Remplacez par votre mot de passe Outlook/Hotmail
-// 
-//    // Configuration des propriétés JavaMail
-//    Properties props = new Properties();
-//    props.put("mail.smtp.host", "smtp.office365.com");
-//    props.put("mail.smtp.port", "587");
-//    props.put("mail.smtp.auth", "true");
-//    props.put("mail.smtp.starttls.enable", "true");
-//
-//    // Création de la session JavaMail
-//    Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-//        protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-//            return new javax.mail.PasswordAuthentication(user, password);
-//        }
-//    });
-//
-//    try {
-//        // Création du message MIME
-//        MimeMessage message = new MimeMessage(session);
-//        message.setFrom(new InternetAddress("cheriftahani92@gmail.com"));
-//        message.addRecipient(Message.RecipientType.TO, new InternetAddress(liste.getEmail()));
-//        message.setSubject("Confirmation de Rendez-vous");
-//
-//
-//// Définir le contenu du message au format HTML
-//message.setContent( "<div><p>Confirmation de Rendez-vous de "
-//        +liste.getNom()+" " + liste.getPrenom()+"</div>", "text/html; charset=utf-8");
-//
-//        // Envoi du message
-//        Transport.send(message);
-//
-//        System.out.println("E-mail envoyé avec succès !");
-//    } catch (MessagingException e) {
-//        e.printStackTrace();
-//    }
-//
-// 
-//            
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        
-//            // end envoi de mail
-// 
-//                }
+                                          
                                     }
+                                        //get utilisateur by id and envoi de mail
+        Utilisateur liste= null;
+        
+        String req = "SELECT * FROM Utilisateur where id=?;";
+        try {
+           PreparedStatement st = cnx.prepareStatement(req);
+             st.setInt(1,Integer.valueOf("1"));
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {
+                Utilisateur x;
+             liste=new client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getInt("number"),rs.getString("role"));
+               // Envoi de l'e-mail
+    String host = "smtp.live.com";
+    final String user = "cheriftahani92@gmail.com"; // Remplacez par votre adresse e-mail Outlook/Hotmail
+    final String password = "tahani123"; // Remplacez par votre mot de passe Outlook/Hotmail
+ 
+    // Configuration des propriétés JavaMail
+    Properties props = new Properties();
+    props.put("mail.smtp.host", "smtp.office365.com");
+    props.put("mail.smtp.port", "587");
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+
+    // Création de la session JavaMail
+    Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+        protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+            return new javax.mail.PasswordAuthentication(user, password);
+        }
+    });
+
+    try {
+        // Création du message MIME
+        MimeMessage message = new MimeMessage(session);
+        message.setFrom(new InternetAddress("cheriftahani92@gmail.com"));
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(liste.getEmail()));
+        message.setSubject("Confirmation de Rendez-vous");
+
+
+// Définir le contenu du message au format HTML
+message.setContent( "<div><p>Confirmation de Rendez-vous de "
+        +liste.getNom()+" " + liste.getPrenom()+" a "+iddate.getValue()+" "+test.getValue().getHour()+":"+test.getValue().getMinute()+"</div>", "text/html; charset=utf-8");
+
+        // Envoi du message
+        Transport.send(message);
+
+        System.out.println("E-mail envoyé avec succès !");
+    } catch (MessagingException e) {
+        e.printStackTrace();
+    }
+
+ 
+            
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        
+            // end envoi de mail
+ 
+                }
                                      ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
                                     table.setItems(listerdv);
                                    iddate.setValue(null);
                                    idmedecin.setValue("");
                                    test.setValue(null);
-                                } else {
+            } }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        
+            // end envoi de mail
+ 
+                }   } else {
                                      iddate.setValue(null);
                                    idmedecin.setValue("");
                                    test.setValue(null);
