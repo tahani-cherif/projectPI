@@ -6,16 +6,30 @@ package comm.tourisme_sante.gui;
 
 import com.jfoenix.controls.JFXTimePicker;
 import com.tourisme_sante.entities.RDV;
+import com.tourisme_sante.entities.Utilisateur;
+import com.tourisme_sante.entities.admin;
+import com.tourisme_sante.entities.client;
 import com.tourisme_sante.entities.medecins;
+import com.tourisme_sante.utils.Datasource;
 import comm.tourisme_sante.services.serviceMedecin;
 import comm.tourisme_sante.services.serviceRDV;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,6 +53,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
 /**
@@ -71,6 +91,8 @@ public class InterfaceRDVController implements Initializable {
     private JFXTimePicker test;
     @FXML
     private TableColumn<RDV, String> idheure;
+    
+    public boolean etat=false;
 
     /**
      * Initializes the controller class.
@@ -178,18 +200,127 @@ public class InterfaceRDVController implements Initializable {
 
     @FXML
     private void ajouterrdv(ActionEvent event) {
-     
-        for (Map.Entry ele : map.entrySet()) {
+        if(!etat){
+          Connection cnx = Datasource.getInstance().getCnx();
+       String nom2 = idmedecin.getValue();
+        LocalDate heure = iddate.getValue();
+         LocalTime date = test.getValue();
+        System.out.println(heure);
+          if (nom2==null || heure==null || date==null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Champs vides");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.showAndWait();}else{
+                String req2= "SELECT * FROM rdv where 	idmedecin=? and dateRDV=? and heureRDV=?;";
+                  try {
+           PreparedStatement stt = cnx.prepareStatement(req2);
+           for (Map.Entry ele : map.entrySet()) {
             if(ele.getValue().equals(idmedecin.getValue())){     
-                RDV.ajouter(new RDV(Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().getHour()+":"+test.getValue().getMinute()+":"+test.getValue().getSecond()));
+               stt.setInt(1,Integer.parseInt(ele.getKey().toString()));
+            }}
+           stt.setDate(2,  Date.valueOf(iddate.getValue()));
+           stt.setString(3, test.getValue().getHour()+":"+test.getValue().getMinute());
+            ResultSet rss = stt.executeQuery();
+            if(rss.next()) {
+            
+             Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("déjà rendez-vous");
+            alert.setHeaderText(null);
+            alert.setContentText("Changer date de rondez-vous.");
+            alert.showAndWait();
+            }else{
+                 for (Map.Entry ele : map.entrySet()) {
+            if(ele.getValue().equals(idmedecin.getValue())){     
+                RDV.ajouter(new RDV(Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().getHour()+":"+test.getValue().getMinute()));
             }
         }
-ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
+   //get utilisateur by id and envoi de mail
+       
+        Utilisateur liste= null;
+        
+        String req = "SELECT * FROM Utilisateur where id=?;";
+        try {
+           PreparedStatement st = cnx.prepareStatement(req);
+             st.setInt(1,Integer.valueOf("1"));
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {
+                Utilisateur x;
+             liste=new client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getInt("number"),rs.getString("role"));
+               // Envoi de l'e-mail
+    String host = "smtp.live.com";
+    final String user = "cheriftahani92@gmail.com"; // Remplacez par votre adresse e-mail Outlook/Hotmail
+    final String password = "tahani123"; // Remplacez par votre mot de passe Outlook/Hotmail
+ 
+    // Configuration des propriétés JavaMail
+    Properties props = new Properties();
+    props.put("mail.smtp.host", "smtp.office365.com");
+    props.put("mail.smtp.port", "587");
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+
+    // Création de la session JavaMail
+    Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+        protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+            return new javax.mail.PasswordAuthentication(user, password);
+        }
+    });
+
+    try {
+        // Création du message MIME
+        MimeMessage message = new MimeMessage(session);
+        message.setFrom(new InternetAddress("cheriftahani92@gmail.com"));
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(liste.getEmail()));
+        message.setSubject("Confirmation de Rendez-vous");
+
+
+// Définir le contenu du message au format HTML
+     message.setContent( "<div><p>Confirmation de Rendez-vous de "
+        +liste.getNom()+" " + liste.getPrenom()+"</div>", "text/html; charset=utf-8");
+
+        // Envoi du message
+        Transport.send(message);
+
+        System.out.println("E-mail envoyé avec succès !");
+        ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
        table.setItems(listerdv);
         JOptionPane.showMessageDialog(null, "RDV ajoutée !");
         
        iddate.setValue(null);
        idmedecin.setValue("");
+       test.setValue(null);
+    } catch (MessagingException e) {
+        e.printStackTrace();
+    }
+
+ 
+            
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        
+            // end envoi de mail
+ 
+                }
+                
+            }}catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        
+            // end envoi de mail
+ 
+                }
+               
+              
+       }
+
+    }
+        else{
+         Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("déjà rendez-vous");
+            alert.setHeaderText(null);
+            alert.setContentText(" rondez-vous existe deja. ");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -203,16 +334,78 @@ ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
                                 if (result.get() == ButtonType.OK){
                                        for (Map.Entry ele : map.entrySet()) {
                                         if(ele.getValue().equals(idmedecin.getValue())){     
-                                            RDV.modifier(new RDV(x.getId(),Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue())));
+                                            RDV.modifier(new RDV(x.getId(),Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().getHour()+":"+test.getValue().getMinute()));
                                         }
+//                                           //get utilisateur by id and envoi de mail
+//         Connection cnx = Datasource.getInstance().getCnx();
+//        Utilisateur liste= null;
+//        
+//        String req = "SELECT * FROM Utilisateur where id=?;";
+//        try {
+//           PreparedStatement st = cnx.prepareStatement(req);
+//             st.setInt(1,Integer.valueOf("1"));
+//            ResultSet rs = st.executeQuery();
+//            if(rs.next()) {
+//                Utilisateur x;
+//             liste=new client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getInt("number"),rs.getString("role"));
+//               // Envoi de l'e-mail
+//    String host = "smtp.live.com";
+//    final String user = "cheriftahani92@gmail.com"; // Remplacez par votre adresse e-mail Outlook/Hotmail
+//    final String password = "tahani123"; // Remplacez par votre mot de passe Outlook/Hotmail
+// 
+//    // Configuration des propriétés JavaMail
+//    Properties props = new Properties();
+//    props.put("mail.smtp.host", "smtp.office365.com");
+//    props.put("mail.smtp.port", "587");
+//    props.put("mail.smtp.auth", "true");
+//    props.put("mail.smtp.starttls.enable", "true");
+//
+//    // Création de la session JavaMail
+//    Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+//        protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+//            return new javax.mail.PasswordAuthentication(user, password);
+//        }
+//    });
+//
+//    try {
+//        // Création du message MIME
+//        MimeMessage message = new MimeMessage(session);
+//        message.setFrom(new InternetAddress("cheriftahani92@gmail.com"));
+//        message.addRecipient(Message.RecipientType.TO, new InternetAddress(liste.getEmail()));
+//        message.setSubject("Confirmation de Rendez-vous");
+//
+//
+//// Définir le contenu du message au format HTML
+//message.setContent( "<div><p>Confirmation de Rendez-vous de "
+//        +liste.getNom()+" " + liste.getPrenom()+"</div>", "text/html; charset=utf-8");
+//
+//        // Envoi du message
+//        Transport.send(message);
+//
+//        System.out.println("E-mail envoyé avec succès !");
+//    } catch (MessagingException e) {
+//        e.printStackTrace();
+//    }
+//
+// 
+//            
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//        
+//            // end envoi de mail
+// 
+//                }
                                     }
                                      ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
                                     table.setItems(listerdv);
                                    iddate.setValue(null);
                                    idmedecin.setValue("");
+                                   test.setValue(null);
                                 } else {
                                      iddate.setValue(null);
                                    idmedecin.setValue("");
+                                   test.setValue(null);
                                 }
          
     }
@@ -222,6 +415,8 @@ ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
         x=table.getSelectionModel().getSelectedItem();
         iddate.setValue(x.getDateRDV().toLocalDate());
         idmedecin.setValue(x.getFullName());
+        test.setValue(LocalTime.parse(x.getHeureRDV()));
+        etat=true;
     }
 
     @FXML

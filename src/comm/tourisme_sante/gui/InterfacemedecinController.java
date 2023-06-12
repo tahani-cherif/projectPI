@@ -4,15 +4,23 @@
  */
 package comm.tourisme_sante.gui;
 
+import com.tourisme_sante.entities.Utilisateur;
 import com.tourisme_sante.entities.medecins;
+import com.tourisme_sante.utils.Datasource;
 import comm.tourisme_sante.services.serviceMedecin;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -68,6 +76,7 @@ public class InterfacemedecinController implements Initializable {
     private  medecins x=null;
     @FXML
     private TextField idsearch;
+    public boolean etat=false;
     /**
      * Initializes the controller class.
      */
@@ -206,16 +215,77 @@ public class InterfacemedecinController implements Initializable {
 
     @FXML
     private void ajoutermedecin(ActionEvent event) {
-        sm.ajouter(new medecins(TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
-        JOptionPane.showMessageDialog(null, "Medecin ajoutée !");
+         if(!etat){
+          String nom = TFNom.getText();
+        String email = TFEmail.getText();
+        String adresse = TFAdresse.getText();
+        String  numero= TFNumero.getText();
+        String specialite = TFSpecialite.getText();
+           if (nom.isEmpty() || email.isEmpty() || adresse.isEmpty()|| numero.isEmpty()|| specialite.isEmpty()) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Champs vides");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.showAndWait();}else{
+         if(valEmail(email)){
+             
+             Connection cnx = Datasource.getInstance().getCnx();
+        Utilisateur liste= null;
+        String req = "SELECT * FROM medecins where email=?;";
+         try {
+           PreparedStatement st = cnx.prepareStatement(req);
+             st.setString(1,TFEmail.getText());
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {
+               Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Cette emaile existe");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez changer adresse email.");
+            alert.showAndWait();}else{
+                         if(valTelephone(numero))
+             {      sm.ajouter(new medecins(TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
+       ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
+         IDtable.setItems(medecinList);
+             JOptionPane.showMessageDialog(null, "Medecin ajoutée !");
        // medecinList.add(new medecins(TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
         TFNom.setText("");
         TFEmail.setText("");
         TFAdresse.setText("");
         TFNumero.setText("");
         TFSpecialite.setText("");
-         ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
-      IDtable.setItems(medecinList);
+       }
+             else{
+               Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Numero telephone invalide");
+            alert.setHeaderText(null);
+            alert.setContentText("Numero telephone invalide.");
+            alert.showAndWait();
+         }
+            }
+         
+         
+         
+         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+  }
+
+         }else{
+               Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Adresse E-mail invalide");
+            alert.setHeaderText(null);
+            alert.setContentText("Adresse E-mail invalide.");
+            alert.showAndWait();
+         }
+   
+    }}else{
+        
+     Alert alert2 = new Alert(AlertType.WARNING);
+            alert2.setTitle("medecin existe");
+            alert2.setHeaderText(null);
+            alert2.setContentText("Medecin existe deja.");
+            alert2.showAndWait();
+        }
+       
     }
 
     @FXML
@@ -228,7 +298,23 @@ public class InterfacemedecinController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-             sm.modifier(new medecins(x.getId(),TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
+            
+              String nom = TFNom.getText();
+        String email = TFEmail.getText();
+        String adresse = TFAdresse.getText();
+        String  numero= TFNumero.getText();
+        String specialite = TFSpecialite.getText();
+           if (nom.isEmpty() || email.isEmpty() || adresse.isEmpty()|| numero.isEmpty()|| specialite.isEmpty()) {
+            Alert alert2 = new Alert(AlertType.WARNING);
+            alert2.setTitle("Champs vides");
+            alert2.setHeaderText(null);
+            alert2.setContentText("Veuillez remplir tous les champs.");
+            alert2.showAndWait();}
+           else{
+         if(valEmail(email)){
+              if(valTelephone(numero))
+             {
+                   sm.modifier(new medecins(x.getId(),TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
          ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
         IDtable.setItems(medecinList);
          TFNom.setText("");
@@ -236,14 +322,26 @@ public class InterfacemedecinController implements Initializable {
           TFAdresse.setText("");
           TFNumero.setText("");
           TFSpecialite.setText("");
-        } else {
+             } else{
+               Alert alert2 = new Alert(AlertType.WARNING);
+            alert2.setTitle("Numero telephone invalide");
+            alert2.setHeaderText(null);
+            alert2.setContentText("Numero telephone invalide.");
+            alert2.showAndWait();
+         }
+         }else{
+               Alert alert2 = new Alert(AlertType.WARNING);
+            alert2.setTitle("Adresse E-mail invalide");
+            alert2.setHeaderText(null);
+            alert2.setContentText("Adresse E-mail invalide.");
+            alert2.showAndWait();
+        } }}else {
              TFNom.setText("");
           TFEmail.setText("");
           TFAdresse.setText("");
           TFNumero.setText("");
           TFSpecialite.setText("");
         }
-      
     }
 
     @FXML
@@ -254,6 +352,7 @@ public class InterfacemedecinController implements Initializable {
         TFAdresse.setText(x.getAdresse());
         TFNumero.setText(Integer.toString(x.getNumero()));
         TFSpecialite.setText(x.getSpecialite());
+        etat=true;
     }
 
     @FXML
@@ -262,5 +361,20 @@ public class InterfacemedecinController implements Initializable {
         Parent root = loader.load();
         TFEmail.getScene().setRoot(root);
     }
-    
+    public  boolean valEmail (String input)
+    {
+
+     String emailRegex= "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+     Pattern emailPat=Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);
+      Matcher matcher=emailPat.matcher (input);
+     return matcher.find();}  
+     public  boolean valTelephone (String input)
+    {
+
+     String phoneRegex= "^[+0]{0,2}(91)?[0-9]{8}$";
+     Pattern phonePat=Pattern.compile(phoneRegex, Pattern.CASE_INSENSITIVE);
+      Matcher matcher=phonePat.matcher (input);
+     return matcher.find();}  
 }
+
+

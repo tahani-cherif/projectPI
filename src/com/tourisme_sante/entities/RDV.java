@@ -64,11 +64,12 @@ public class RDV {
         this.heureRDV=heureRDV;
     }
 
-    public RDV(int id, int idmedecin, int iduser, Date dateRDV) {
+    public RDV(int id, int idmedecin, int iduser, Date dateRDV,String heureRDV) {
         this.id = id;
         this.idmedecin = idmedecin;
         this.iduser = iduser;
         this.dateRDV = dateRDV;
+         this.heureRDV=heureRDV;
     }
 
     public int getId() {

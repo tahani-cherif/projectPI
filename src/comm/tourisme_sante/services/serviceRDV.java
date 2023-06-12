@@ -40,12 +40,13 @@ public  class serviceRDV implements services<RDV>{
      @Override
     public void modifier(RDV p) {
         try {
-            String req = "UPDATE RDV SET idmedecin=?, iduser=? , dateRDV=? WHERE id=?";
+            String req = "UPDATE RDV SET idmedecin=?, iduser=? , dateRDV=?,heureRDV=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setInt(1, p.getIdmedecin());
             pst.setInt(2, p.getIduser());
             pst.setDate(3,p.getDateRDV());
-             pst.setInt(4, p.getId());
+             pst.setString(4,p.getHeureRDV());
+             pst.setInt(5, p.getId());
             pst.executeUpdate();
             System.out.println("RDV modifiée !");
         } catch (SQLException ex) {
