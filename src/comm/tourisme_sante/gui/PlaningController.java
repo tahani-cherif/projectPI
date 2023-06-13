@@ -45,6 +45,7 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.*;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -66,10 +67,13 @@ public class PlaningController implements Initializable {
     private FlowPane calendar;
         serviceRDV rdv=new serviceRDV();
       public static  medecins x=null;
+    @FXML
+    private Label idnommedecin;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        idnommedecin.setText("Planing de medecin  "+x.getFullName());
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
         drawCalendar();
@@ -214,8 +218,15 @@ public class PlaningController implements Initializable {
     }
 
     @FXML
-    private void returnhome(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacepremiere.fxml"));
+    private void gestionrendezvous(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
+        Parent root = loader.load();
+        year.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionmedecin(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
         Parent root = loader.load();
         year.getScene().setRoot(root);
     }

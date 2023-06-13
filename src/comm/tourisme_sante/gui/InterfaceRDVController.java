@@ -13,6 +13,8 @@ import com.tourisme_sante.entities.medecins;
 import com.tourisme_sante.utils.Datasource;
 import comm.tourisme_sante.services.serviceMedecin;
 import comm.tourisme_sante.services.serviceRDV;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -100,7 +102,9 @@ public class InterfaceRDVController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+//        // TODO
+//         Button btnw = new Button("", new FontAwesomeIconView(FontAwesomeIcon.TRASH));
+//         btnw.setStyle("-fx-background-color:#Fb6868");
          nommedecin.setCellValueFactory(new PropertyValueFactory<RDV, String>("fullName"));
         nomuser.setCellValueFactory(new PropertyValueFactory<RDV, String>("nomuser"));
         date.setCellValueFactory(new PropertyValueFactory<RDV, Date>("dateRDV"));
@@ -111,11 +115,15 @@ public class InterfaceRDVController implements Initializable {
        Callback<TableColumn<RDV, Void>, TableCell<RDV, Void>> cellFactory = new Callback<TableColumn<RDV, Void>, TableCell<RDV, Void>>() {
             @Override
             public TableCell<RDV, Void> call(final TableColumn<RDV, Void> param) {
+                 FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                 deleteIcon.setStyle("-fx-fill:#ffffff;");
+                 Button btn = new Button("Remove", deleteIcon);
+                   btn.setStyle("-fx-background-color:#Fb6868;"+"-fx-pref-width: 100px;"+"-fx-text-fill: white");
                 final TableCell<RDV, Void> cell = new TableCell<RDV, Void>() {
 
-                    private final Button btn = new Button("Remove");
-
-                    {
+                
+                         
+                          {
                         btn.setOnAction((ActionEvent event) -> {
                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.setTitle("Confirmation de modifier RDV");
@@ -326,6 +334,7 @@ public class InterfaceRDVController implements Initializable {
 
     @FXML
     private void modifer(ActionEvent event) {
+        
           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.setTitle("Confirmation de modifier RDV");
                                 alert.setHeaderText("Confirmation de modifier RDV");
@@ -417,7 +426,7 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
         
             // end envoi de mail
  
-                }
+                } etat=false;
                                      ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
                                     table.setItems(listerdv);
                                    iddate.setValue(null);
@@ -428,7 +437,7 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
         
             // end envoi de mail
  
-                }   } else {
+                }   } else { etat=false;
                                      iddate.setValue(null);
                                    idmedecin.setValue("");
                                    test.setValue(null);
@@ -446,8 +455,15 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
     }
 
     @FXML
-    private void returnhome(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacepremiere.fxml"));
+    private void gestionrendezvous(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
+        Parent root = loader.load();
+        iddate.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionmedecin(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
         Parent root = loader.load();
         iddate.getScene().setRoot(root);
     }

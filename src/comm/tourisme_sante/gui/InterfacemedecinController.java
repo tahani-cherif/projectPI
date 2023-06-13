@@ -8,6 +8,8 @@ import com.tourisme_sante.entities.Utilisateur;
 import com.tourisme_sante.entities.medecins;
 import com.tourisme_sante.utils.Datasource;
 import comm.tourisme_sante.services.serviceMedecin;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
@@ -96,9 +98,11 @@ public class InterfacemedecinController implements Initializable {
        Callback<TableColumn<medecins, Void>, TableCell<medecins, Void>> cellFactory = new Callback<TableColumn<medecins, Void>, TableCell<medecins, Void>>() {
             @Override
             public TableCell<medecins, Void> call(final TableColumn<medecins, Void> param) {
+                  FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                 deleteIcon.setStyle("-fx-fill:#ffffff;");
+                 Button btn = new Button("Remove", deleteIcon);
+                   btn.setStyle("-fx-background-color:#Fb6868;"+"-fx-pref-width: 100px;"+"-fx-text-fill: white");
                 final TableCell<medecins, Void> cell = new TableCell<medecins, Void>() {
-
-                    private final Button btn = new Button("Remove");
 
                     {
                         btn.setOnAction((ActionEvent event) -> {
@@ -144,9 +148,13 @@ public class InterfacemedecinController implements Initializable {
        Callback<TableColumn<medecins, Void>, TableCell<medecins, Void>> cellFactory2 = new Callback<TableColumn<medecins, Void>, TableCell<medecins, Void>>() {
             @Override
             public TableCell<medecins, Void> call(final TableColumn<medecins, Void> param) {
+                         FontAwesomeIconView coursIcon = new FontAwesomeIconView(FontAwesomeIcon.EYE);
+                         coursIcon.setStyle("-fx-fill:#ffffff;");
+                          Button btn = new Button("voir planing",coursIcon);
+                          btn.setStyle("-fx-background-color: green;"+"-fx-pref-width: 120px;"+"-fx-text-fill: white");
                 final TableCell<medecins, Void> cell = new TableCell<medecins, Void>() {
 
-                    private final Button btn = new Button("voir planing");
+            
 
                     {
                         btn.setOnAction((ActionEvent event) -> {
@@ -313,7 +321,7 @@ public class InterfacemedecinController implements Initializable {
            else{
          if(valEmail(email)){
               if(valTelephone(numero))
-             {
+             { etat=false;
                    sm.modifier(new medecins(x.getId(),TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
          ObservableList<medecins> medecinList = FXCollections.observableList(sm.afficher());
         IDtable.setItems(medecinList);
@@ -336,6 +344,7 @@ public class InterfacemedecinController implements Initializable {
             alert2.setContentText("Adresse E-mail invalide.");
             alert2.showAndWait();
         } }}else {
+            etat=false;
              TFNom.setText("");
           TFEmail.setText("");
           TFAdresse.setText("");
@@ -355,7 +364,6 @@ public class InterfacemedecinController implements Initializable {
         etat=true;
     }
 
-    @FXML
     private void returnhome(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacepremiere.fxml"));
         Parent root = loader.load();
@@ -375,6 +383,20 @@ public class InterfacemedecinController implements Initializable {
      Pattern phonePat=Pattern.compile(phoneRegex, Pattern.CASE_INSENSITIVE);
       Matcher matcher=phonePat.matcher (input);
      return matcher.find();}  
+
+    @FXML
+    private void gestionrendezvous(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
+        Parent root = loader.load();
+        TFEmail.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionmedecin(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
+        Parent root = loader.load();
+        TFEmail.getScene().setRoot(root);
+    }
 }
 
 
