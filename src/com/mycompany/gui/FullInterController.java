@@ -98,8 +98,6 @@ public class FullInterController implements Initializable {
     @FXML
     private Button btM;
     @FXML
-    private Button btS;
-    @FXML
     private ComboBox<String> combo;
     @FXML
     private ComboBox<String> combi;
@@ -126,24 +124,25 @@ public class FullInterController implements Initializable {
        
        
        
-       TableColumn<Interventions, Void> colBtn = new TableColumn("Supprimé");
+       TableColumn<Interventions, Void> colBtn = new TableColumn("Supprimer");
        Callback<TableColumn<Interventions, Void>, TableCell<Interventions, Void>> cellFactory = new Callback<TableColumn<Interventions, Void>, TableCell<Interventions, Void>>() {
             @Override
             public TableCell<Interventions, Void> call(final TableColumn<Interventions, Void> param) {
+                
                 final TableCell<Interventions, Void> cell = new TableCell<Interventions, Void>() {
 
-                    private final Button btn = new Button("Supprimé");
+                    private final Button btn = new Button("Supprimer");
 
                     {
                         btn.setOnAction((ActionEvent event) -> {
                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                alert.setTitle("Confirmation de modifier RDV");
-                                alert.setHeaderText("Confirmation de modifier RDV");
+                                alert.setTitle("Confirmation de suppression");
+                                alert.setHeaderText("Confirmation de suppression");
                                 alert.setContentText("Êtes-vous sûr?");
 
                                 Optional<ButtonType> result = alert.showAndWait();
                                 if (result.get() == ButtonType.OK){
-                                     ss.supprimer(ll);
+                                     ss.supprimer(getTableView().getItems().get(getIndex()));
                                      showInterventions();
                                    
                                 } else {
@@ -424,35 +423,78 @@ tl.getColumns().add(colBtn);
 
 
   
-    @FXML
-    private void SupprimerInterventions(ActionEvent event) {
-////         ss.supprimer(ll);
-////         showInterventions();
-   }
 
     @FXML
     private void AjouterIntervention(ActionEvent event) {
         Interventions s= new Interventions(null,0,null,0,0); //lelement a ajoutet vide
-        s.setNomType(nomF.getText());
         
         
+        if (nomF.getText().isEmpty())    
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez remplir un nom");
+         return; 
+        } 
+        
+         if ( !nomF.getText().matches("[a-zA-Z]+")) 
+           
+        {  JOptionPane.showMessageDialog(null,"Vous devez inserer que des lettres au niceau du champs (Nom)");
+         return; 
+        }     s.setNomType(nomF.getText()); // saisi non fini
+        
+      
+          if (descF.getText().isEmpty())    
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez remplir une descripition");
+         return; 
+        } 
+        
+         if ( !descF.getText().matches("[a-zA-Z]+")) 
+           
+        {  JOptionPane.showMessageDialog(null,"Vous devez inserer que des lettres au niceau du champs (Descripition)");
+         return; 
+        }     s.setDescripition(descF.getText()); // saisi desc fini
+        
+            
+         if (prixF.getText().isEmpty())    
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez remplir un prix");
+         return; 
+        } 
+        
+         if ( !prixF.getText().matches(".*[0-9].*")) 
+           
+        {  JOptionPane.showMessageDialog(null,"Vous devez inserer que des chiffres au niveau du champs (Prix)");
+         return; 
+        }     s.setPrix(Integer.parseInt(prixF.getText())); // saisi prix fini
        
-        s.setDescripition(descF.getText());
-        s.setPrix(Integer.parseInt(prixF.getText()));
-        for (Map.Entry ele : map.entrySet()) {
+        
+        for (Map.Entry ele : map.entrySet())
+        {  
             if(ele.getValue().equals(combo.getValue())){ 
                 s.setIdmedecin(Integer.parseInt(ele.getKey().toString()));
-               
             }
         }
+        if (combo.getValue()==null)    
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez preciser un medecin");
+         return; 
+        } // saisi medecin fini
         
-        for (Map.Entry ele : mape.entrySet()) {
+         for (Map.Entry ele : mape.entrySet()) {
             if(ele.getValue().equals(combi.getValue())){ 
                 s.setIdtypeintervention(Integer.parseInt(ele.getKey().toString()));
                
             }
             
         }
+         
+        if (combi.getValue()==null)    
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez preciser un type intervention");
+         return; 
+        } 
+            
+        
+         
+        
+        
+        
+       
          ss.ajouter(s);
 
   JOptionPane.showMessageDialog(null, " Intervention ajoutée !");
@@ -538,6 +580,39 @@ tl.getColumns().add(colBtn);
             descF.getScene().setRoot(root);
          
            
+    }
+
+    @FXML
+    private void stat(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Chart.fxml"));
+          Parent root = loader.load();
+          descF.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionrendezvous(ActionEvent event) {
+    }
+
+    @FXML
+    private void gestionmedecin(ActionEvent event) {
+    }
+
+    @FXML
+    private void backType(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
+            Parent root = loader.load();
+         
+            descF.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backInter(ActionEvent event) throws IOException {
+        
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
+            Parent root = loader.load();
+         
+             descF.getScene().setRoot(root);
     }
     }
     

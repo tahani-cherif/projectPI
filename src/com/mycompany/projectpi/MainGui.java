@@ -25,7 +25,7 @@ public class MainGui extends Application {
     public void start(Stage primaryStage) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Fullcrud.fxml"));
           //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FullInter.fxml"));
-          
+       
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Chimou/Desktop/NetBeansProjects/projectpi/src/com/mycompany/gui/ChartController.java</file>
             <file>file:/C:/Users/Chimou/Desktop/NetBeansProjects/projectpi/src/com/mycompany/gui/FullcrudController.java</file>
-            <file>file:/C:/Users/Chimou/Desktop/NetBeansProjects/projectpi/src/com/mycompany/agence_medicale/Interventions.java</file>
+            <file>file:/C:/Users/Chimou/Desktop/NetBeansProjects/projectpi/src/com/mycompany/gui/Chart.fxml</file>
+            <file>file:/C:/Users/Chimou/Desktop/NetBeansProjects/projectpi/src/com/mycompany/gui/fullcrud.css</file>
+            <file>file:/C:/Users/Chimou/Desktop/NetBeansProjects/projectpi/src/com/mycompany/gui/fullcrud.fxml</file>
             <file>file:/C:/Users/Chimou/Desktop/NetBeansProjects/projectpi/src/com/mycompany/projectpi/MainGui.java</file>
         </group>
     </open-files>

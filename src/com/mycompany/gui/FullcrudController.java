@@ -13,8 +13,10 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -25,16 +27,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+//import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+//import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -81,6 +89,57 @@ public class FullcrudController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showTypeInterventions();
+        
+         TableColumn<TypeInterventions, Void> colBtn = new TableColumn("Supprimer");
+         Callback<TableColumn<TypeInterventions, Void>, TableCell<TypeInterventions, Void>> cellFactory = new Callback<TableColumn<TypeInterventions, Void>, TableCell<TypeInterventions, Void>>() {
+            @Override
+            public TableCell<TypeInterventions, Void> call(final TableColumn<TypeInterventions, Void> param) {
+//                FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+//                 deleteIcon.setStyle("-fx-fill:#ffffff;");
+//                 Button btn = new Button("Supprimer", deleteIcon);
+//                 btn.setStyle("-fx-background-color:#Fb6868;"+"-fx-pref-width: 100px;"+"-fx-text-fill: white");
+                final TableCell<TypeInterventions, Void> cell = new TableCell<TypeInterventions, Void>() {
+
+                    private final Button btn = new Button("Supprimer");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                               Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Confirmation de suppression");
+                                alert.setHeaderText("Confirmation de suppression");
+                                alert.setContentText("Êtes-vous sûr?");
+
+                                Optional<ButtonType> result = alert.showAndWait();
+                                if (result.get() == ButtonType.OK){
+                                     sc.supprimer(getTableView().getItems().get(getIndex()));
+                                     showTypeInterventions();
+                                   
+                                } else {
+                                    // ... user chose CANCEL or closed the dialog
+                                }
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+colBtn.setCellFactory(cellFactory);
+tb.getColumns().add(colBtn);
+        
+        
+        
+        
     }    
     
   
@@ -91,8 +150,8 @@ public class FullcrudController implements Initializable {
         colNom.setCellValueFactory(new PropertyValueFactory<TypeInterventions, String>("nom"));
         colDesc.setCellValueFactory(new PropertyValueFactory<TypeInterventions, String>("deescripition"));
         tb.setItems(listType);
-        nomField.setText(null);
-        descField.setText(null);
+        nomField.setText("");
+        descField.setText("");
                 
                 
    
@@ -217,22 +276,40 @@ public class FullcrudController implements Initializable {
 
     @FXML
     private void AjouterType(ActionEvent event) {
-        
-        if (nomField.getText().isEmpty())
-        { JOptionPane.showMessageDialog(null,"Vous devez inserer un Nom");
        
-        } else if (descField.getText().isEmpty())
-        { JOptionPane.showMessageDialog(null,"Vous devez insserer une descripition");
+         if (nomField.getText().isEmpty())    
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez remplir un nom");
          return; 
         } 
-    
-         
-         sc.ajouter(new TypeInterventions(nomField.getText(),descField.getText()));
+        
+         if ( !nomField.getText().matches("[a-zA-Z]+")) 
+           
+        {  JOptionPane.showMessageDialog(null,"Vous devez inserer seulement des lettres");
+         return; 
+        } 
+        if (descField.getText().isEmpty())
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez remplir une descripition");
+           return;
+        }
+        
+        if ( !descField.getText().matches("[a-zA-Z]+")) 
+           
+        {  JOptionPane.showMessageDialog(null,"Vous devez inserer seulement des lettres");
+         return; 
+        }
+        sc.ajouter(new TypeInterventions(nomField.getText(),descField.getText()));
         JOptionPane.showMessageDialog(null, "Type Intervention ajoutée !");
          showTypeInterventions();
-       
+         
         
     }
+    
+    
+    
+    
+    
+
+
     @FXML
     private void detailsTypeInterventions(MouseEvent event) throws IOException {
         index=tb.getSelectionModel().getSelectedIndex();
@@ -257,16 +334,36 @@ public class FullcrudController implements Initializable {
           showTypeInterventions();
     }
 
-    @FXML
-    private void SupprimerType(ActionEvent event) {
-         sc.supprimer(tt);
-          showTypeInterventions();
-    }
 
     @FXML
     private void OpenChat(ActionEvent event) throws IOException {
         
          FXMLLoader loader = new FXMLLoader(getClass().getResource("chatbox.fxml"));
+            Parent root = loader.load();
+         
+             descField.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionrendezvous(ActionEvent event) {
+    }
+
+    @FXML
+    private void gestionmedecin(ActionEvent event) {
+    }
+
+    @FXML
+    private void backType(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
+            Parent root = loader.load();
+         
+             descField.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backInter(ActionEvent event)  throws IOException  {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
             Parent root = loader.load();
          
              descField.getScene().setRoot(root);
