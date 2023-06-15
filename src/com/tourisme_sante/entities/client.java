@@ -10,6 +10,7 @@ package com.tourisme_sante.entities;
  */
 public class client extends Utilisateur{
    private int number;
+   private String sex;
     public client(int id,String nom, String prenom, String email, String MDP,int number,String role) {
         super(id,nom, prenom, email, MDP,role);
         this.number=number;
