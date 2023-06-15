@@ -81,7 +81,7 @@
             </Label>
          </children>
       </Pane>
-      <VBox layoutX="-6.0" prefHeight="827.0" prefWidth="227.0" style="-fx-background-color: #181b22;">
+      <VBox layoutX="-6.0" layoutY="1.0" prefHeight="827.0" prefWidth="227.0" style="-fx-background-color: #181b22;">
          <children>
             <Pane prefHeight="145.0" prefWidth="227.0">
                <children>
