@@ -25,28 +25,28 @@
             <Insets top="25.0" />
          </padding>
       </VBox>
-      <VBox layoutX="411.0" layoutY="250.0" prefHeight="116.0" prefWidth="208.0" spacing="15.0">
+      <VBox layoutX="411.0" layoutY="250.0" prefHeight="116.0" prefWidth="257.0" spacing="15.0">
          <children>
-            <TextField fx:id="nomField" />
-            <TextField fx:id="descField" />
+            <TextField fx:id="nomField" promptText="Entrer un nom" />
+            <TextField fx:id="descField" prefHeight="25.0" prefWidth="228.0" promptText="Entrez une descripition" />
          </children>
          <padding>
             <Insets top="30.0" />
          </padding>
       </VBox>
-      <TableView fx:id="tb" layoutX="815.0" layoutY="308.0" onMouseClicked="#detailsTypeInterventions" prefHeight="200.0" prefWidth="516.0">
+      <TableView fx:id="tb" layoutX="815.0" layoutY="259.0" onMouseClicked="#detailsTypeInterventions" prefHeight="200.0" prefWidth="516.0">
         <columns>
           <TableColumn fx:id="colNom" prefWidth="234.0" text="Nom" />
           <TableColumn fx:id="colDesc" prefWidth="281.0" text="Descripition" />
         </columns>
       </TableView>
       <Button fx:id="chatButton" layoutX="1290.0" layoutY="650.0" mnemonicParsing="false" onAction="#OpenChat" text="Chat" textFill="#ecf0f8" />
-      <Label layoutX="983.0" layoutY="263.0" text="Search Box">
+      <Label layoutX="1000.0" layoutY="215.0" text="Search Box">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="searchId" layoutX="1086.0" layoutY="261.0" prefHeight="25.0" prefWidth="240.0" promptText="search" />
+      <TextField fx:id="searchId" layoutX="1083.0" layoutY="213.0" prefHeight="25.0" prefWidth="240.0" promptText="Search" />
       <TextField fx:id="stat" layoutX="1134.0" layoutY="540.0" prefHeight="25.0" prefWidth="41.0" />
       <Label layoutX="939.0" layoutY="544.0" text="Le nom  saisi  est repété :" />
       <Label layoutX="940.0" layoutY="579.0" text="La descripition  saisie est repétée:" />
@@ -226,7 +226,7 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="291.0" layoutY="439.0" mnemonicParsing="false" onAction="#AjouterType" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #4BB543;" text="Ajouter Type Intervention" textFill="WHITE">
+      <Button layoutX="309.0" layoutY="382.0" mnemonicParsing="false" onAction="#AjouterType" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #4BB543;" text="Ajouter Type Intervention" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -235,7 +235,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="540.0" layoutY="439.0" mnemonicParsing="false" onAction="#ModifierType" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #ffcc00;" text="Modifier Type  Intervention" textFill="WHITE">
+      <Button layoutX="535.0" layoutY="382.0" mnemonicParsing="false" onAction="#ModifierType" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #ffcc00;" text="Modifier Type  Intervention" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -244,7 +244,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="21.0" fitWidth="28.0" layoutX="962.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="21.0" fitWidth="28.0" layoutX="971.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../image/icons8-search-50.png" />
          </image>

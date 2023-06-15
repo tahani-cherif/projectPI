@@ -28,9 +28,9 @@
       </VBox>
       <VBox layoutX="430.0" layoutY="181.0" prefHeight="200.0" prefWidth="143.0" spacing="8.0">
          <children>
-            <TextField fx:id="nomF" />
-            <TextField fx:id="prixF" />
-            <TextField fx:id="descF" />
+            <TextField fx:id="nomF" promptText="Entrez le nom" />
+            <TextField fx:id="prixF" promptText="Entrez  le prix" />
+            <TextField fx:id="descF" promptText="Entrez une descripition" />
             <ComboBox fx:id="combo" prefWidth="150.0" promptText="Medecins" />
             <ComboBox fx:id="combi" prefWidth="150.0" promptText="Interventions" />
          </children>
@@ -47,7 +47,7 @@
             <TableColumn fx:id="coltype" prefWidth="160.0" text="Type Interventions" />
         </columns>
       </TableView>
-      <TextField fx:id="searchField" layoutX="853.0" layoutY="144.0" prefHeight="25.0" prefWidth="253.0" />
+      <TextField fx:id="searchField" layoutX="853.0" layoutY="144.0" prefHeight="25.0" prefWidth="253.0" promptText="Search" />
       <Label layoutX="777.0" layoutY="147.0" text="Search Box" />
       <Button layoutX="1272.0" layoutY="627.0" mnemonicParsing="false" onAction="#Openchat" text="Chat" textFill="#fffafa" />
       <Label layoutX="917.0" layoutY="394.0" text="Le nom saisi est repeté:" />
