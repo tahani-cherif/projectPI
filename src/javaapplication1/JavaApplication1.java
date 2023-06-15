@@ -4,8 +4,7 @@
  */
 package javaapplication1;
 
-import com.tourisme_sante.entities.Commande;
-import com.tourisme_sante.entities.Interventions;
+
 import com.tourisme_sante.entities.Offre;
 import com.tourisme_sante.entities.RDV;
 import com.tourisme_sante.entities.Reservation;
@@ -15,17 +14,12 @@ import com.tourisme_sante.entities.Utilisateur;
 import com.tourisme_sante.entities.admin;
 import com.tourisme_sante.entities.medecin_interventions;
 import com.tourisme_sante.entities.medecins;
-import com.tourisme_sante.entities.produit;
 import comm.tourisme_sante.services.ServiceAgence;
-import comm.tourisme_sante.services.ServiceCommande;
 import comm.tourisme_sante.services.ServiceHotel;
-import comm.tourisme_sante.services.ServiceInterventions;
 import comm.tourisme_sante.services.ServiceMedecinIntervention;
 import comm.tourisme_sante.services.ServiceOffre;
-import comm.tourisme_sante.services.ServiceProduit;
 import comm.tourisme_sante.services.ServiceReservation;
 import comm.tourisme_sante.services.ServiceTransport;
-import comm.tourisme_sante.services.Services_TypeInterventions;
 import comm.tourisme_sante.services.serviceMedecin;
 import comm.tourisme_sante.services.serviceRDV;
 import comm.tourisme_sante.services.serviceUtilisateur;

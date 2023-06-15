@@ -3,51 +3,133 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.tourisme_sante.entities;
+
+
 /**
  *
  * @author Chimou
  */
 public class Interventions {
     
-        private int idInter;
-        private String nom;
-        private String deescripition;
+    
+        private int id;
+        private String nomType;
+        private double prix;
+        private String descripition;
+        private	int idmedecin;
+        private int idtypeintervention;
+        private String nomTypeIntervention;
+          private String medecin;
+        
 
-    public Interventions  (String nom, String deescripition ) {
-        this.nom = nom;
-        this.deescripition= deescripition;
+    public Interventions  (String nomType, double prix, String descripition, int idmedecin , int idtypeintervention ) {
+        this.nomType = nomType;
+        this.prix=prix;
+        this.descripition= descripition;
+        this.idmedecin= idmedecin;
+        this.idtypeintervention=idtypeintervention;
     }
-      public Interventions (int idInter, String nom, String deescripition ) {
-        this.idInter = idInter;
-        this.nom = nom;
-        this.deescripition = deescripition;
-    }
-       public int getIdInter() {
-        return idInter;
-    }
-
-    public void setId(int idInter) {
-        this.idInter = idInter;
-    }
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getdeescripition() {
-        return deescripition;
+      public Interventions (int id, String nomType,double prix, String descripition, int idmedecin, int idtypeintervention ) {
+        this.id = id;
+        this.nomType = nomType;
+        this.prix=prix;
+        this.descripition = descripition;
+        this.idmedecin= idmedecin;
+        this.idtypeintervention=idtypeintervention;
     }
 
-    public void setPrenom(String deescripition) {
-        this.deescripition = deescripition;
+    public Interventions(int id, String nomType, int prix, String descripition, int idmedecin, int idtypeintervention, String nomTypeIntervention, String medecin) {
+        this.id = id;
+        this.nomType = nomType;
+        this.prix = prix;
+        this.descripition = descripition;
+        this.idmedecin = idmedecin;
+        this.idtypeintervention = idtypeintervention;
+        this.nomTypeIntervention = nomTypeIntervention;
+        this.medecin = medecin;
+    }
+
+    public String getDescripition() {
+        return descripition;
+    }
+
+    public void setDescripition(String descripition) {
+        this.descripition = descripition;
+    }
+
+    public String getNomTypeIntervention() {
+        return nomTypeIntervention;
+    }
+
+    public void setNomTypeIntervention(String nomTypeIntervention) {
+        this.nomTypeIntervention = nomTypeIntervention;
+    }
+
+    public String getMedecin() {
+        return medecin;
+    }
+
+    public void setMedecin(String medecin) {
+        this.medecin = medecin;
+    }
+      
+      
+      
+
+    //public Interventions(String text, String text0) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    //}
+       public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getNomType() {
+        return nomType;
+    }
+
+    public void setNomType(String nomType) {
+        this.nomType = nomType;
+    }
+    
+     public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(int prix) {
+        this.prix = prix;
+    }
+
+    public String getdescripition() {
+        return descripition;
+    }
+
+    public void setPrenom(String descripition) {
+        this.descripition = descripition;
     }
 
     @Override
     public String toString() {
-        return "Personne{" + "idInter=" + idInter + ", nom=" + nom + ", deescripition=" + deescripition+ '}';
+        return "Interventions{" + "id=" + id + ", nomType=" + nomType + ", prix=" + prix + ", descripition=" + descripition+ '}';
+    }
+       public int getIdmedecin() {
+        return idmedecin;
+    }
+        public void setIdmedecin(int idmedecin) {
+        this.idmedecin = idmedecin;
     }
 
+         public int getIdtypeintervention() {
+        return idtypeintervention;
+    }
+
+    public void setIdtypeintervention(int idtypeintervention) {
+        this.idtypeintervention = idtypeintervention;
+    }
+
+      
+
+    
 }

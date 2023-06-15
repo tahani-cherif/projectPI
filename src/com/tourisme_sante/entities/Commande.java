@@ -3,43 +3,64 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.tourisme_sante.entities;
+
 /**
  *
- * @author USER
+ * @author User
  */
 public class Commande {
-    
-    private int id;
-    private int datePassation;
+       
+    private long id;
+    private long idProduit;
+    private String datePassation;
     private int quantite;
-    private double MT;
-
-    public Commande(int datePassation, int quantite, double MT) {
+    private long idClient;
+    private double mt;
+    
+    public Commande(){
+        
+    }
+     public Commande(long id, long idProduit, String datePassation, int quantite, long idClient, double mt) {
+         this.id= id;
+        this.idProduit = idProduit;
         this.datePassation = datePassation;
         this.quantite = quantite;
-        this.MT = MT;
+        this.idClient = idClient;
+        this.mt = mt;
     }
 
-    public Commande(int id, int datePassation, int quantite, double MT) {
-        this.id = id;
+
+    public Commande(long idProduit, String datePassation, int quantite, long idClient, double mt) {
+        this.idProduit = idProduit;
         this.datePassation = datePassation;
         this.quantite = quantite;
-        this.MT = MT;
+        this.idClient = idClient;
+        this.mt = mt;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getDatePassation() {
+    public long getIdProduit() {
+        return idProduit;
+    }
+
+    public void setIdProduit(long idProduit) {
+        this.idProduit = idProduit;
+    }
+
+   
+
+    public String getDatePassation() {
         return datePassation;
     }
 
-    public void setDatePassation(int datePassation) {
+    public void setDatePassation(String datePassation) {
         this.datePassation = datePassation;
     }
 
@@ -51,16 +72,20 @@ public class Commande {
         this.quantite = quantite;
     }
 
-    public double getMT() {
-        return MT;
+    public long getIdClient() {
+        return idClient;
     }
 
-    public void setMT(double MT) {
-        this.MT = MT;
+    public void setIdClient(long idClient) {
+        this.idClient = idClient;
+    }
+
+    public double getMt() {
+        return mt;
+    }
+
+    public void setMt(double mt) {
+        this.mt = mt;
     }
     
-    @Override
-    public String toString() {
-        return "Commande{" + "id=" + id + ", datePassation=" + datePassation + ", quantite=" + quantite + ", MT=" + MT + '}';
-    }
 }

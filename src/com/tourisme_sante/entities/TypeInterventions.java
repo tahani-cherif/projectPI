@@ -4,65 +4,59 @@
  */
 package com.tourisme_sante.entities;
 
+
 /**
  *
  * @author Chimou
  */
 public class TypeInterventions {
     
-      private int Id;
-        private String nomType;
-        private Double prix;
-        private String descripition;
+        private int id;
+        private String nom;
+        private String deescripition;
 
-    public TypeInterventions  (String nomType, Double prix, String descripition ) {
-        this.nomType = nomType;
-        this.prix=prix;
-        this.descripition= descripition;
+    public TypeInterventions  (String nom, String deescripition ) {
+        this.nom = nom;
+        this.deescripition= deescripition;
     }
-      public TypeInterventions (int Id, String nomType,Double prix, String descripition ) {
-        this.Id = Id;
-        this.nomType = nomType;
-        this.prix=prix;
-        this.descripition = descripition;
+      public TypeInterventions (int id, String nom, String deescripition ) {
+        this.id = id;
+        this.nom = nom;
+        this.deescripition = deescripition;
     }
        public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
-    public String getNomType() {
-        return nomType;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomType(String nomType) {
-        this.nomType = nomType;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
+
+    public String getDeescripition() {
+        return deescripition;
+    }
+
+    public void setDeescripition(String deescripition) {
+        this.deescripition = deescripition;
+    }
+
     
-     public Double getPrix() {
-        return prix;
-    }
 
-    public void setPrix(Double prix) {
-        this.prix = prix;
-    }
-
-    public String getdescripition() {
-        return descripition;
-    }
-
-    public void setPrenom(String descripition) {
-        this.descripition = descripition;
-    }
+    
 
     @Override
     public String toString() {
-        return "Personne{" + "Id=" + Id + ", nomType=" + nomType + ", prix=" + prix + ", descripition=" + descripition+ '}';
+        return "TypeInterventions{" + "id=" + id + ", nom=" + nom + ", deescripition=" + deescripition+ '}';
     }
 
       
 
-    
+
 }

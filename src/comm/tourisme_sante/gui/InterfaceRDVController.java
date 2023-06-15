@@ -214,6 +214,7 @@ public class InterfaceRDVController implements Initializable {
        String nom2 = idmedecin.getValue();
         LocalDate heure = iddate.getValue();
          LocalTime date = test.getValue();
+            System.out.println(test.getValue().toString());
         System.out.println(heure);
           if (nom2==null || heure==null || date==null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -241,7 +242,7 @@ public class InterfaceRDVController implements Initializable {
             }else{
                  for (Map.Entry ele : map.entrySet()) {
             if(ele.getValue().equals(idmedecin.getValue())){     
-                RDV.ajouter(new RDV(Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().getHour()+":"+test.getValue().getMinute()));
+                RDV.ajouter(new RDV(Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().toString()));
             }
         }
    //get utilisateur by id and envoi de mail
@@ -258,8 +259,8 @@ public class InterfaceRDVController implements Initializable {
              liste=new client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getInt("number"),rs.getString("role"));
                // Envoi de l'e-mail
     String host = "smtp.live.com";
-    final String user = "cheriftahani92@gmail.com"; // Remplacez par votre adresse e-mail Outlook/Hotmail
-    final String password = "tahani123"; // Remplacez par votre mot de passe Outlook/Hotmail
+        final String user = "sabrina.aloui@live.fr"; 
+        final String password = "Inae 96681158"; 
  
     // Configuration des propriétés JavaMail
     Properties props = new Properties();
@@ -278,7 +279,7 @@ public class InterfaceRDVController implements Initializable {
     try {
         // Création du message MIME
         MimeMessage message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("cheriftahani92@gmail.com"));
+        message.setFrom(new InternetAddress("sabrina.aloui@live.fr"));
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(liste.getEmail()));
         message.setSubject("Confirmation de Rendez-vous");
 
@@ -381,8 +382,8 @@ public class InterfaceRDVController implements Initializable {
              liste=new client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getInt("number"),rs.getString("role"));
                // Envoi de l'e-mail
     String host = "smtp.live.com";
-    final String user = "cheriftahani92@gmail.com"; // Remplacez par votre adresse e-mail Outlook/Hotmail
-    final String password = "tahani123"; // Remplacez par votre mot de passe Outlook/Hotmail
+      final String user = "sabrina.aloui@live.fr"; 
+        final String password = "Inae 96681158"; 
  
     // Configuration des propriétés JavaMail
     Properties props = new Properties();
@@ -401,7 +402,7 @@ public class InterfaceRDVController implements Initializable {
     try {
         // Création du message MIME
         MimeMessage message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("cheriftahani92@gmail.com"));
+        message.setFrom(new InternetAddress("sabrina.aloui@live.fr"));
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(liste.getEmail()));
         message.setSubject("Confirmation de Rendez-vous");
 
@@ -466,6 +467,23 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
         Parent root = loader.load();
         iddate.getScene().setRoot(root);
+    }
+
+   @FXML
+    private void backType(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
+            Parent root = loader.load();
+         
+             iddate.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backInter(ActionEvent event)  throws IOException  {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
+            Parent root = loader.load();
+         
+             iddate.getScene().setRoot(root);
     }
     
 }
