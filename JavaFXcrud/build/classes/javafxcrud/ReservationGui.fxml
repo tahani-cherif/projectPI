@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="797.0" prefWidth="1541.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcrud.ReservationGuiController">
+
+   <children>
+      <Label layoutX="689.0" layoutY="41.0" text="Réservation" textAlignment="CENTER" textFill="#223272" textOverrun="CLIP">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="104.0" text="Agence" />
+      <Label layoutX="123.0" layoutY="200.0" text="Hotel" />
+      <Label layoutX="118.0" layoutY="395.0" text="Transport" />
+      <Label layoutX="115.0" layoutY="300.0" text="user" />
+      <TextField fx:id="TFHotel" layoutX="114.0" layoutY="236.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez hotel" />
+      <TextField fx:id="TFTransport" layoutX="114.0" layoutY="431.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez transport" />
+      <TextField fx:id="TFUser" layoutX="114.0" layoutY="338.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez user" />
+      <Button layoutX="95.0" layoutY="711.0" mnemonicParsing="false" onAction="#ajouterOffre" prefHeight="48.0" prefWidth="111.0" text="Ajouter" />
+      <Button layoutX="264.0" layoutY="711.0" mnemonicParsing="false" onAction="#modiffierOffre" prefHeight="48.0" prefWidth="111.0" text="Modefier" />
+      <TableView fx:id="idTable" layoutX="510.0" layoutY="123.0" onMouseClicked="#selectionmedecin" prefHeight="515.0" prefWidth="1003.0">
+         <columns>
+            <TableColumn fx:id="columnAgence" prefWidth="181.0" text="Agence" />
+            <TableColumn fx:id="columnHotel" minWidth="0.0" prefWidth="220.0" text="Hotel" />
+            <TableColumn fx:id="columnUser" prefWidth="153.0" text="User" />
+            <TableColumn fx:id="columnTransport" prefWidth="170.0" text="Transport" />
+            <TableColumn fx:id="columnDebut" prefWidth="139.0" text="Date début" />
+            <TableColumn fx:id="columnFin" prefWidth="139.0" text="Date Fin" />
+         </columns>
+      </TableView>
+      <Label layoutX="118.0" layoutY="494.0" text="date debut" />
+      <TextField fx:id="TFDateDebut" layoutX="114.0" layoutY="530.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez date debut" />
+      <ComboBox fx:id="CBAgence" layoutX="112.0" layoutY="137.0" prefHeight="31.0" prefWidth="242.0" promptText="list d'agence" />
+      <Label layoutX="118.0" layoutY="602.0" text="date fin" />
+      <TextField fx:id="TFDateFin" layoutX="114.0" layoutY="638.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez date fin" />
+   </children>
+</AnchorPane>
