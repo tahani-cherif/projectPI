@@ -120,10 +120,7 @@ public class InterfaceRDVController implements Initializable {
                  Button btn = new Button("Remove", deleteIcon);
                    btn.setStyle("-fx-background-color:#Fb6868;"+"-fx-pref-width: 100px;"+"-fx-text-fill: white");
                 final TableCell<RDV, Void> cell = new TableCell<RDV, Void>() {
-
-                
-                         
-                          {
+               {
                         btn.setOnAction((ActionEvent event) -> {
                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.setTitle("Confirmation de modifier RDV");

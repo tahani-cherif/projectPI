@@ -1,15 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.tourisme_sante.entities;
 
-import java.sql.Date;
-
-/**
- *
- * @author LENOVO
- */
 public class Offre {
 	  private int id;
 	    private double pourcentage;
@@ -34,6 +24,7 @@ public class Offre {
 	        this.type = type;
 	    }
 
+ 
 	    public int getId() {
 	        return id;
 	    }

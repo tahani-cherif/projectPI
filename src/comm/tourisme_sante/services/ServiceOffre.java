@@ -1,19 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package comm.tourisme_sante.services;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 import com.tourisme_sante.entities.Offre;
 import com.tourisme_sante.utils.Datasource;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -64,6 +57,27 @@ public class ServiceOffre implements services<Offre>{
 		  List<Offre> list = new ArrayList<>();
 	        
 	        String req = "SELECT * FROM offre";
+	        try {
+	            Statement st = cnx.createStatement();
+	            ResultSet rs = st.executeQuery(req);
+	            while(rs.next()) {
+	                list.add(new Offre(rs.getInt("id"),rs.getDouble("pourcentage"), rs.getDouble("prix"),rs.getString("nom"),rs.getString("type")));
+	            }
+	        } catch (SQLException ex) {
+	            System.out.println(ex.getMessage());
+	        }
+	        
+	        
+	        return list;
+	}
+               
+    private static final int PAGE_SIZE = 5;
+
+        public List<Offre> afficherPagination(int pageIndex) {
+             int offset = pageIndex * PAGE_SIZE;
+		  List<Offre> list = new ArrayList<>();
+	        
+	        String req = "SELECT * FROM offre LIMIT " + offset + ","+PAGE_SIZE;
 	        try {
 	            Statement st = cnx.createStatement();
 	            ResultSet rs = st.executeQuery(req);

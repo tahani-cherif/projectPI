@@ -1,15 +1,6 @@
-    /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.tourisme_sante.entities;
 
-import java.sql.Date;
-
-/**
- *
- * @author LENOVO
- */
+import java.util.Date;
 
 public class Reservation {
 	private int id;
@@ -17,8 +8,11 @@ public class Reservation {
 	private Date dateFin;
 	private int idAgence;
 	private int idUser;
-        private int idHotels;
-        private int idTransport;
+    private int idHotels;
+    private int idTransport;
+    private String nom;   
+    
+
     public Reservation( Date dateDebut, Date dateFin, int idAgence, int idUser, int idHotels,
  		int idTransport) {
  		this.dateDebut = dateDebut;
@@ -27,6 +21,7 @@ public class Reservation {
  		this.idUser = idUser;
  		this.idHotels = idHotels;
  		this.idTransport = idTransport;
+            
  	}
     public Reservation(int id, Date dateDebut, Date dateFin, int idAgence, int idUser, int idHotels,
  			int idTransport) {
@@ -37,15 +32,35 @@ public class Reservation {
  		this.idUser = idUser;
  		this.idHotels = idHotels;
  		this.idTransport = idTransport;
+          
+                
  	}
+
+    public Reservation(int id, Date dateDebut, Date dateFin, int idAgence, int idUser, int idHotels, int idTransport, String nom) {
+        this.id = id;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.idAgence = idAgence;
+        this.idUser = idUser;
+        this.idHotels = idHotels;
+        this.idTransport = idTransport;
+        this.nom = nom;
+    }
+    
 	public int getId() {
 		return id;
+	}
+        public String getNom() {
+		return nom;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
 	public Date getDateDebut() {
 		return dateDebut;
+	}
+        public void setNom(String nom) {
+		this.nom = nom;
 	}
 	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
@@ -83,7 +98,7 @@ public class Reservation {
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", idAgence=" + idAgence
-				+ ", idUser=" + idUser + ", idHotels=" + idHotels + ", idTransport=" + idTransport + "]";
+				+ ", idUser=" + idUser + ", idHotels=" + idHotels + ", idTransport=" + idTransport +  ", Nom=" + nom +"]";
 	}
     
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="729.0" prefWidth="1173.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.ResultController">
+   <children>
+      <TableView fx:id="idTable" layoutX="86.0" layoutY="116.0" prefHeight="461.0" prefWidth="1001.0">
+        <columns>
+          <TableColumn fx:id="columnAgence" prefWidth="150.0" text="Nom Agence" />
+          <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+            <TableColumn fx:id="columnHotel" prefWidth="75.0" text="idHotels" />
+            <TableColumn fx:id="columnUser" prefWidth="75.0" text="idUser" />
+            <TableColumn fx:id="columnTransport" prefWidth="120.0" text="idTransport" />
+            <TableColumn fx:id="columnDebut" prefWidth="174.0" text="Date debut" />
+            <TableColumn fx:id="columnFin" prefWidth="149.0" text="Date fin" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

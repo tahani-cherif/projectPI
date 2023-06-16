@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.tourisme_sante.entities;
+
 
 /**
  *
@@ -14,21 +11,20 @@ public class Agence {
     private String nom;
     private String adresse;   
     private int telephone;
-    private double prix;
+    
 
-      public Agence(int id, String nom, String adresse, int telephone,double prix) {
+      public Agence(int id, String nom, String adresse, int telephone) {
         this.id = id;
         this.nom = nom;
         this.adresse = adresse;
         this.telephone = telephone;
-        this.prix=prix;
+        
     }
 
-    public Agence(String nom, String adresse, int telephone,double prix) {
+    public Agence(String nom, String adresse, int telephone) {
         this.nom = nom;
         this.adresse = adresse;
         this.telephone = telephone;
-                this.prix=prix;
 
     }
 
@@ -64,17 +60,10 @@ public class Agence {
         return telephone;
     }
 
-   public void setPrix(double prix) {
-        this.prix = prix;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
 
   @Override
     public String toString() {
-        return "Agence{" + "id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", telephone=" + telephone + ", prix=" + prix +'}';
+        return "Agence{" + "id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", telephone=" + telephone +'}';
     }
 
    

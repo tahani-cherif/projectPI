@@ -1,20 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package comm.tourisme_sante.services;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 import com.tourisme_sante.entities.Reservation;
 import com.tourisme_sante.utils.Datasource;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+
+import java.sql.Date;
+import java.time.LocalDate;
+
 
 public class ServiceReservation implements services<Reservation> {
     private Connection cnx = Datasource.getInstance().getCnx();
@@ -66,11 +64,31 @@ public class ServiceReservation implements services<Reservation> {
 List<Reservation> list = new ArrayList<>();
         
         String req = "SELECT * FROM reservation";
+        String req2="SELECT dateDebut,reservation.id,dateFin,idAgence,idUser,idTransport,idHotels,agence.nom FROM reservation join agence on reservation.idAgence=agence.id";
         try {
             Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(req);
+            ResultSet rs = st.executeQuery(req2);
             while(rs.next()) {
-                list.add(new Reservation(rs.getInt("id"), rs.getDate("dateDebut"), rs.getDate("dateFin"), rs.getInt("idAgence"), rs.getInt("idUser"), rs.getInt("idHotels"), rs.getInt("idTransport")));
+                list.add(new Reservation(rs.getInt("id"), rs.getDate("dateDebut"), rs.getDate("dateFin"), rs.getInt("idAgence"), rs.getInt("idUser"), rs.getInt("idHotels"), rs.getInt("idTransport"),rs.getString("nom")));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
+        return list;
+	}
+        	public List<Reservation> afficherParDate(Date dateDebut,Date dateFin) {
+List<Reservation> list = new ArrayList<>();
+        
+        String req = "SELECT * FROM reservation";
+        String req2="SELECT dateDebut,reservation.id,dateFin,idAgence,idUser,idTransport,idHotels,agence.nom FROM reservation join agence on reservation.idAgence=agence.id WHERE dateFin BETWEEN '"+dateDebut+"' AND '"+dateFin+"'";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req2);
+
+            while(rs.next()) {
+                list.add(new Reservation(rs.getInt("id"), rs.getDate("dateDebut"), rs.getDate("dateFin"), rs.getInt("idAgence"), rs.getInt("idUser"), rs.getInt("idHotels"), rs.getInt("idTransport"),rs.getString("nom")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
