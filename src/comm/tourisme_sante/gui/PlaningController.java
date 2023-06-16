@@ -230,4 +230,36 @@ public class PlaningController implements Initializable {
         Parent root = loader.load();
         year.getScene().setRoot(root);
     }
+
+    @FXML
+    private void backReserv(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+            Parent root = loader.load();
+         
+           year.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backType(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
+            Parent root = loader.load();
+         
+           year.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backInter(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
+            Parent root = loader.load();
+         
+            year.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backOffre(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+         
+         year.getScene().setRoot(root);
+    }
 }

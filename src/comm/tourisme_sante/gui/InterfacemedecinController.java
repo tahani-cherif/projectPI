@@ -414,6 +414,22 @@ public class InterfacemedecinController implements Initializable {
          
              TFEmail.getScene().setRoot(root);
     }
+
+    @FXML
+    private void backReserv(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+            Parent root = loader.load();
+         
+           TFEmail.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backOffre(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+         
+      TFEmail.getScene().setRoot(root);
+    }
 }
 
 

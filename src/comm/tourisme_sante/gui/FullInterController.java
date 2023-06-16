@@ -624,6 +624,22 @@ tl.getColumns().add(colBtn);
          
              descF.getScene().setRoot(root);
     }
+
+    @FXML
+    private void backReserv(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+            Parent root = loader.load();
+         
+             descF.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backOffre(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+         
+             descF.getScene().setRoot(root);
+    }
     }
     
 

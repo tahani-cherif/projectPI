@@ -34,19 +34,19 @@
             <Insets top="30.0" />
          </padding>
       </VBox>
-      <TableView fx:id="tb" layoutX="815.0" layoutY="259.0" onMouseClicked="#detailsTypeInterventions" prefHeight="200.0" prefWidth="656.0">
+      <TableView fx:id="tb" layoutX="815.0" layoutY="259.0" onMouseClicked="#detailsTypeInterventions" prefHeight="200.0" prefWidth="866.0">
         <columns>
-          <TableColumn fx:id="colNom" prefWidth="234.0" text="Nom" />
-          <TableColumn fx:id="colDesc" prefWidth="281.0" text="Descripition" />
+          <TableColumn fx:id="colNom" prefWidth="419.0" text="Nom" />
+          <TableColumn fx:id="colDesc" prefWidth="96.0" text="Descripition" />
         </columns>
       </TableView>
-      <Button fx:id="chatButton" layoutX="1290.0" layoutY="650.0" mnemonicParsing="false" onAction="#OpenChat" text="Chat" textFill="#ecf0f8" />
+      <Button fx:id="chatButton" layoutX="1613.0" layoutY="861.0" mnemonicParsing="false" onAction="#OpenChat" text="Chat" textFill="#ecf0f8" />
       <Label layoutX="873.0" layoutY="221.0" text="Search Box">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="searchId" layoutX="956.0" layoutY="219.0" prefHeight="25.0" prefWidth="240.0" promptText="Search" />
+      <TextField fx:id="searchId" layoutX="956.0" layoutY="219.0" prefHeight="25.0" prefWidth="291.0" promptText="Search" />
       <TextField fx:id="stat" layoutX="1134.0" layoutY="540.0" prefHeight="25.0" prefWidth="41.0" />
       <Label layoutX="898.0" layoutY="544.0" text="Le nom  saisi  est repété :" />
       <Label layoutX="899.0" layoutY="579.0" prefHeight="21.0" prefWidth="263.0" text="La descripition  saisie est repétée:" />
@@ -63,7 +63,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <VBox prefHeight="702.0" prefWidth="242.0" style="-fx-background-color: #181b22;">
+      <VBox prefHeight="923.0" prefWidth="242.0" style="-fx-background-color: #181b22;">
          <children>
             <Pane prefHeight="130.0" prefWidth="242.0">
                <children>
@@ -116,7 +116,7 @@
                   <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Reservation" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backReserv" prefHeight="41.0" prefWidth="227.0" text="Gestion Reservation" textFill="WHITE">
                <padding>
                   <Insets left="21.0" />
                </padding>
@@ -214,9 +214,23 @@
                   <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backOffre" prefHeight="52.0" prefWidth="229.0" text="Gestion  Offre" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
          </children>
       </VBox>
-      <Pane layoutX="241.0" layoutY="34.0" prefHeight="89.0" prefWidth="1235.0" style="-fx-background-color: #5a5958;">
+      <Pane layoutX="241.0" layoutY="34.0" prefHeight="89.0" prefWidth="1580.0" style="-fx-background-color: #5a5958;">
          <children>
             <Label layoutX="31.0" layoutY="27.0" text="Gestion/Type Intervention" textFill="WHITE" />
             <Label layoutX="31.0" layoutY="45.0" prefHeight="27.0" prefWidth="299.0" text="Liste types interventions" textFill="WHITE">

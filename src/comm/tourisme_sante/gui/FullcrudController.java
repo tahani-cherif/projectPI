@@ -378,6 +378,22 @@ tb.getColumns().add(colBtn);
              descField.getScene().setRoot(root);
     }
 
+    @FXML
+    private void backReserv(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+            Parent root = loader.load();
+         
+             descField.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backOffre(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+         
+             descField.getScene().setRoot(root);
+    }
+
     }
 
     

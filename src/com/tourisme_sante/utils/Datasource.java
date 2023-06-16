@@ -17,7 +17,7 @@ public class Datasource {
     
     private static Datasource instance;
     
-    private final String URL = "jdbc:mysql://localhost:3306/tourisme_sante";
+    private final String URL = "jdbc:mysql://localhost:3306/tourisme_sante?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private final String USERNAME = "root";
     private final String PASSWORD = "";
 
