@@ -24,7 +24,7 @@ public class MainGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
     // FXMLLoader loader = new FXMLLoader(getClass().getResource("../comm/tourisme_sante/gui/planing.fxml"));
-     FXMLLoader loader = new FXMLLoader(getClass().getResource("../comm/tourisme_sante/gui/searchDate.fxml"));
+     FXMLLoader loader = new FXMLLoader(getClass().getResource("../comm/tourisme_sante/gui/FXMLDocument.fxml"));
          // FXMLLoader loader = new FXMLLoader(getClass().getResource("../comm/tourisme_sante/gui/ReservationGui.fxml"));
 
         Parent root = loader.load();

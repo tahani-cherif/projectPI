@@ -216,7 +216,7 @@ private PdfPCell createCell(String text, boolean isHeader) {
                                       Button btn = new Button("Remove");
 btn.setStyle("-fx-background-color:#Fb6868;"+"-fx-pref-width: 100px;"+"-fx-text-fill: white");
                      Button btnprint = new Button("Print");
-btnprint.setStyle("-fx-background-color:#Fb6868;"+"-fx-pref-width: 100px;"+"-fx-text-fill: white");
+btnprint.setStyle("-fx-background-color:white;"+"-fx-pref-width: 100px;");
 
                 final TableCell<Offre, Void> cell = new TableCell<Offre, Void>() {
 
@@ -314,20 +314,51 @@ btnprint.setStyle("-fx-background-color:#Fb6868;"+"-fx-pref-width: 100px;"+"-fx-
 
     }    
 
-    @FXML
-    private void GestionReserevention(ActionEvent event) {
+ @FXML
+    private void gestionrendezvous(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
+        Parent root = loader.load();
+        idTable.getScene().setRoot(root);
     }
 
     @FXML
-    private void gestionrendezvous(ActionEvent event) {
+    private void gestionmedecin(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
+        Parent root = loader.load();
+        idTable.getScene().setRoot(root);
+    }
+
+   @FXML
+    private void backType(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
+            Parent root = loader.load();
+         
+             idTable.getScene().setRoot(root);
     }
 
     @FXML
-    private void gestionmedecin(ActionEvent event) {
+    private void backInter(ActionEvent event)  throws IOException  {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
+            Parent root = loader.load();
+         
+             idTable.getScene().setRoot(root);
     }
 
     @FXML
-    private void GestionOffre(ActionEvent event) {
+    private void gestionoffre(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+         
+             idTable.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void reservationgs(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+            Parent root = loader.load();
+         
+             idTable.getScene().setRoot(root);
     }
 
    

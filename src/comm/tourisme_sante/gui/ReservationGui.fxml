@@ -1,32 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="797.0" prefWidth="1541.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.ReservationGuiController">
+<AnchorPane id="AnchorPane" prefHeight="797.0" prefWidth="1811.0" styleClass="mainFxmlClass" stylesheets="@planing.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.ReservationGuiController">
 
    <children>
-      <Label layoutX="689.0" layoutY="41.0" text="Réservation" textAlignment="CENTER" textFill="#223272" textOverrun="CLIP">
+      <Label layoutX="652.0" layoutY="167.0" textAlignment="CENTER" textFill="#223272" textOverrun="CLIP">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="114.0" layoutY="104.0" text="Agence" />
-      <Label layoutX="123.0" layoutY="200.0" text="Hotel" />
-      <Label layoutX="118.0" layoutY="395.0" text="Transport" />
-      <Label layoutX="115.0" layoutY="300.0" text="user" />
-      <TextField fx:id="TFHotel" layoutX="114.0" layoutY="236.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez hotel" />
-      <TextField fx:id="TFTransport" layoutX="114.0" layoutY="431.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez transport" />
-      <TextField fx:id="TFUser" layoutX="114.0" layoutY="338.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez user" />
-      <Button layoutX="95.0" layoutY="711.0" mnemonicParsing="false" onAction="#ajouterOffre" prefHeight="48.0" prefWidth="111.0" text="Ajouter" />
-      <Button layoutX="264.0" layoutY="711.0" mnemonicParsing="false" onAction="#modiffierOffre" prefHeight="48.0" prefWidth="111.0" text="Modefier" />
-      <TableView fx:id="idTable" layoutX="510.0" layoutY="123.0" onMouseClicked="#selectionmedecin" prefHeight="515.0" prefWidth="1003.0">
+      <Label layoutX="402.0" layoutY="121.0" text="Agence" />
+      <Label layoutX="411.0" layoutY="217.0" text="Hotel" />
+      <Label layoutX="406.0" layoutY="412.0" text="Transport" />
+      <Label layoutX="403.0" layoutY="317.0" text="user" />
+      <TextField fx:id="TFHotel" layoutX="402.0" layoutY="253.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez hotel" />
+      <TextField fx:id="TFTransport" layoutX="402.0" layoutY="448.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez transport" />
+      <TextField fx:id="TFUser" layoutX="402.0" layoutY="355.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez user" />
+      <TableView fx:id="idTable" layoutX="794.0" layoutY="148.0" onMouseClicked="#selectionmedecin" prefHeight="515.0" prefWidth="1003.0">
          <columns>
             <TableColumn fx:id="columnAgence" prefWidth="181.0" text="Agence" />
             <TableColumn fx:id="columnHotel" minWidth="0.0" prefWidth="220.0" text="Hotel" />
@@ -36,10 +40,219 @@
             <TableColumn fx:id="columnFin" prefWidth="139.0" text="Date Fin" />
          </columns>
       </TableView>
-      <Label layoutX="118.0" layoutY="494.0" text="date debut" />
-      <TextField fx:id="TFDateDebut" layoutX="114.0" layoutY="530.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez date debut" />
-      <ComboBox fx:id="CBAgence" layoutX="112.0" layoutY="137.0" prefHeight="31.0" prefWidth="242.0" promptText="list d'agence" />
-      <Label layoutX="118.0" layoutY="602.0" text="date fin" />
-      <TextField fx:id="TFDateFin" layoutX="114.0" layoutY="638.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez date fin" />
+      <Label layoutX="406.0" layoutY="511.0" text="date debut" />
+      <TextField fx:id="TFDateDebut" layoutX="402.0" layoutY="547.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez date debut" />
+      <ComboBox fx:id="CBAgence" layoutX="400.0" layoutY="154.0" prefHeight="31.0" prefWidth="242.0" promptText="list d'agence" />
+      <Label layoutX="406.0" layoutY="619.0" text="date fin" />
+      <TextField fx:id="TFDateFin" layoutX="402.0" layoutY="655.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez date fin" />
+      <VBox layoutX="-5.0" prefHeight="841.0" prefWidth="227.0" style="-fx-background-color: #181b22;">
+         <children>
+            <Pane prefHeight="145.0" prefWidth="227.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="114.0" layoutX="57.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/logotourism.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Utilisateurs" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="227.0" text="Gestion Produits" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Commandes" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Reservation" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Agence" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Forum" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionrendezvous" prefHeight="41.0" prefWidth="227.0" text="Gestion Rendez-vous" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionmedecin" prefHeight="41.0" prefWidth="227.0" text="Gestion Medecin" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backType" prefHeight="35.0" prefWidth="229.0" text="Gestion Type Intervention" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backInter" prefHeight="35.0" prefWidth="229.0" text="Gestion  Intervention" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionoffre" prefHeight="35.0" prefWidth="229.0" text="Gestion  offres" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#reservationgs" prefHeight="35.0" prefWidth="229.0" text="Gestion  Reservation" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <Button layoutX="323.0" layoutY="758.0" mnemonicParsing="false" onAction="#ajouterOffre" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #4BB543; -fx-text-fill: white;" text="Ajouter">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/icons8-plus-64.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="549.0" layoutY="758.0" mnemonicParsing="false" onAction="#modiffierOffre" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #ffcc00; -fx-text-fill: white;" text="Modifier ">
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/icons8-pencil-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Pane layoutX="219.0" layoutY="24.0" prefHeight="89.0" prefWidth="1425.0" style="-fx-background-color: #5a5958;">
+         <children>
+            <Label layoutX="31.0" layoutY="27.0" text="Gestion/Réservation" textFill="WHITE" />
+            <Label layoutX="31.0" layoutY="45.0" prefHeight="27.0" prefWidth="299.0" text="Liste Réservation" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

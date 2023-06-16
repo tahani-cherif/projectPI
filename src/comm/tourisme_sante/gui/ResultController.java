@@ -8,6 +8,7 @@ import com.tourisme_sante.entities.Agence;
 import com.tourisme_sante.entities.Reservation;
 import comm.tourisme_sante.services.ServiceAgence;
 import comm.tourisme_sante.services.ServiceReservation;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.List;
@@ -17,7 +18,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -138,6 +141,54 @@ ObservableList<Reservation> reservationList = FXCollections.observableList(sr.af
     
     
     
+    }
+
+    
+ @FXML
+    private void gestionrendezvous(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
+        Parent root = loader.load();
+        idTable.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionmedecin(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
+        Parent root = loader.load();
+        idTable.getScene().setRoot(root);
+    }
+
+   @FXML
+    private void backType(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
+            Parent root = loader.load();
+         
+             idTable.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backInter(ActionEvent event)  throws IOException  {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
+            Parent root = loader.load();
+         
+             idTable.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionoffre(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+         
+             idTable.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void reservationgs(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+            Parent root = loader.load();
+         
+             idTable.getScene().setRoot(root);
     }
     
 }
