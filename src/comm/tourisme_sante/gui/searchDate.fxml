@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="639.0" prefWidth="1073.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="javafxcrud.SearchDateController">
+<AnchorPane id="AnchorPane" prefHeight="639.0" prefWidth="1073.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="comm.tourisme_sante.gui.SearchDateController">
    <children>
       <Text layoutX="445.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search by date">
          <font>
