@@ -10,6 +10,13 @@
 <project name="projectPI" default="default" basedir=".">
     <description>Builds, tests, and runs the project projectPI.</description>
     <import file="nbproject/build-impl.xml"/>
+     <dependencies>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+    </dependencies>
     <!--
 
     There exist several targets which are by default empty and which can be 

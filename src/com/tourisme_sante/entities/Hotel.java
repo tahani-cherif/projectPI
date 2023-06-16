@@ -12,12 +12,52 @@ public class Hotel {
     private int id;
     private String nom;
    private String adresse;
-    private String classification;   
+    private int classification;   
     private String email;
     private int telephone;
     private float prix;
+     private int likes;
 
-   public Hotel(int id, String nom, String adresse,String classification, String email, int telephone,float prix) {
+    public void setNomAgence(String nomAgence) {
+        this.nomAgence = nomAgence;
+    }
+     private int idAgence;
+private String nomAgence;
+    public void setIdAgence(int idAgence) {
+        this.idAgence = idAgence;
+    }
+
+    public String getNomAgence() {
+        return nomAgence;
+    }
+
+    public int getIdAgence() {
+        return idAgence;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+        public Hotel(int id, String nom, String adresse,int classification, String email, int telephone,float prix,int likes,int idAgence,String nomAgence ) {
+         this.id = id;
+        this.nom = nom;
+        this.adresse=adresse;
+        this.classification = classification;
+        this.email = email;
+        this.telephone = telephone;
+        this.prix = prix;
+        this.likes=likes;
+        this.idAgence=idAgence;
+        this.nomAgence=nomAgence;
+    }
+
+
+   public Hotel(int id, String nom, String adresse,int classification, String email, int telephone,float prix,int likes,int idAgence) {
         this.id = id;
         this.nom = nom;
         this.adresse=adresse;
@@ -25,16 +65,22 @@ public class Hotel {
         this.email = email;
         this.telephone = telephone;
         this.prix = prix;
+        this.likes=likes;
+        this.idAgence=idAgence;
 
     }
 
-    public Hotel(String nom, String adresse, String classification, String email, int telephone,float prix) {
+    public Hotel(String nom, String adresse, int classification, String email, int telephone,float prix,int likes,int idAgence) {
         this.nom = nom;
         this.adresse = adresse;
         this.classification = classification;
         this.email = email;
         this.telephone = telephone;
         this.prix = prix;
+                this.likes=likes;
+                        this.idAgence=idAgence;
+
+
 
     }
 
@@ -58,7 +104,7 @@ public class Hotel {
         this.adresse = adresse;
     }
 
-    public void setClassification(String classification) {
+    public void setClassification(int classification) {
         this.classification = classification;
     }
 
@@ -82,7 +128,7 @@ public class Hotel {
         return adresse;
     }
 
-    public String getClassification() {
+    public int getClassification() {
         return classification;
     }
 
@@ -96,8 +142,12 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel{" + "id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", classification=" + classification + ", email=" + email + ", telephone=" + telephone + ", prix=" + prix + '}';
+        return "Hotel{" + "id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", classification=" + classification + ", email=" + email + ", telephone=" + telephone + ", prix=" + prix + ", likes=" + likes + ", idAgence=" + idAgence + '}';
     }
+
+
+
+
 
   
  

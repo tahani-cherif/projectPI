@@ -47,77 +47,86 @@ public class JavaApplication1 {
      */
     public static void main(String[] args) throws ParseException {
         
-        serviceMedecin sm=new serviceMedecin();
+        //serviceMedecin sm=new serviceMedecin();
         
        // sm.ajouter(new  medecins ("tahani cherif 2","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
-        System.out.println(sm.afficher());
+      //  System.out.println(sm.afficher());
        // sm.modifier(new  medecins (2,"test","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
       //    sm.supprimer(new  medecins (2,"test","cheriftahani92@gmail.com","cite cheker rawed",27711622,"test"));
-        serviceRDV srdv=new serviceRDV();
+      //  serviceRDV srdv=new serviceRDV();
        // srdv.ajouter(new RDV(1,1,Date.valueOf("2023-05-15")));
        //srdv.modifier(new RDV(2,1,1,Date.valueOf("2023-06-15")));
        //srdv.supprimer(new RDV(2,1,1,Date.valueOf("2023-05-15")));
-        System.out.println(srdv.afficher());
-        ServiceProduit sp=new ServiceProduit();
+       // System.out.println(srdv.afficher());
+      //  ServiceProduit sp=new ServiceProduit();
         //sp.ajouter(new produit(10,10,10));
        // sp.modifier(new produit(2,20,20,20));
       // sp.supprimer(new produit(2,20,20,20));
-      System.out.println(sp.afficher());
-      serviceUtilisateur su=new serviceUtilisateur();
+    //  System.out.println(sp.afficher());
+      //serviceUtilisateur su=new serviceUtilisateur();
       //su.ajouter(new Utilisateur("achref","hamzewi","achref@gmail.com","test"));
       //su.modifier(new Utilisateur(2,"achref2","hamzewi","achref@gmail.com","test"));
       //su.supprimer(new Utilisateur(2,"achref2","hamzewi","achref@gmail.com","test"));
-      System.out.println(su.afficher());
-      Services_TypeInterventions sti=new Services_TypeInterventions();
+    //  System.out.println(su.afficher());
+      //Services_TypeInterventions sti=new Services_TypeInterventions();
       //sti.ajouter(new TypeInterventions("test",10.0,"test"));
      //sti.modifier(new TypeInterventions(2,"test222",10.0,"test"));
      //sti.supprimer(new TypeInterventions(2,"test222",10.0,"test"));
-      System.out.println(sti.afficher());
+   //   System.out.println(sti.afficher());
       ServiceTransport st=new ServiceTransport();
-      //st.ajouter(new Transport("123tn244",Transport.TypeTransport.VOITURE,5555.0f));
-      //st.modifier(new Transport(3,"123tn244",Transport.TypeTransport.VOITURE,5555.0f));
-      //st.supprimer(new Transport(3,"123tn244",Transport.TypeTransport.VOITURE,5555.0f));
-      System.out.println(st.afficher());
-      ServiceReservation srs=new ServiceReservation();
+     // st.ajouter(new Transport("123tdsgds4",Transport.TypeTransport.VOITURE,5555.0f,2));
+    //  st.modifier(new Transport(4,"123tn244",Transport.TypeTransport.AUTOBUS,5555.0f,36));
+      //           System.out.println(st.afficher()+"afff");
+
+      //st.supprimer(new Transport(3,"123tdsgds4",Transport.TypeTransport.VOITURE,5555.0f,2));
+ //     System.out.println(st.afficher());
+ //     ServiceReservation srs=new ServiceReservation();
      // srs.ajouter(new Reservation(Date.valueOf("2023-05-15"),Date.valueOf("2023-05-15"),1,1,1,1));
      //srs.modifier(new Reservation(2,Date.valueOf("2023-05-16"),Date.valueOf("2023-05-15"),1,1,1,1));
      //srs.supprimer(new Reservation(2,Date.valueOf("2023-05-16"),Date.valueOf("2023-05-15"),1,1,1,1));
-     System.out.println(srs.afficher());
-     ServiceOffre sof=new ServiceOffre();
+  //   System.out.println(srs.afficher());
+  //   ServiceOffre sof=new ServiceOffre();
      //sof.ajouter(new Offre(10.0,10.0,"test","test"));
      //sof.modifier(new Offre(2,10.0,10.0,"test2","test2"));
     // sof.supprimer(new Offre(2,10.0,10.0,"test2","test2"));
  
-       System.out.println(sof.afficher());
-     ServiceInterventions si=new ServiceInterventions();
+    //   System.out.println(sof.afficher());
+     //ServiceInterventions si=new ServiceInterventions();
 //     si.ajouter(new Interventions("test","test"));
         //si.modifier(new Interventions(2,"test2","test2"));
        // si.supprimer(new Interventions(2,"test2","test2"));
-        System.out.println(si.afficher());
-        ServiceCommande sc=new ServiceCommande();  
+   //     System.out.println(si.afficher());
+     //   ServiceCommande sc=new ServiceCommande();  
        // sc.ajouter(new Commande(10,10,10.0));
        //sc.modifier(new Commande(2,10,10,20.0));
        //sc.supprimer(new Commande(2,10,10,20.0));
        //System.out.println(sc.afficher()); 
        
        
-         ServiceAgence sa=new ServiceAgence();
+       ServiceAgence sa=new ServiceAgence();
         
-       //sa.ajouter(new  Agence ("Traveltodo","123adresse50001",802135669));
+     //sa.ajouter(new  Agence (2,"Travelo","123adresse50001",802135669,"zdsdcsc"));
        //System.out.println(sa.afficher());
-      //sa.modifier(new Agence (2,"Travel","123adresse501",802135669));
+      sa.modifier(new Agence (36,"Tral","123adresse501",802135669,"exemple@gmail.com"));
       // sa.supprimer(new  Agence(1,"Traveltodo","123adresse50001",802135669));
 
         
-        ServiceHotel sh=new ServiceHotel();
+       ServiceHotel sh=new ServiceHotel();
         
-       //sh.ajouter(new  Hotel ("HotelName","123adresse50001","fivestars","hotel@gmail.com",802135669,5550f));
-       System.out.println(sh.afficher());
-      //sh.modifier(new Hotel(2,"HotelName","123adresse50001","fivestars","hotel@gmail.com",802135669,5550f));
+     // sh.ajouter(new  Hotel ("HotelName","123adresse50001",5,"hotel@gmail.com",802135669,555.0f,5,34));
+       //System.out.println(sh.afficher());
+   //  sh.modifier(new Hotel(14,"HotelName","azertysds",3,"hotel@gmail.com",8021359,52.0f,5,36));
       // sh.supprimer(new  Hotel(3,"HotelName","123adresse50001","fivestars","hotel@gmail.com",802135669,5550f));
       
+           //    System.out.println(sh.afficher()+"afff");
+
+          
+      //  ServiceAgenceHotel sah=new ServiceAgenceHotel();
         
-     
+      // sah.ajouter(new  AgenceHotel (5,3));
+       //System.out.println(sh.afficher());
+      //sah.modifier(new AgenceHotel(2,5,4));
+       //sah.supprimer(new  AgenceHotel(2,5,5));   
       
       
     }
