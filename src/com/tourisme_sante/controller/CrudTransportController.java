@@ -288,7 +288,13 @@ comoType.getSelectionModel().selectedItemProperty().addListener((observable, old
                         alert2.setHeaderText(null);
                         alert2.setContentText("vous devez choisir agence l");
                         alert2.showAndWait();
-        }else {
+        }else if  (comoType.getSelectionModel().isEmpty()) {
+ Alert alert2 = new Alert(Alert.AlertType.WARNING);
+                        alert2.setTitle(" vous devez choisir type!");
+                        alert2.setHeaderText(null);
+                        alert2.setContentText("vous devez choisir type l");
+                        alert2.showAndWait();
+} else  {
 
          for (Map.Entry ele : map.entrySet()) {
             if (ele.getValue().equals(comoAgence.getValue())) {
@@ -349,7 +355,13 @@ comoType.getSelectionModel().selectedItemProperty().addListener((observable, old
                         alert2.setHeaderText(null);
                         alert2.setContentText("vous devez choisir agence l");
                         alert2.showAndWait();
-        }else {
+        } else if  (comoType.getSelectionModel().isEmpty()) {
+ Alert alert2 = new Alert(Alert.AlertType.WARNING);
+                        alert2.setTitle(" vous devez choisir type!");
+                        alert2.setHeaderText(null);
+                        alert2.setContentText("vous devez choisir type l");
+                        alert2.showAndWait();
+} else  {
   
             for (Map.Entry ele : map.entrySet()) {
                 if (ele.getValue().equals(comoAgence.getValue())) {
