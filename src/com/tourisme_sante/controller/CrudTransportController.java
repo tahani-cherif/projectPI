@@ -123,13 +123,12 @@ private TypeTransport transportType;
 		searchid.textProperty().addListener((observable, oldValue, newValue) -> {
                     System.out.println(newValue);
 			filteredData.setPredicate(transport -> {
-				// If filter text is empty, display all persons.
+				// If filter text is empty, display all transport.
 								
 				if (newValue == null || newValue.isEmpty()) {
 					return true;
 				}
 				
-				// Compare first name and last name of every person with filter text.
 				String lowerCaseFilter = newValue.toLowerCase();
 				
 				if (transport.getMatricule().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
@@ -311,7 +310,8 @@ comoType.getSelectionModel().selectedItemProperty().addListener((observable, old
 
         comoAgence.setValue("");
                         }
-                    
+                            initialize(null, null); // Call the initialize method before adding
+
     }
     
     @FXML
@@ -392,6 +392,8 @@ comoType.getSelectionModel().selectedItemProperty().addListener((observable, old
             idPrix.setText("");
         
         }
+                initialize(null, null); // Call the initialize 
+
         
     }
 

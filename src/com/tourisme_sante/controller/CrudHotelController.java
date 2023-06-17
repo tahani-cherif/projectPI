@@ -431,7 +431,11 @@ message.setContent(content, "text/html; charset=utf-8");
         e.printStackTrace();
     }
         
-                    }}
+                    }
+    
+                    initialize(null, null); // Call the initialize 
+
+    }
    
     private void updateTableViewSorting() {
         Comparator<Hotel> comparator = Comparator.comparingInt(Hotel::getLikes);
@@ -576,6 +580,8 @@ message.setContent(content, "text/html; charset=utf-8");
 
         } 
     }
+                        initialize(null, null); // Call the initialize 
+
     }
     @FXML
     private void cliked(MouseEvent event) {

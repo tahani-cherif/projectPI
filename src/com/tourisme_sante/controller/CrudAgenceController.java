@@ -92,7 +92,6 @@ public class CrudAgenceController implements Initializable {
     
                  ServiceAgence sa = new ServiceAgence();
 
-        private Set<String> emailSet = new HashSet<>();
 
     
           @Override
@@ -231,7 +230,6 @@ public class CrudAgenceController implements Initializable {
                         alert.setContentText("Nom invalide.");
                         alert.showAndWait();
                     } else {
-                                            emailSet.add(emailAgence.getText());
 
                         sa.ajouter(new Agence(nameAgence.getText(), adresseAgence.getText(), Integer.parseInt(telAgence.getText()), emailAgence.getText()));
                      Alert successAlert = new Alert(AlertType.INFORMATION);
@@ -247,6 +245,8 @@ public class CrudAgenceController implements Initializable {
                         adresseAgence.setText("");
                     
                     }
+                 initialize(null, null); // Call the initialize 
+
           }
      ///// **************/ *******************/ *******************/ ***********************************   modifier agence *********/ *******************/ *******************/ *******************/ *************************************************************/////
         @FXML
@@ -332,6 +332,8 @@ public class CrudAgenceController implements Initializable {
                         adresseAgence.setText("");
                     
                     }}
+                        initialize(null, null); // Call the initialize 
+
     }
     @FXML
     
