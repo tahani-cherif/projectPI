@@ -37,10 +37,10 @@
       <TableView fx:id="tb" layoutX="815.0" layoutY="259.0" onMouseClicked="#detailsTypeInterventions" prefHeight="200.0" prefWidth="866.0">
         <columns>
           <TableColumn fx:id="colNom" prefWidth="419.0" text="Nom" />
-          <TableColumn fx:id="colDesc" prefWidth="96.0" text="Descripition" />
+          <TableColumn fx:id="colDesc" prefWidth="329.0" text="Descripition" />
         </columns>
       </TableView>
-      <Button fx:id="chatButton" layoutX="1613.0" layoutY="861.0" mnemonicParsing="false" onAction="#OpenChat" text="Chat" textFill="#ecf0f8" />
+      <Button fx:id="chatButton" layoutX="1570.0" layoutY="629.0" mnemonicParsing="false" onAction="#OpenChat" text="Chat" textFill="#ecf0f8" />
       <Label layoutX="873.0" layoutY="221.0" text="Search Box">
          <font>
             <Font size="15.0" />
@@ -215,6 +215,20 @@
                </graphic>
             </Button>
             <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionpanier" prefHeight="41.0" prefWidth="227.0" text="Gestion panier" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionsearch" prefHeight="41.0" prefWidth="227.0" text="Gestion search" textFill="WHITE">
                <padding>
                   <Insets left="21.0" />
                </padding>

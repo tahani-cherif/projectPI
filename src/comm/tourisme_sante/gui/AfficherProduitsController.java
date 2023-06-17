@@ -151,9 +151,6 @@ public class AfficherProduitsController implements Initializable {
         }
     }
 
-    @FXML
-    private void statButton(ActionEvent event) {
-    }
     
        /************** Modifier Question *******************/
     @FXML

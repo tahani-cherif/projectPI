@@ -227,7 +227,7 @@ public class InterfaceRDVController implements Initializable {
                stt.setInt(1,Integer.parseInt(ele.getKey().toString()));
             }}
            stt.setDate(2,  Date.valueOf(iddate.getValue()));
-           stt.setString(3, test.getValue().getHour()+":"+test.getValue().getMinute());
+           stt.setString(3,test.getValue().toString());
             ResultSet rss = stt.executeQuery();
             if(rss.next()) {
             
@@ -362,7 +362,7 @@ public class InterfaceRDVController implements Initializable {
             }else{
                                        for (Map.Entry ele : map.entrySet()) {
                                         if(ele.getValue().equals(idmedecin.getValue())){     
-                                            RDV.modifier(new RDV(x.getId(),Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().getHour()+":"+test.getValue().getMinute()));
+                                            RDV.modifier(new RDV(x.getId(),Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().toString()));
                                         }
                                           
                                     }

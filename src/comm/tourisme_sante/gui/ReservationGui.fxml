@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="797.0" prefWidth="1811.0" styleClass="mainFxmlClass" stylesheets="@planing.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.ReservationGuiController">
+<AnchorPane id="AnchorPane" prefHeight="841.0" prefWidth="2010.0" styleClass="mainFxmlClass" stylesheets="@planing.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.ReservationGuiController">
 
    <children>
       <Label layoutX="652.0" layoutY="167.0" textAlignment="CENTER" textFill="#223272" textOverrun="CLIP">
@@ -30,7 +30,7 @@
       <TextField fx:id="TFHotel" layoutX="402.0" layoutY="253.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez hotel" />
       <TextField fx:id="TFTransport" layoutX="402.0" layoutY="448.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez transport" />
       <TextField fx:id="TFUser" layoutX="402.0" layoutY="355.0" prefHeight="36.0" prefWidth="242.0" promptText="entrez user" />
-      <TableView fx:id="idTable" layoutX="794.0" layoutY="148.0" onMouseClicked="#selectionmedecin" prefHeight="515.0" prefWidth="1003.0">
+      <TableView fx:id="idTable" layoutX="794.0" layoutY="148.0" onMouseClicked="#selectionmedecin" prefHeight="515.0" prefWidth="1086.0">
          <columns>
             <TableColumn fx:id="columnAgence" prefWidth="181.0" text="Agence" />
             <TableColumn fx:id="columnHotel" minWidth="0.0" prefWidth="220.0" text="Hotel" />
@@ -224,6 +224,20 @@
                   <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionsearch" prefHeight="41.0" prefWidth="227.0" text="Gestion search" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
          </children>
       </VBox>
       <Button layoutX="323.0" layoutY="758.0" mnemonicParsing="false" onAction="#ajouterOffre" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #4BB543; -fx-text-fill: white;" text="Ajouter">
@@ -244,7 +258,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Pane layoutX="219.0" layoutY="24.0" prefHeight="89.0" prefWidth="1425.0" style="-fx-background-color: #5a5958;">
+      <Pane layoutX="219.0" layoutY="24.0" prefHeight="89.0" prefWidth="1798.0" style="-fx-background-color: #5a5958;">
          <children>
             <Label layoutX="31.0" layoutY="27.0" text="Gestion/Réservation" textFill="WHITE" />
             <Label layoutX="31.0" layoutY="45.0" prefHeight="27.0" prefWidth="299.0" text="Liste Réservation" textFill="WHITE">

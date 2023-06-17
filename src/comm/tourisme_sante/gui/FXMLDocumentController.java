@@ -384,6 +384,13 @@ btnprint.setStyle("-fx-background-color:white;"+"-fx-pref-width: 100px;");
             Parent root = loader.load();   
       idTable.getScene().setRoot(root);
     }
+
+    @FXML
+    private void gestionsearch(ActionEvent event) throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("searchDate.fxml"));
+            Parent root = loader.load();   
+      idTable.getScene().setRoot(root);
+    }
    
     
 }

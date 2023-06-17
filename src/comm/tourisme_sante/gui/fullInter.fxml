@@ -47,9 +47,9 @@
             <TableColumn fx:id="coltype" prefWidth="160.0" text="Type Interventions" />
         </columns>
       </TableView>
-      <TextField fx:id="searchField" layoutX="895.0" layoutY="241.0" prefHeight="25.0" prefWidth="253.0" promptText="Search" />
+      <TextField fx:id="searchField" layoutX="931.0" layoutY="238.0" prefHeight="31.0" prefWidth="319.0" promptText="Search" />
       <Label layoutX="829.0" layoutY="245.0" text="Search Box" />
-      <Button layoutX="1445.0" layoutY="822.0" mnemonicParsing="false" onAction="#Openchat" text="Chat" textFill="#fffafa" />
+      <Button layoutX="1412.0" layoutY="781.0" mnemonicParsing="false" onAction="#Openchat" text="Chat" textFill="#fffafa" />
       <Button layoutX="1390.0" layoutY="241.0" mnemonicParsing="false" onAction="#stat" prefHeight="25.0" prefWidth="111.0" text="Stathestiques" textFill="#f8f0f0" />
       <Label layoutX="318.0" layoutY="287.0" text="Nom" />
       <Label layoutX="321.0" layoutY="318.0" text="Prix" />
@@ -260,16 +260,16 @@
       <Label layoutX="876.0" layoutY="582.0" text="La descripition saisie est repeté:" />
       <Label layoutX="876.0" layoutY="546.0" text="Le prix saisi est repeté:" />
       <Label layoutX="876.0" layoutY="614.0" text="Le medecin saisi est repeté:" />
-      <Label layoutX="872.0" layoutY="648.0" text="Le type d'intervention est repeté:" />
-      <TextField fx:id="NID" layoutX="1066.0" layoutY="500.0" prefHeight="25.0" prefWidth="41.0" />
-      <TextField fx:id="PID" layoutX="1066.0" layoutY="537.0" prefHeight="25.0" prefWidth="41.0" />
-      <TextField fx:id="DID" layoutX="1066.0" layoutY="573.0" prefHeight="25.0" prefWidth="41.0" />
-      <TextField fx:id="MID" layoutX="1066.0" layoutY="605.0" prefHeight="25.0" prefWidth="41.0" />
-      <TextField fx:id="IID" layoutX="1066.0" layoutY="639.0" prefHeight="25.0" prefWidth="41.0" />
-      <Label layoutX="1125.0" layoutY="504.0" text="fois" />
-      <Label layoutX="1125.0" layoutY="541.0" text="fois" />
-      <Label layoutX="1125.0" layoutY="577.0" text="fois" />
-      <Label layoutX="1125.0" layoutY="609.0" text="fois" />
-      <Label layoutX="1125.0" layoutY="643.0" text="fois" />
+      <Label layoutX="872.0" layoutY="657.0" text="Le type d'intervention est repeté:" />
+      <TextField fx:id="NID" layoutX="1115.0" layoutY="502.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextField fx:id="PID" layoutX="1115.0" layoutY="539.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextField fx:id="DID" layoutX="1115.0" layoutY="575.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextField fx:id="MID" layoutX="1115.0" layoutY="612.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextField fx:id="IID" layoutX="1115.0" layoutY="652.0" prefHeight="25.0" prefWidth="41.0" />
+      <Label layoutX="1170.0" layoutY="509.0" text="fois" />
+      <Label layoutX="1170.0" layoutY="546.0" text="fois" />
+      <Label layoutX="1169.0" layoutY="582.0" text="fois" />
+      <Label layoutX="1169.0" layoutY="618.0" text="fois" />
+      <Label layoutX="1170.0" layoutY="657.0" text="fois" />
    </children>
 </AnchorPane>

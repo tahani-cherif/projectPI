@@ -214,6 +214,20 @@
                   <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionsearch" prefHeight="41.0" prefWidth="227.0" text="Gestion search" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
          </children>
       </VBox>
       <Button layoutX="248.0" layoutY="590.0" mnemonicParsing="false" onAction="#ajouterOffre" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #4BB543; -fx-text-fill: white;" text="Ajouter Offre">

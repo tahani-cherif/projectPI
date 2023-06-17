@@ -116,21 +116,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#statButton" prefHeight="30.0" prefWidth="126.0" stylesheets="@../../css/fullpackstyling.css" text="Statistiques" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../image/icons8-chart-100.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                   <Button mnemonicParsing="false" onAction="#exportExcel" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: green;" stylesheets="@../../css/fullpackstyling.css" text="Excel" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
