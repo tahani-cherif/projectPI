@@ -17,6 +17,8 @@ import javafx.stage.Stage;
  */
 public class MainGUI extends Application {
     
+    
+    
     //@Override
    // public void start(Stage primaryStage) throws IOException {
    //     FXMLLoader loader = new FXMLLoader(getClass().getResource("../Graphique/gui/AjouterClient.fxml"));
@@ -28,7 +30,8 @@ public class MainGUI extends Application {
        // primaryStage.show();
          @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Graphique/gui/Choice.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Graphique/gui/Login"
+                + ".fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

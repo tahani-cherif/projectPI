@@ -62,6 +62,14 @@ public class GestionAdminisController implements Initializable {
     @FXML
     private TableColumn<Admin, String> cln5;
     Admin ClickedAd=null;
+    @FXML
+    private Label lb1;
+    @FXML
+    private Label lb2;
+    @FXML
+    private Label lb3;
+    @FXML
+    private Label lb4;
 
     /**
      * Initializes the controller class.
@@ -70,82 +78,82 @@ public class GestionAdminisController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         serviceUtilisateur x= new serviceUtilisateur();
-          ObservableList<Admin> a = FXCollections.observableArrayList();//relation avec base de données
+          ObservableList<Admin> a = FXCollections.observableArrayList(x.afficherAdmin());//relation avec base de données
           System.out.println(a);
         ObservableList<Utilisateur> lc = FXCollections.observableArrayList(x.afficher());
-        
-        cln1.setCellValueFactory(new PropertyValueFactory<Admin,String>("nom"));
-        cln2.setCellValueFactory(new PropertyValueFactory<Admin,String>("prenom"));
-        cln3.setCellValueFactory(new PropertyValueFactory<Admin ,String>("email"));
-        cln4.setCellValueFactory(new PropertyValueFactory<Admin,String>("MDP"));
-        cln5.setCellValueFactory(new PropertyValueFactory<Admin,String>("role"));
+                tab2.setItems(a);
+
+        cln1.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        cln2.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        cln3.setCellValueFactory(new PropertyValueFactory<>("email"));
+        cln4.setCellValueFactory(new PropertyValueFactory<>("MDP"));
+        cln5.setCellValueFactory(new PropertyValueFactory<>("role"));
       
-        
           
 //        System.out.println(lc); 
-     for(Utilisateur u: lc)
-     { 
-            if (u instanceof Admin) {
-             a.add((Admin)u);    
-            }
-         tab2.setItems(a); 
-     }
- TableColumn<Admin, Void> colBtn = new TableColumn("Suprime");
-       Callback<TableColumn<Admin, Void>, TableCell<Admin, Void>> cellFactory = new Callback<TableColumn<Admin, Void>, TableCell<Admin, Void>>() {
-            @Override
-            public TableCell<Admin, Void> call(final TableColumn<Admin, Void> param) {
-                final TableCell<Admin, Void> cell = new TableCell<Admin, Void>() {
-
-                    private final Button btn = new Button("Remove");
-
-                    {
-                        btn.setOnAction((ActionEvent event) -> {
-                             Alert alert = new Alert(AlertType.CONFIRMATION);
-                                alert.setTitle("Confirmation de Supprimer Client");
-                                alert.setHeaderText("Confirmation de Supprimer Client");
-                                alert.setContentText("Êtes-vous sûr?");
-
-                                Optional<ButtonType> result = alert.showAndWait();
-                                if (result.get() == ButtonType.OK){
-                                       Admin data = getTableView().getItems().get(getIndex());//connaitre la ligne sup
-                                                    System.out.println("selectedData: " + data);
-                                                    x.supprimer(data);
-                                                   
-                                                   ObservableList<Admin> a = FXCollections.observableArrayList();//relation avec base de données
-        ObservableList<Utilisateur> lc = FXCollections.observableArrayList(x.afficher());// mis a jr base de dn
-        System.out.println(lc); 
-     for(Utilisateur u: lc)
-     { 
-     if (u instanceof Admin) {
-      a.add((Admin)u);    
-     }
-         tab2.setItems(a); 
-     }
-                                
-                                } else {
-                                    // ... user chose CANCEL or closed the dialog
-                                }
-                         
-                        });
-                    }
-
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btn);
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
-
-        colBtn.setCellFactory(cellFactory);
-
-        tab2.getColumns().add(colBtn);    
+//     for(Utilisateur u: lc)
+//     { 
+//            if (u instanceof Admin) {
+//             a.add((Admin)u);    
+//            }
+//         tab2.setItems(a); 
+//     }
+// TableColumn<Admin, Void> colBtn = new TableColumn("Suprime");
+//       Callback<TableColumn<Admin, Void>, TableCell<Admin, Void>> cellFactory = new Callback<TableColumn<Admin, Void>, TableCell<Admin, Void>>() {
+//            @Override
+//            public TableCell<Admin, Void> call(final TableColumn<Admin, Void> param) {
+//                final TableCell<Admin, Void> cell = new TableCell<Admin, Void>() {
+//
+//                    private final Button btn = new Button("Remove");
+//
+//                    {
+//                        btn.setOnAction((ActionEvent event) -> {
+//                             Alert alert = new Alert(AlertType.CONFIRMATION);
+//                                alert.setTitle("Confirmation de Supprimer Client");
+//                                alert.setHeaderText("Confirmation de Supprimer Client");
+//                                alert.setContentText("Êtes-vous sûr?");
+//
+//                                Optional<ButtonType> result = alert.showAndWait();
+//                                if (result.get() == ButtonType.OK){
+//                                       Admin data = getTableView().getItems().get(getIndex());//connaitre la ligne sup
+//                                                    System.out.println("selectedData: " + data);
+//                                                    x.supprimer(data);
+//                                                   
+//                                                   ObservableList<Admin> a = FXCollections.observableArrayList();//relation avec base de données
+//        ObservableList<Utilisateur> lc = FXCollections.observableArrayList(x.afficher());// mis a jr base de dn
+//        System.out.println(lc); 
+//     for(Utilisateur u: lc)
+//     { 
+//     if (u instanceof Admin) {
+//      a.add((Admin)u);    
+//     }
+//         tab2.setItems(a); 
+//     }
+//                                
+//                                } else {
+//                                    // ... user chose CANCEL or closed the dialog
+//                                }
+//                         
+//                        });
+//                    }
+//
+//                    @Override
+//                    public void updateItem(Void item, boolean empty) {
+//                        super.updateItem(item, empty);
+//                        if (empty) {
+//                            setGraphic(null);
+//                        } else {
+//                            setGraphic(btn);
+//                        }
+//                    }
+//                };
+//                return cell;
+//            }
+//        };
+//
+//        colBtn.setCellFactory(cellFactory);
+//
+//        tab2.getColumns().add(colBtn);    
     }   
 
     @FXML

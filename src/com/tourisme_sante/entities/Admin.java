@@ -17,6 +17,11 @@ public class Admin extends Utilisateur{
     public Admin(int id, String nom, String prenom, String email, String MDP, String role) {
         super(id, nom, prenom, email, MDP, role);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
     
     
     

@@ -5,6 +5,7 @@
 package comm.tourisme_sante.services;
 
 import java.util.List;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -15,4 +16,5 @@ public interface services<T> {
     public void modifier(T p);
     public void supprimer(T p);
     public List<T> afficher();
+   
 }

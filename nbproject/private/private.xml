@@ -5,15 +5,16 @@
         <group>
             <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/comm/tourisme_sante/services/serviceUtilisateur.java</file>
             <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/com/tourisme_sante/entities/Client.java</file>
-            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/com/tourisme_sante/entities/Utilisateur.java</file>
-            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/Choice.fxml</file>
-            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/javaapplication1/MainGUI.java</file>
-            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/GestionAdminisController.java</file>
+            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/Login.fxml</file>
             <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/com/tourisme_sante/entities/Admin.java</file>
-            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/GestionClient.fxml</file>
-            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/GestionAdminController.java</file>
             <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/com/tourisme_sante/utils/Datasource.java</file>
             <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/javaapplication1/JavaApplication1.java</file>
+            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/com/tourisme_sante/entities/Utilisateur.java</file>
+            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/javaapplication1/MainGUI.java</file>
+            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/GestionAdminisController.java</file>
+            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/GestionClient.fxml</file>
+            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/LoginController.java</file>
+            <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/GestionAdminController.java</file>
             <file>file:/C:/Users/hamza/OneDrive/Bureau/projectPI/src/Graphique/gui/ChoiceController.java</file>
         </group>
     </open-files>

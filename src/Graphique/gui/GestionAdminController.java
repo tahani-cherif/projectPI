@@ -75,6 +75,7 @@ public class GestionAdminController implements Initializable {
     @FXML
     private TextField adr;
     Client Clickedclient=null;
+      serviceUtilisateur x= new serviceUtilisateur();
     /**
      * Initializes the controller class.
      */
@@ -83,18 +84,25 @@ public class GestionAdminController implements Initializable {
         // TODO
        
         cl1.setCellValueFactory(new PropertyValueFactory<Client,String>("Nom"));
-        cl2.setCellValueFactory(new PropertyValueFactory<>("Prenom"));
-        cl3.setCellValueFactory(new PropertyValueFactory<Client,String>("Email"));
+        cl2.setCellValueFactory(new PropertyValueFactory<Client,String>("prenom"));
+        cl3.setCellValueFactory(new PropertyValueFactory<Client,String>("email"));
         cl4.setCellValueFactory(new PropertyValueFactory<Client,String>("MDP"));
-        cl5.setCellValueFactory(new PropertyValueFactory<Client,String>("Role"));
-        cl6.setCellValueFactory(new PropertyValueFactory<Client,Integer>("Number"));
+        cl5.setCellValueFactory(new PropertyValueFactory<Client,String>("role"));
+        cl6.setCellValueFactory(new PropertyValueFactory<Client,Integer>("number"));
         cl7.setCellValueFactory(new PropertyValueFactory<Client,String>("sex"));
-        cl8.setCellValueFactory(new PropertyValueFactory<Client,String>("Adresse"));
+        cl8.setCellValueFactory(new PropertyValueFactory<Client,String>("adresse"));
         
         
-          serviceUtilisateur x= new serviceUtilisateur();
+        
           ObservableList<Client> a = FXCollections.observableArrayList();//relation avec base de données
-        ObservableList<Utilisateur> lc = FXCollections.observableArrayList(x.afficher());
+          ObservableList<Utilisateur> lc =null;
+          System.out.println(LoginController.users.getRole());
+          if(LoginController.users.getRole().equals("admin")){
+               lc =  FXCollections.observableArrayList( x.afficher());
+          }else{
+                lc =  FXCollections.observableArrayList( x.afficher2(LoginController.users) );
+          }
+        
         System.out.println(lc); 
      for(Utilisateur u: lc)
      { 
@@ -125,8 +133,13 @@ public class GestionAdminController implements Initializable {
                                                     x.supprimer(data);
                                                    
                                                    ObservableList<Client> a = FXCollections.observableArrayList();//relation avec base de données
-        ObservableList<Utilisateur> lc = FXCollections.observableArrayList(x.afficher());// mis a jr base de dn
-        System.out.println(lc); 
+        ObservableList<Utilisateur> lc =null;
+          System.out.println(LoginController.users.getRole());
+          if(LoginController.users.getRole().equals("admin")){
+               lc =  FXCollections.observableArrayList( x.afficher());
+          }else{
+                lc =  FXCollections.observableArrayList( x.afficher2(LoginController.users) );
+          }
      for(Utilisateur u: lc)
      { 
      if (u instanceof Client) {
@@ -164,12 +177,35 @@ public class GestionAdminController implements Initializable {
     @FXML
    private void ajouter(ActionEvent event){
      serviceUtilisateur u = new serviceUtilisateur();
-     
+      
+        String n =nom.getText();
+        String p=prenom.getText();
+        String e=email.getText();
+        String mdp=MDP.getText();
+        String nmb=nb.getText();
+        String sexe=sx.getText();
+        String adresse=adr.getText();
+
+        
+        
+        
+        
+     if(n.equals("")|| p.equals("")|| e.equals("")|| mdp.equals("")|| nmb.equals("")|| sexe.equals("")|| adresse.equals("") )
+        {
+            JOptionPane.showMessageDialog(null, "Nom ou prenom ou email ou mdp ou number ou sexe ou adresse Banked");
+        }
+        else
+        {
         u.ajouter(new Client (Integer.parseInt(nb.getText()) , sx.getText(),adr.getText(),nom.getText(),prenom.getText(),email.getText(),MDP.getText(),"client"));
        JOptionPane.showMessageDialog(null, "client ajouté !");
         ObservableList<Client> a = FXCollections.observableArrayList();//relation avec base de données
-        ObservableList<Utilisateur> lc = FXCollections.observableArrayList(u.afficher());
-        System.out.println(lc); 
+      ObservableList<Utilisateur> lc =null;
+          System.out.println(LoginController.users.getRole());
+          if(LoginController.users.getRole().equals("admin")){
+               lc =  FXCollections.observableArrayList( x.afficher());
+          }else{
+                lc =  FXCollections.observableArrayList( x.afficher2(LoginController.users) );
+          } 
      for(Utilisateur x: lc)
      { 
      if (x instanceof Client) {
@@ -178,7 +214,7 @@ public class GestionAdminController implements Initializable {
          tab.setItems(a); 
      }
      
-    }
+        }}
 
     @FXML
     private void modifier(ActionEvent event) {
@@ -190,12 +226,18 @@ public class GestionAdminController implements Initializable {
 
                                 Optional<ButtonType> result = alert.showAndWait();
                                 if (result.get() == ButtonType.OK){
+                                    
                                      
-      u.modifier(new Client (Integer.parseInt(nb.getText()) , sx.getText(),adr.getText(),Clickedclient.getId(),nom.getText(),prenom.getText(),email.getText(),MDP.getText(),"client"));
+      u.modifier2(new Client (Integer.parseInt(nb.getText()) , sx.getText(),adr.getText(),Clickedclient.getId(),nom.getText(),prenom.getText(),email.getText(),MDP.getText(),"client"));
       
         ObservableList<Client> a = FXCollections.observableArrayList();//relation avec base de données
-        ObservableList<Utilisateur> lc = FXCollections.observableArrayList(u.afficher());
-        System.out.println(lc); 
+          ObservableList<Utilisateur> lc =null;
+          System.out.println(LoginController.users.getRole());
+          if(LoginController.users.getRole().equals("admin")){
+               lc =  FXCollections.observableArrayList( x.afficher());
+          }else{
+                lc =  FXCollections.observableArrayList( x.afficher2(LoginController.users) );
+          } 
      for(Utilisateur x: lc)
      { 
      if (x instanceof Client) {
@@ -223,6 +265,7 @@ public class GestionAdminController implements Initializable {
             nb.setText(Integer.toString(Clickedclient.getNumber()));
              sx.setText(Clickedclient.getSex());
               adr.setText(Clickedclient.getAdresse());
+
         
     }
  

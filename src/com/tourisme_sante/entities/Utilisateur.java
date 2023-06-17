@@ -19,6 +19,8 @@ public abstract class Utilisateur {
     private String MDP;
     private String role;
     
+    public static Utilisateur u;
+    
 
     public Utilisateur(String nom, String prenom,String email, String MDP, String role) {
          this.nom = nom;
