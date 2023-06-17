@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,33 +12,24 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="comm.tourisme_sante.gui.AfficherProduitFrontController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="1300.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.AfficherProduitFrontController">
     <stylesheets>
         <URL value="@afficherproduitfront.css" />
     </stylesheets>
      <children>
       <Pane prefHeight="102.0" prefWidth="969.0">
          <children>
-            <ImageView fitHeight="80.0" fitWidth="118.0" layoutX="67.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../image/logotourism.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="18.0" fitWidth="16.0" layoutX="320.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-search-50.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="336.0" layoutY="25.0" text="PRODUITS">
+            <Label layoutX="633.0" layoutY="34.0" text="PRODUITS">
                <font>
                   <Font name="Arial Black" size="37.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <ScrollPane layoutX="40.0" layoutY="112.0" prefHeight="346.0" prefWidth="716.0" stylesheets="@../../css/fullpackstyling.css" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="213.0" AnchorPane.topAnchor="112.0">
+      <ScrollPane layoutX="343.0" layoutY="102.0" prefHeight="260.0" prefWidth="751.0" stylesheets="@../../css/fullpackstyling.css" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="206.0" AnchorPane.topAnchor="102.0">
          <content>
             <GridPane fx:id="prodGrid" prefHeight="337.0" prefWidth="680.0" stylesheets="@../../css/fullpackstyling.css">
               <rowConstraints>
@@ -46,12 +38,12 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <Button layoutX="771.0" layoutY="112.0" mnemonicParsing="false" onAction="#accederPanier" prefHeight="25.0" prefWidth="168.0" style="-fx-background-color: #637df6;" stylesheets="@css/fullpackstyling.css" text="Acceder Panier" textFill="WHITE">
+      <Button layoutX="1135.0" layoutY="126.0" mnemonicParsing="false" onAction="#accederPanier" prefHeight="25.0" prefWidth="153.0" style="-fx-background-color: #637df6;" stylesheets="@css/fullpackstyling.css" text="Acceder Panier" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../image/icons8-shopping-basket-100.png" />
                </image>
@@ -61,5 +53,186 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <VBox layoutX="-5.0" prefHeight="841.0" prefWidth="227.0" style="-fx-background-color: #181b22;">
+         <children>
+            <Pane prefHeight="145.0" prefWidth="227.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="114.0" layoutX="57.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/logotourism.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Utilisateurs" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionproduit" prefHeight="36.0" prefWidth="227.0" text="Gestion Produits" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestioncommande" prefHeight="41.0" prefWidth="227.0" text="Gestion Commandes" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Reservation" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Agence" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionrendezvous" prefHeight="41.0" prefWidth="227.0" text="Gestion Rendez-vous" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionmedecin" prefHeight="41.0" prefWidth="227.0" text="Gestion Medecin" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backType" prefHeight="35.0" prefWidth="229.0" text="Gestion Type Intervention" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backInter" prefHeight="35.0" prefWidth="229.0" text="Gestion  Intervention" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionoffre" prefHeight="35.0" prefWidth="229.0" text="Gestion  offres" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#reservationgs" prefHeight="35.0" prefWidth="229.0" text="Gestion  Reservation" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionpanier" prefHeight="41.0" prefWidth="227.0" text="Gestion panier" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

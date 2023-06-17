@@ -347,7 +347,8 @@ tb.getColumns().add(colBtn);
              descField.getScene().setRoot(root);
     }
 
-    @FXML
+  
+         @FXML
     private void gestionrendezvous(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
         Parent root = loader.load();
@@ -356,12 +357,12 @@ tb.getColumns().add(colBtn);
 
     @FXML
     private void gestionmedecin(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
         Parent root = loader.load();
         descField.getScene().setRoot(root);
     }
 
-    @FXML
+   @FXML
     private void backType(ActionEvent event) throws IOException {
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
@@ -378,12 +379,12 @@ tb.getColumns().add(colBtn);
              descField.getScene().setRoot(root);
     }
 
-    @FXML
+     @FXML
     private void backReserv(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
             Parent root = loader.load();
          
-             descField.getScene().setRoot(root);
+           descField.getScene().setRoot(root);
     }
 
     @FXML
@@ -391,8 +392,31 @@ tb.getColumns().add(colBtn);
           FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
             Parent root = loader.load();
          
-             descField.getScene().setRoot(root);
+      descField.getScene().setRoot(root);
     }
+
+    @FXML
+    private void gestioncommande(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
+            Parent root = loader.load();
+         
+      descField.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionproduit(ActionEvent event) throws IOException {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+            Parent root = loader.load();   
+      descField.getScene().setRoot(root);
+    }
+
+     @FXML
+    private void gestionpanier(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
+            Parent root = loader.load();   
+      descField.getScene().setRoot(root);
+    }
+
 
     }
 

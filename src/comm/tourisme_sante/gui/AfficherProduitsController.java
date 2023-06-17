@@ -182,14 +182,13 @@ public class AfficherProduitsController implements Initializable {
 
     @FXML
     private void exportExcel(ActionEvent event) throws IOException {
-         String filePath = "C:\\Users\\omarb\\Downloads\\Produits.xlsx";
+         String filePath = "C:\\Users\\User\\Desktop\\Commandes.xlsx";
         TableExporter.exportToExcel(tableProduits, filePath);
-        Desktop.getDesktop().open(new File("C:\\Users\\omarb\\Downloads\\Produits.xlsx"));
+        Desktop.getDesktop().open(new File("C:\\Users\\User\\Desktop\\Commandes.xlsx"));
     }
 
     @FXML
     private void ajouterProduit(ActionEvent event) throws IOException {
-        
                Parent root = FXMLLoader.load(getClass().getResource("AjouterProduit.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -197,15 +196,84 @@ public class AfficherProduitsController implements Initializable {
         stage.show();
     }
     
-    @FXML
     private void listCommandess(ActionEvent event) throws IOException {
-        
         Parent root = FXMLLoader.load(getClass().getResource("AfficherCommandes.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+        @FXML
+    private void gestionrendezvous(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
+        Parent root = loader.load();
+        tableProduits.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionmedecin(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
+        Parent root = loader.load();
+        tableProduits.getScene().setRoot(root);
+    }
+
+   @FXML
+    private void backType(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
+            Parent root = loader.load();
+         
+             tableProduits.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backInter(ActionEvent event)  throws IOException  {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
+            Parent root = loader.load();
+         
+             tableProduits.getScene().setRoot(root);
+    }
+    
+    @FXML
+    private void gestionoffre(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+         
+      tableProduits.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void reservationgs(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+            Parent root = loader.load();
+         
+           tableProduits.getScene().setRoot(root);
+    }
+    @FXML
+    private void gestioncommande(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
+            Parent root = loader.load();
+         
+      tableProduits.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionproduit(ActionEvent event) throws IOException {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+            Parent root = loader.load();   
+      tableProduits.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionpanier(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
+            Parent root = loader.load();   
+      tableProduits.getScene().setRoot(root);
+    }
+
+
+    
     
     
 }

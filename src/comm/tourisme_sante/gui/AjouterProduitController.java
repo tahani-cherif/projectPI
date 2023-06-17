@@ -8,6 +8,7 @@ import com.tourisme_sante.entities.Produit;
 import comm.tourisme_sante.services.ProduitService;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,8 +26,10 @@ import javafx.stage.Stage;
  *
  * @author User
  */
-public class ModifierProduitController implements Initializable {
- @FXML
+public class AjouterProduitController implements Initializable {
+
+ 
+    @FXML
     private TextField nomProduit;
     @FXML
     private TextField prixProduit;
@@ -34,81 +37,46 @@ public class ModifierProduitController implements Initializable {
     private TextField qtDisponible;
     @FXML
     private TextField qtUtilisee;
-    
-    private ProduitService produitService;
-    private  ProdHolder holder = ProdHolder.getInstance();
-    private Produit CurrentProduit = holder.getProduit();
 
-    
-    
-     public void initData(Produit prod) {
-        CurrentProduit = prod;
-        holder.setProduit(CurrentProduit);
-        
-        nomProduit.setText(CurrentProduit.getNom());
-        prixProduit.setText(String.valueOf(CurrentProduit.getPrix()));
-        qtDisponible.setText(String.valueOf(CurrentProduit.getQtDisponible()));
-        qtUtilisee.setText(String.valueOf(CurrentProduit.getQtUtilisee()));
-
-    }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       this.initData(CurrentProduit);
+        // TODO
     }    
 
     @FXML
-    private void modifierProduit(ActionEvent event) {
-        
-         try {
+    private void ajouterProduit(ActionEvent event) throws IOException {
+         System.out.println("on envoyer taped..");
 
-            String nomProduitv = nomProduit.getText();
-            String prixProduitv = prixProduit.getText();
-            String qtDisponiblev = qtDisponible.getText();
-            String qtUtiliseev = qtUtilisee.getText();
+        if (nomProduit.getText().isEmpty() || prixProduit.getText().isEmpty() || qtDisponible.getText().isEmpty() || qtUtilisee.getText().isEmpty() ) {
+            Alert al = new Alert(Alert.AlertType.WARNING);
+            al.setTitle("Erreur de donnee");
+            al.setContentText("Veuillez verifier les données !");
+            al.show();
+        } else {
+           
+            
+            /*********** TODO : Replace userID (32) By GetCurrentUser ************/
+            Produit p = new Produit(nomProduit.getText(), Double.parseDouble(prixProduit.getText()),Integer.parseInt(qtDisponible.getText()),Integer.parseInt(qtUtilisee.getText()));
+            ProduitService sp = new ProduitService();
 
-            if (nomProduitv.isEmpty() || prixProduitv.isEmpty()|| qtDisponiblev.isEmpty()|| qtUtiliseev.isEmpty()) {
-                Alert al = new Alert(Alert.AlertType.WARNING);
-                al.setTitle("Erreur");
-                al.setContentText("Veuillez remplir tous les champs !");
+            try {
+                sp.ajouter(p);
+                Parent root = FXMLLoader.load(getClass().getResource("AfficherProduits.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (SQLException ex) {
+                Alert al = new Alert(Alert.AlertType.ERROR);
+                al.setTitle("Erreur de donnee");
+                al.setContentText(ex.getMessage());
+                System.out.println(ex.getMessage());
                 al.show();
-                return;
-            }
-            if (prixProduitv.length() < 0 ) {
-                Alert al = new Alert(Alert.AlertType.WARNING);
-                al.setTitle("Erreur de données");
-                al.setContentText("Le champ 'Prix' doit etre sup a 0 !");
-                al.show();
-                return;
             }
 
-            CurrentProduit.setNom(nomProduitv);
-            CurrentProduit.setPrix(Double.parseDouble(prixProduitv));
-            CurrentProduit.setQtDisponible(Integer.parseInt(qtDisponiblev));
-            CurrentProduit.setQtUtilisee(Integer.parseInt(qtUtiliseev));
-
-            ProduitService service = new ProduitService();
-            service.modifier(CurrentProduit);
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Modification de Produit");
-            alert.setHeaderText(null);
-            alert.setContentText("Le Produit a été modifiée avec succès !");
-            alert.showAndWait();
-            Parent root = FXMLLoader.load(getClass().getResource("AfficherProduits.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Une erreur est survenue lors de la modification de Produit !");
-            alert.showAndWait();
         }
     }
 
@@ -120,7 +88,6 @@ public class ModifierProduitController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
       private void listCommandes(ActionEvent event) throws IOException {
         
                Parent root = FXMLLoader.load(getClass().getResource("AfficherCommandes.fxml"));
@@ -130,7 +97,13 @@ public class ModifierProduitController implements Initializable {
         stage.show();
     }
 
-         @FXML
+
+
+ 
+
+
+
+     @FXML
     private void gestionrendezvous(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
         Parent root = loader.load();
@@ -161,43 +134,40 @@ public class ModifierProduitController implements Initializable {
              nomProduit.getScene().setRoot(root);
     }
 
-
-        @FXML
-    private void gestionoffre(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
-            Parent root = loader.load();
-         
-      nomProduit.getScene().setRoot(root);
-    }
-
-    @FXML
-    private void reservationgs(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+     @FXML
+    private void backReserv(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
             Parent root = loader.load();
          
            nomProduit.getScene().setRoot(root);
     }
+
     @FXML
-    private void gestioncommande(ActionEvent event) throws IOException {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
+    private void backOffre(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
             Parent root = loader.load();
-         
       nomProduit.getScene().setRoot(root);
     }
 
     @FXML
-    private void gestionproduit(ActionEvent event) throws IOException {
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+    private void gestioncommande(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
             Parent root = loader.load();   
       nomProduit.getScene().setRoot(root);
+
     }
+
     @FXML
+    private void gestionproduit(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+            Parent root = loader.load();   
+      nomProduit.getScene().setRoot(root);
+    }  
+
+  @FXML
     private void gestionpanier(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
             Parent root = loader.load();   
       nomProduit.getScene().setRoot(root);
     }
-
-
-    
 }

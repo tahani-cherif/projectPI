@@ -384,21 +384,24 @@ public class InterfacemedecinController implements Initializable {
       Matcher matcher=phonePat.matcher (input);
      return matcher.find();}  
 
-    @FXML
+
+
+   
+         @FXML
     private void gestionrendezvous(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
         Parent root = loader.load();
         TFEmail.getScene().setRoot(root);
     }
 
     @FXML
     private void gestionmedecin(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
         Parent root = loader.load();
         TFEmail.getScene().setRoot(root);
     }
 
-@FXML
+   @FXML
     private void backType(ActionEvent event) throws IOException {
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
@@ -415,7 +418,7 @@ public class InterfacemedecinController implements Initializable {
              TFEmail.getScene().setRoot(root);
     }
 
-    @FXML
+     @FXML
     private void backReserv(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
             Parent root = loader.load();
@@ -430,6 +433,29 @@ public class InterfacemedecinController implements Initializable {
          
       TFEmail.getScene().setRoot(root);
     }
+
+    @FXML
+    private void gestioncommande(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
+            Parent root = loader.load();
+         
+      TFEmail.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionproduit(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+            Parent root = loader.load();   
+      TFEmail.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionpanier(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
+            Parent root = loader.load();   
+      TFEmail.getScene().setRoot(root);
+    }
+
 }
 
 

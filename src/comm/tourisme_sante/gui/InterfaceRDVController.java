@@ -482,5 +482,42 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
          
              iddate.getScene().setRoot(root);
     }
+
+     @FXML
+    private void backReserv(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+            Parent root = loader.load();
+         
+           iddate.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backOffre(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+      iddate.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestioncommande(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
+            Parent root = loader.load();   
+      iddate.getScene().setRoot(root);
+
+    }
+
+    @FXML
+    private void gestionproduit(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+            Parent root = loader.load();   
+      iddate.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionpanier(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
+            Parent root = loader.load();   
+      iddate.getScene().setRoot(root);
+    }
     
 }

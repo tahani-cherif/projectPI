@@ -205,7 +205,8 @@ ObservableList<Reservation> reservationList = FXCollections.observableList(sr.af
     
     }
 
- @FXML
+ 
+     @FXML
     private void gestionrendezvous(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
         Parent root = loader.load();
@@ -236,22 +237,45 @@ ObservableList<Reservation> reservationList = FXCollections.observableList(sr.af
              idTable.getScene().setRoot(root);
     }
 
+
+
     @FXML
-    private void gestionoffre(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+    private void gestioncommande(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
             Parent root = loader.load();
          
-             idTable.getScene().setRoot(root);
+      idTable.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionoffre(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+         
+      idTable.getScene().setRoot(root);
     }
 
     @FXML
     private void reservationgs(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
             Parent root = loader.load();
          
-             idTable.getScene().setRoot(root);
+           idTable.getScene().setRoot(root);
     }
-    
+
+    @FXML
+    private void gestionproduit(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+            Parent root = loader.load();   
+      idTable.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionpanier(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
+            Parent root = loader.load();   
+      idTable.getScene().setRoot(root);
+    }
     
 
 

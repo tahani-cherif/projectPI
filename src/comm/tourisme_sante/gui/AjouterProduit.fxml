@@ -1,62 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="851.0" prefWidth="1374.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.PanierController">
-    <stylesheets>
-        <URL value="@panier.css" />
-    </stylesheets>
-     <children>
-      <ScrollPane layoutX="328.0" layoutY="104.0" prefHeight="281.0" prefWidth="988.0" stylesheets="@css/fullpackstyling.css" AnchorPane.leftAnchor="328.0" AnchorPane.rightAnchor="58.0">
-         <content>
-            <GridPane fx:id="panierGrid" prefHeight="275.0" prefWidth="884.0" stylesheets="@../../css/fullpackstyling.css">
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-         </content>
-      </ScrollPane>
-      <Pane layoutX="10.0" layoutY="10.0" prefHeight="102.0" prefWidth="969.0">
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="969.0" stylesheets="@planing.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.AjouterProduitController">
+   <children>
+      <Pane layoutX="227.0" layoutY="53.0" prefHeight="59.0" prefWidth="504.0" style="-fx-background-color: #5a5958;" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="-2.0">
          <children>
-            <ImageView fitHeight="18.0" fitWidth="16.0" layoutX="320.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-search-50.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="782.0" layoutY="14.0" text="Montant Totale">
+            <Label layoutX="31.0" layoutY="8.0" stylesheets="@css/fullpackstyling.css" text="Gestion/Gestion Produit/Ajouter" textFill="WHITE" />
+            <Label layoutX="31.0" layoutY="24.0" prefHeight="27.0" prefWidth="179.0" text="Ajouter Produit" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="mt" layoutX="841.0" layoutY="53.0" text="100" />
-            <Label layoutX="397.0" layoutY="15.0" text="PANIER">
-               <font>
-                  <Font name="Arial Black" size="37.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="188.0" layoutY="336.0" prefHeight="155.0" prefWidth="654.0">
+      <Pane layoutX="227.0" layoutY="126.0" prefHeight="354.0" prefWidth="732.0" AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button layoutX="369.0" layoutY="89.0" mnemonicParsing="false" onAction="#clickMe" style="-fx-background-color: #DCDCDC;" text="Valider" textFill="#54c61f" />
+            <Label layoutX="117.0" layoutY="57.0" text="Nom Produit">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="104.0" prefHeight="21.0" prefWidth="99.0" text="Prix">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="195.0" layoutY="295.0" mnemonicParsing="false" onAction="#ajouterProduit" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #ce9b61;" stylesheets="@../../css/fullpackstyling.css" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@..././images/icons8-plus-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="434.0" layoutY="295.0" mnemonicParsing="false" onAction="#switchButton" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #F75868;" stylesheets="@../../css/fullpackstyling.css" text="Annuler" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icons8-cancel-96.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TextField fx:id="nomProduit" layoutX="307.0" layoutY="55.0" />
+            <TextField fx:id="prixProduit" layoutX="307.0" layoutY="102.0" />
+            <Label layoutX="117.0" layoutY="151.0" text="Quantité Disponible">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="199.0" text="Quantité Utilisée">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="qtDisponible" layoutX="307.0" layoutY="149.0" />
+            <TextField fx:id="qtUtilisee" layoutX="307.0" layoutY="197.0" />
          </children>
       </Pane>
-      <VBox prefHeight="851.0" prefWidth="227.0" style="-fx-background-color: #181b22;">
+      <VBox layoutX="-2.0" prefHeight="838.0" prefWidth="233.0" style="-fx-background-color: #181b22;">
          <children>
-            <Pane prefHeight="137.0" prefWidth="227.0">
+            <Pane prefHeight="145.0" prefWidth="227.0">
                <children>
                   <ImageView fitHeight="114.0" fitWidth="114.0" layoutX="57.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -94,20 +122,6 @@
                </graphic>
             </Button>
             <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestioncommande" prefHeight="41.0" prefWidth="227.0" text="Gestion Commandes" textFill="WHITE">
-               <padding>
-                  <Insets left="21.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Reservation" textFill="WHITE">
                <padding>
                   <Insets left="21.0" />
                </padding>
@@ -191,7 +205,7 @@
                   <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionoffre" prefHeight="35.0" prefWidth="229.0" text="Gestion  offres" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backOffre" prefHeight="35.0" prefWidth="229.0" text="Gestion  Offre" textFill="WHITE">
                <padding>
                   <Insets left="21.0" />
                </padding>
@@ -205,7 +219,7 @@
                   <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#reservationgs" prefHeight="35.0" prefWidth="229.0" text="Gestion  Reservation" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backReserv" prefHeight="41.0" prefWidth="227.0" text="Gestion Reservation" textFill="WHITE">
                <padding>
                   <Insets left="21.0" />
                </padding>
@@ -235,6 +249,5 @@
             </Button>
          </children>
       </VBox>
-      <Button layoutX="1031.0" layoutY="429.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: #DCDCDC;" text="Retour" />
    </children>
 </AnchorPane>

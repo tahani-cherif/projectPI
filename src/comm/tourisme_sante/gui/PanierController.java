@@ -47,8 +47,6 @@ public class PanierController implements Initializable {
   
     @FXML
     private GridPane panierGrid;
-    @FXML
-    private TextField searchFieldResp;
     
     
         
@@ -192,5 +190,75 @@ public class PanierController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+       @FXML
+    private void gestionrendezvous(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
+        Parent root = loader.load();
+        panierGrid.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionmedecin(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
+        Parent root = loader.load();
+        panierGrid.getScene().setRoot(root);
+    }
+
+   @FXML
+    private void backType(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
+            Parent root = loader.load();
+         
+             panierGrid.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void backInter(ActionEvent event)  throws IOException  {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
+            Parent root = loader.load();
+         
+             panierGrid.getScene().setRoot(root);
+    }
+
+ 
+    @FXML
+    private void gestionoffre(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+         
+      panierGrid.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void reservationgs(ActionEvent event) throws IOException {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+            Parent root = loader.load();
+         
+           panierGrid.getScene().setRoot(root);
+    }
+    @FXML
+    private void gestioncommande(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
+            Parent root = loader.load();
+         
+      panierGrid.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionproduit(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+            Parent root = loader.load();   
+      panierGrid.getScene().setRoot(root);
+    }
+
+   @FXML
+    private void gestionpanier(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
+            Parent root = loader.load();   
+      panierGrid.getScene().setRoot(root);
+    }
+
     
 }
