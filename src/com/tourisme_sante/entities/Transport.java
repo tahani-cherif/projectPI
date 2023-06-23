@@ -13,8 +13,8 @@ import java.util.logging.Logger;
 public class Transport {
  //public static  enum TypeTransport {VOITURE,AUTOBUS  } 
 public enum TypeTransport {
-    VOITURE("Car"),
-    AUTOBUS("Bus");
+    VOITURE("VOITURE"),
+    AUTOBUS("AUTOBUS");
 
     private String displayName;
 

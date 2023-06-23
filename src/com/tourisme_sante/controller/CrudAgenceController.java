@@ -169,7 +169,6 @@ public class CrudAgenceController implements Initializable {
     @FXML
      private void AjouterAgence(ActionEvent event) throws IOException  {
          
-     ServiceAgence sm=new ServiceAgence();
   
      //  int number = Integer.parseInt(telAgence.getText());
           

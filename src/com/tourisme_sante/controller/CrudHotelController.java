@@ -124,7 +124,7 @@ public class CrudHotelController implements Initializable {
 
     private Label idCount;
 
-    private SimpleIntegerProperty likeCount = new SimpleIntegerProperty(0);
+    private SimpleIntegerProperty likeCount = new SimpleIntegerProperty(0); // provides methods for observing and binding to changes in its value.
 
     @FXML
     private ComboBox<String> idOrderby;
@@ -150,7 +150,7 @@ public class CrudHotelController implements Initializable {
         colAgnece.setCellValueFactory(new PropertyValueFactory<Hotel, String>("nomAgence"));
 
        // idCount.textProperty().bind(likeCount.asString());
-                idCount.textProperty().bind(Bindings.convert(likeCount));
+                idCount.textProperty().bind(Bindings.convert(likeCount));//converter that converts the value of likeCount to a string value. 
 
 
 colAgnece.setCellValueFactory(cellData -> {
@@ -384,10 +384,11 @@ final String user = "sabrina.aloui@live.fr";
  
     // Configuration des propriétés JavaMail
     Properties props = new Properties();
-    props.put("mail.smtp.host", "smtp.office365.com");
+    //SMTP (Simple Mail Transfer Protocol)
+    props.put("mail.smtp.host", "smtp.office365.com");  // It sets the SMTP server host to "smtp.office365.com". This specifies the address of the email server that will be used to send the emails.
     props.put("mail.smtp.port", "587");
     props.put("mail.smtp.auth", "true");
-    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.starttls.enable", "true"); // STARTTLS is a command used to upgrade a plain text connection to an encrypted (TLS or SSL) connection.
 
     // Création de la session JavaMail
     Session session = Session.getInstance(props, new javax.mail.Authenticator() {
@@ -406,8 +407,10 @@ final String user = "sabrina.aloui@live.fr";
    
 
 
-String content =  "Bonjour " + idNom.getText() + ",<br/><br/>"
+String content =  "Bonjour ," 
 +" Voici  les détails de votre Ajout :<br/><br/>"
+                + "<p>   hotel name : " + idNom.getText() + "</p>"
+
         + "<p>  Adresse hotel : " + idAdresse.getText() + "</p>"
         + "<p>Classification : " + idClassification.getText() + "</p>"
         + "<p> Numer de Téléphone: " + idTéléphone.getText() + "</p>"

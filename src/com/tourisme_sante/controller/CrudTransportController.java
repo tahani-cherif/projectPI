@@ -130,7 +130,7 @@ private TypeTransport transportType;
 				}
 				
 				String lowerCaseFilter = newValue.toLowerCase();
-				
+				// The indexOf method returns the index of the first occurrence of lowerCaseFilter within the string, or -1 if it is not found.
 				if (transport.getMatricule().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
 					return true; // Filter matches 
 				} else if(String.valueOf(transport.getIdAgence()).indexOf(lowerCaseFilter)!=-1) {
@@ -244,6 +244,7 @@ comoType.setConverter(new StringConverter<TypeTransport>() {
 comoType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
     // Update the selectedTransportType variable with the new value
     transportType = newValue;
+    
 });
 
 
@@ -402,7 +403,16 @@ comoType.getSelectionModel().selectedItemProperty().addListener((observable, old
     private void cliked(MouseEvent event) {
         T = tableTransport.getSelectionModel().getSelectedItem();
         idMatricule.setText(T.getMatricule());
-        comoType.setValue(T.getTransportType());
+        System.out.println(T);
+        
+        if(transportType.AUTOBUS.equals(T.getTransportType())){
+            comoType.setValue(transportType.AUTOBUS);
+        }
+        else{
+                        comoType.setValue(transportType.VOITURE);
+
+        }
+       // comoType.setValue(T.getTransportType());
 
         idPrix.setText(String.valueOf(T.getPrix()));
         comoAgence.setValue(T.getNomAgence());
