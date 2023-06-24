@@ -166,7 +166,7 @@ tb.getColumns().add(colBtn);
            
 
       // Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<TypeInterventions> filteredData = new FilteredList<>(listType, b -> true);
+        FilteredList<TypeInterventions> filteredData = new FilteredList<>(listType, b -> true);   //true,spécifie le prédicat initial pour le filtrage.
 	        FilteredList<TypeInterventions> filterbyNom = new FilteredList<>(listType, b -> true);
 	        FilteredList<TypeInterventions> filterbyDesc = new FilteredList<>(listType, b -> true);
 
@@ -315,15 +315,15 @@ tb.getColumns().add(colBtn);
 
     @FXML
     private void detailsTypeInterventions(MouseEvent event) throws IOException {
-        index=tb.getSelectionModel().getSelectedIndex();
+        index=tb.getSelectionModel().getSelectedIndex();  //recuperer m'index de l element selectioné
         
         System.out.println(index);
-        if(index<=-1)
+        if(index<=-1)  // element non selectioné
             return;
-        tt =tb.getSelectionModel().getSelectedItem();
+        tt =tb.getSelectionModel().getSelectedItem(); //recupere id element selectioné
         
         System.out.println(tt);
-        id=tt.getId(); //recupere id element selectioné
+        id=tt.getId();  //recupere id element selectioné
         System.out.println("id : "+ id);
         
         
