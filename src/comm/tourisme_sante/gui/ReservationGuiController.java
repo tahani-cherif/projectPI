@@ -140,6 +140,7 @@ public class ReservationGuiController implements Initializable{
         columnUser.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("idUser"));
         columnAgence.setCellValueFactory(new PropertyValueFactory<Reservation,String>("nom"));
 ObservableList<Reservation> reservationList = FXCollections.observableList(sr.afficher());
+        System.out.println(sr.afficher());
       
       idTable.setItems(reservationList);
       
@@ -147,9 +148,10 @@ ObservableList<Reservation> reservationList = FXCollections.observableList(sr.af
        Callback<TableColumn<Reservation, Void>, TableCell<Reservation, Void>> cellFactory = new Callback<TableColumn<Reservation, Void>, TableCell<Reservation, Void>>() {
             @Override
             public TableCell<Reservation, Void> call(final TableColumn<Reservation, Void> param) {
+                  Button btn = new Button("Remove");
+btn.setStyle("-fx-background-color:#Fb6868;"+"-fx-pref-width: 100px;"+"-fx-text-fill: white");
                 final TableCell<Reservation, Void> cell = new TableCell<Reservation, Void>() {
 
-                    private final Button btn = new Button("Remove");
 
                     {
                         btn.setOnAction((ActionEvent event) -> {

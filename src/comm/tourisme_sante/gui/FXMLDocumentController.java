@@ -127,12 +127,12 @@ public class FXMLDocumentController implements Initializable {
             Document document = new Document();
 
             // Set the output file name and location
-            String outputFile = "D:\\Documents\\PDF\\invoice_" + offre.getNom() + ".pdf";
+            String outputFile = "C:\\Users\\User\\Documents\\pdf\\invoice_" + offre.getNom() + ".pdf";
             PdfWriter.getInstance(document, new FileOutputStream(outputFile));
 
             // Open the document for writing
             document.open();
-            Image logo = Image.getInstance("C:\\Users\\benbr\\OneDrive\\Images\\logo\\logo.jpg"); // Replace with the actual path to your logo image
+            Image logo = Image.getInstance("C:\\Users\\User\\Documents\\NetBeansProjects\\JavaApplication1\\src\\image\\logotourism.png"); // Replace with the actual path to your logo image
         logo.scaleToFit(100, 100); // Adjust the width and height as desired
         logo.setAlignment(Element.ALIGN_LEFT);
         document.add(logo);
@@ -215,8 +215,7 @@ private PdfPCell createCell(String text, boolean isHeader) {
             public TableCell<Offre, Void> call(final TableColumn<Offre, Void> param) {
                                       Button btn = new Button("Remove");
 btn.setStyle("-fx-background-color:#Fb6868;"+"-fx-pref-width: 100px;"+"-fx-text-fill: white");
-                     Button btnprint = new Button("Print");
-btnprint.setStyle("-fx-background-color:white;"+"-fx-pref-width: 100px;");
+
 
                 final TableCell<Offre, Void> cell = new TableCell<Offre, Void>() {
 
@@ -263,9 +262,10 @@ btnprint.setStyle("-fx-background-color:white;"+"-fx-pref-width: 100px;");
    Callback<TableColumn<Offre, Void>, TableCell<Offre, Void>> cellFactoryprint = new Callback<TableColumn<Offre, Void>, TableCell<Offre, Void>>() {
             @Override
             public TableCell<Offre, Void> call(final TableColumn<Offre, Void> param) {
+                                     Button btnprint = new Button("Print");
+btnprint.setStyle("-fx-background-color:grey;"+"-fx-pref-width: 100px;");
                 final TableCell<Offre, Void> cell = new TableCell<Offre, Void>() {
 
-                                        private final Button btnprint = new Button("Print");
 
 
                     {
