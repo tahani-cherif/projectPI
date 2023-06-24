@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@interfacerdv.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="comm.tourisme_sante.gui.GestionnaireController">
+      <children>
+      <Label layoutX="313.0" layoutY="161.0" text="Details Client" textFill="#1e0d1e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="324.0" layoutY="284.0" text="Prenom" textFill="#120414" />
+      <Label layoutX="324.0" layoutY="367.0" text="Email" textFill="#100111" />
+      <Label layoutX="325.0" layoutY="437.0" text="MDP" textFill="#0e0111" />
+      <Label layoutX="323.0" layoutY="519.0" text="Number" textFill="#1e0225" />
+      <Label layoutX="327.0" layoutY="601.0" text="Sexe" textFill="#140112" />
+      <Label layoutX="324.0" layoutY="677.0" text="Adresse" textFill="#08000a" />
+      <TextField fx:id="nb" layoutX="323.0" layoutY="550.0" promptText="Entrez votre numéro" />
+      <TextField fx:id="nom" layoutX="323.0" layoutY="246.0" promptText="Entrez votre nom" />
+      <TextField fx:id="prenom" layoutX="323.0" layoutY="323.0" promptText="Entrez votre prenom" />
+      <TextField fx:id="sx" layoutX="323.0" layoutY="631.0" promptText="Homme/Femme" />
+      <TextField fx:id="email" layoutX="323.0" layoutY="394.0" promptText="Entrz votre email" />
+      <TextField fx:id="MDP" layoutX="323.0" layoutY="468.0" promptText="Password" />
+      <TextField fx:id="adr" layoutX="323.0" layoutY="705.0" promptText="Entrez votre adresse" />
+      <Button fx:id="aj1" layoutX="369.0" layoutY="772.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: #4BB543;" text="Ajouter Client" textFill="WHITE" />
+      <Button fx:id="md2" layoutX="678.0" layoutY="772.0" mnemonicParsing="false" onAction="#modifier" prefHeight="50.0" prefWidth="212.0" style="-fx-background-color: #ffcc00;" text="Modifier Client" textFill="WHITE" />
+      <TableView fx:id="tab" layoutX="701.0" layoutY="229.0" onMouseClicked="#clicked" prefHeight="438.0" prefWidth="710.0">
+        <columns>
+          <TableColumn fx:id="cl1" prefWidth="75.0" text="Nom" />
+          <TableColumn fx:id="cl2" prefWidth="75.0" text="Prenom" />
+            <TableColumn fx:id="cl3" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="cl4" prefWidth="75.0" text="Mdp" />
+            <TableColumn fx:id="cl5" prefWidth="75.0" text="Role" />
+            <TableColumn fx:id="cl6" prefWidth="75.0" text="Number" />
+            <TableColumn fx:id="cl7" prefWidth="72.0" text="Sexe" />
+            <TableColumn fx:id="cl8" prefWidth="75.0" text="Adresse" />
+        </columns>
+      </TableView>
+      <Pane layoutX="220.0" layoutY="40.0" prefHeight="89.0" prefWidth="1704.0" style="-fx-background-color: #5a5958;">
+         <children>
+            <Label layoutX="31.0" layoutY="27.0" text="Gestion/Utilisateur" textFill="WHITE" />
+            <Label layoutX="31.0" layoutY="45.0" prefHeight="27.0" prefWidth="299.0" text="Gestionnaire" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="325.0" layoutY="208.0" text="Nom" />
+      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="395.0" layoutY="783.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../projectPI-tahani/projectPI-tahani/src/image/icons8-plus-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="29.0" layoutX="686.0" layoutY="783.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../projectPI-tahani/projectPI-tahani/src/image/icons8-pencil-100.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="-5.0" prefHeight="841.0" prefWidth="227.0" style="-fx-background-color: #181b22;">
+         <children>
+            <Pane prefHeight="145.0" prefWidth="227.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="114.0" layoutX="57.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/logotourism.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Utilisateurs" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backType" prefHeight="35.0" prefWidth="229.0" text="Gestion Type Intervention" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backInter" prefHeight="35.0" prefWidth="229.0" text="Gestion  Intervention" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionoffre" prefHeight="35.0" prefWidth="229.0" text="Gestion  offres" textFill="WHITE">
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </children> 
+</AnchorPane>

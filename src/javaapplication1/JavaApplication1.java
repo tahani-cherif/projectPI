@@ -11,7 +11,7 @@ import com.tourisme_sante.entities.Reservation;
 import com.tourisme_sante.entities.Transport;
 import com.tourisme_sante.entities.TypeInterventions;
 import com.tourisme_sante.entities.Utilisateur;
-import com.tourisme_sante.entities.admin;
+import com.tourisme_sante.entities.Admin;
 import com.tourisme_sante.entities.medecin_interventions;
 import com.tourisme_sante.entities.medecins;
 import comm.tourisme_sante.services.ServiceAgence;

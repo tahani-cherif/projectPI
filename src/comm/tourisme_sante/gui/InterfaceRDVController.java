@@ -7,8 +7,8 @@ package comm.tourisme_sante.gui;
 import com.jfoenix.controls.JFXTimePicker;
 import com.tourisme_sante.entities.RDV;
 import com.tourisme_sante.entities.Utilisateur;
-import com.tourisme_sante.entities.admin;
-import com.tourisme_sante.entities.client;
+import com.tourisme_sante.entities.Admin;
+import com.tourisme_sante.entities.Client;
 import com.tourisme_sante.entities.medecins;
 import com.tourisme_sante.utils.Datasource;
 import comm.tourisme_sante.services.serviceMedecin;
@@ -109,7 +109,7 @@ public class InterfaceRDVController implements Initializable {
         nomuser.setCellValueFactory(new PropertyValueFactory<RDV, String>("nomuser"));
         date.setCellValueFactory(new PropertyValueFactory<RDV, Date>("dateRDV"));
            idheure.setCellValueFactory(new PropertyValueFactory<RDV, String>("heureRDV"));
-         ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
+         ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher3(LoginController.users.getId()));
         table.setItems(listerdv);
          TableColumn<RDV, Void> colBtn = new TableColumn("Suprime");
        Callback<TableColumn<RDV, Void>, TableCell<RDV, Void>> cellFactory = new Callback<TableColumn<RDV, Void>, TableCell<RDV, Void>>() {
@@ -132,7 +132,7 @@ public class InterfaceRDVController implements Initializable {
                                         RDV data = getTableView().getItems().get(getIndex());
                                  System.out.println("selectedData: " + data);
                                  rdv.supprimer(data);
-                                   ObservableList<RDV> rdvList = FXCollections.observableList(rdv.afficher());
+                                   ObservableList<RDV> rdvList = FXCollections.observableList(rdv.afficher3(LoginController.users.getId()));
                                   table.setItems(rdvList);
                                 } else {
                                     // ... user chose CANCEL or closed the dialog
@@ -239,7 +239,7 @@ public class InterfaceRDVController implements Initializable {
             }else{
                  for (Map.Entry ele : map.entrySet()) {
             if(ele.getValue().equals(idmedecin.getValue())){     
-                RDV.ajouter(new RDV(Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().toString()));
+                RDV.ajouter(new RDV(Integer.parseInt(ele.getKey().toString()),LoginController.users.getId(), Date.valueOf(iddate.getValue()),test.getValue().toString()));
             }
         }
    //get utilisateur by id and envoi de mail
@@ -253,7 +253,7 @@ public class InterfaceRDVController implements Initializable {
             ResultSet rs = st.executeQuery();
             if(rs.next()) {
                 Utilisateur x;
-             liste=new client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getInt("number"),rs.getString("role"));
+             liste=new Client(rs.getInt("number"),rs.getString("sex"),rs.getString("adresse"), rs.getInt("id"),rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getString("role"));
                // Envoi de l'e-mail
     String host = "smtp.live.com";
         final String user = "sabrina.aloui@live.fr"; 
@@ -289,7 +289,7 @@ public class InterfaceRDVController implements Initializable {
         Transport.send(message);
 
         System.out.println("E-mail envoyé avec succès !");
-        ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher());
+        ObservableList<RDV> listerdv = FXCollections.observableList(rdv.afficher3(LoginController.users.getId()));
        table.setItems(listerdv);
         JOptionPane.showMessageDialog(null, "RDV ajoutée !");
         
@@ -362,7 +362,7 @@ public class InterfaceRDVController implements Initializable {
             }else{
                                        for (Map.Entry ele : map.entrySet()) {
                                         if(ele.getValue().equals(idmedecin.getValue())){     
-                                            RDV.modifier(new RDV(x.getId(),Integer.parseInt(ele.getKey().toString()), 1, Date.valueOf(iddate.getValue()),test.getValue().toString()));
+                                            RDV.modifier(new RDV(x.getId(),Integer.parseInt(ele.getKey().toString()),LoginController.users.getId(), Date.valueOf(iddate.getValue()),test.getValue().toString()));
                                         }
                                           
                                     }
@@ -376,7 +376,7 @@ public class InterfaceRDVController implements Initializable {
             ResultSet rs = st.executeQuery();
             if(rs.next()) {
                 Utilisateur x;
-             liste=new client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getInt("number"),rs.getString("role"));
+             liste=new Client(rs.getInt("number"),rs.getString("sex"),rs.getString("adresse"), rs.getInt("id"),rs.getString("nom"), rs.getString("prenom"),rs.getString("email"),rs.getString("MDP"),rs.getString("role"));
                // Envoi de l'e-mail
     String host = "smtp.live.com";
       final String user = "sabrina.aloui@live.fr"; 
@@ -459,14 +459,12 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
         iddate.getScene().setRoot(root);
     }
 
-    @FXML
     private void gestionmedecin(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
         Parent root = loader.load();
         iddate.getScene().setRoot(root);
     }
 
-   @FXML
     private void backType(ActionEvent event) throws IOException {
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
@@ -475,7 +473,6 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
              iddate.getScene().setRoot(root);
     }
 
-    @FXML
     private void backInter(ActionEvent event)  throws IOException  {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
             Parent root = loader.load();
@@ -491,7 +488,6 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
            iddate.getScene().setRoot(root);
     }
 
-    @FXML
     private void backOffre(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
             Parent root = loader.load();
@@ -506,7 +502,6 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
 
     }
 
-    @FXML
     private void gestionproduit(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
             Parent root = loader.load();   
@@ -519,5 +514,18 @@ message.setContent( "<div><p>Confirmation de Rendez-vous de "
             Parent root = loader.load();   
       iddate.getScene().setRoot(root);
     }
-    
+
+      @FXML
+    private void gestionutilisateur(ActionEvent event) throws IOException {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("GestionClient.fxml"));
+            Parent root = loader.load();   
+      iddate.getScene().setRoot(root);
+    }
+
+     @FXML
+    private void gestionsearch(ActionEvent event) throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("searchDate.fxml"));
+            Parent root = loader.load();   
+      iddate.getScene().setRoot(root);
+    }
 }

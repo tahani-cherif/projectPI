@@ -593,14 +593,12 @@ tl.getColumns().add(colBtn);
           descF.getScene().setRoot(root);
     }
 
-         @FXML
     private void gestionrendezvous(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
         Parent root = loader.load();
         descF.getScene().setRoot(root);
     }
 
-    @FXML
     private void gestionmedecin(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
         Parent root = loader.load();
@@ -624,7 +622,6 @@ tl.getColumns().add(colBtn);
              descF.getScene().setRoot(root);
     }
 
-     @FXML
     private void backReserv(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
             Parent root = loader.load();
@@ -640,7 +637,6 @@ tl.getColumns().add(colBtn);
       descF.getScene().setRoot(root);
     }
 
-    @FXML
     private void gestioncommande(ActionEvent event) throws IOException {
              FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
             Parent root = loader.load();
@@ -648,16 +644,21 @@ tl.getColumns().add(colBtn);
       descF.getScene().setRoot(root);
     }
 
-    @FXML
     private void gestionproduit(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
             Parent root = loader.load();   
       descF.getScene().setRoot(root);
     }
 
-   @FXML
     private void gestionpanier(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
+            Parent root = loader.load();   
+      descF.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionutilisateur(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("gestionnaire.fxml"));
             Parent root = loader.load();   
       descF.getScene().setRoot(root);
     }

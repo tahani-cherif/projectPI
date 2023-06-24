@@ -19,8 +19,10 @@ public abstract class Utilisateur {
     private String MDP;
     private String role;
     
+    public static Utilisateur u;
+    
 
-    public Utilisateur(String nom, String prenom,String email, String MDP,String role) {
+    public Utilisateur(String nom, String prenom,String email, String MDP, String role) {
          this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -28,7 +30,7 @@ public abstract class Utilisateur {
         this.role=role;
     }
 
-    public Utilisateur(int id, String nom, String prenom, String email, String MDP,String role) {
+    public Utilisateur(int id, String nom, String prenom, String email, String MDP, String role) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -36,13 +38,16 @@ public abstract class Utilisateur {
         this.MDP = MDP;
         this.role=role;
     }
-   public String getRole() {
+
+    public String getRole() {
         return role;
     }
 
     public void setRole(String role) {
         this.role = role;
     }
+    
+
     public int getId() {
         return id;
     }
@@ -85,7 +90,7 @@ public abstract class Utilisateur {
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", MDP=" + MDP + '}';
+        return "Utilisateur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", MDP=" + MDP +",role=" + role+ '}';
     }
 
 }

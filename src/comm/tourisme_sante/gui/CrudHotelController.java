@@ -123,8 +123,6 @@ public class CrudHotelController implements Initializable {
     Hotel H = null;
     @FXML
     private Button idAddBtn;
-    @FXML
-    private Button gestionhotel;
 
     /**
      * Initializes the controller class.
@@ -643,31 +641,39 @@ private boolean validatePrix( String prix )  {
 }
 
 
+  @FXML
+    private void gestionmedecin(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
+        Parent root = loader.load();
+        tableH.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionproduit(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+            Parent root = loader.load();   
+      tableH.getScene().setRoot(root);
+    }
+
+
     @FXML
     private void gestiontransport(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("./CrudTransport.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("CrudTransport.fxml"));
+            Parent root = loader.load();   
+      tableH.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gestionhotel(ActionEvent event) throws IOException {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("CrudHotel.fxml"));
+            Parent root = loader.load();   
+      tableH.getScene().setRoot(root);
     }
 
     @FXML
     private void gestionagence(ActionEvent event) throws IOException {
-  
-               Parent root = FXMLLoader.load(getClass().getResource("./CrudAgence.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-        @FXML
-    private void gestionhotel(ActionEvent event) throws IOException {
-  
-               Parent root = FXMLLoader.load(getClass().getResource(".CrudHotel.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("CrudAgence.fxml"));
+            Parent root = loader.load();   
+      tableH.getScene().setRoot(root);
     }
 }

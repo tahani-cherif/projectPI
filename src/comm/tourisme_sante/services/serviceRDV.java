@@ -100,7 +100,22 @@ public  class serviceRDV implements services<RDV>{
         return list;
     }
 
-
+    public List afficher3(int id) {
+ List<RDV> list = new ArrayList<>();
+        
+       String req = "SELECT RDV.id,fullName,idmedecin,iduser,heureRDV, nom,prenom,dateRDV FROM medecins JOIN RDV on medecins.id=rdv.idmedecin join utilisateur on rdv.iduser=utilisateur.id where rdv.iduser=? ; ";
+      try {
+            PreparedStatement pst = cnx.prepareStatement(req);
+            pst.setInt(1,id);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+             list.add(new RDV(rs.getInt("id"),rs.getInt("idmedecin"),rs.getInt("iduser"),rs.getString("fullName"),rs.getString("nom")+" "+rs.getString("prenom"),rs.getDate("dateRDV"),rs.getString("heureRDV")));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
 
 }
 

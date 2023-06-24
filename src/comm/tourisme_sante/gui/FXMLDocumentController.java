@@ -314,19 +314,7 @@ btnprint.setStyle("-fx-background-color:white;"+"-fx-pref-width: 100px;");
 
     }    
 
-        @FXML
-    private void gestionrendezvous(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
-        Parent root = loader.load();
-        idTable.getScene().setRoot(root);
-    }
 
-    @FXML
-    private void gestionmedecin(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
-        Parent root = loader.load();
-        idTable.getScene().setRoot(root);
-    }
 
    @FXML
     private void backType(ActionEvent event) throws IOException {
@@ -348,14 +336,6 @@ btnprint.setStyle("-fx-background-color:white;"+"-fx-pref-width: 100px;");
 
 
     @FXML
-    private void gestioncommande(ActionEvent event) throws IOException {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
-            Parent root = loader.load();
-         
-      idTable.getScene().setRoot(root);
-    }
-
-    @FXML
     private void gestionoffre(ActionEvent event) throws IOException {
                   FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
             Parent root = loader.load();
@@ -363,34 +343,12 @@ btnprint.setStyle("-fx-background-color:white;"+"-fx-pref-width: 100px;");
       idTable.getScene().setRoot(root);
     }
 
-    @FXML
-    private void reservationgs(ActionEvent event) throws IOException {
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
-            Parent root = loader.load();
-         
-           idTable.getScene().setRoot(root);
-    }
 
     @FXML
-    private void gestionproduit(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
+    private void gestionutilisateur(MouseEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("gestionnaire.fxml"));
             Parent root = loader.load();   
       idTable.getScene().setRoot(root);
     }
-
- @FXML
-    private void gestionpanier(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
-            Parent root = loader.load();   
-      idTable.getScene().setRoot(root);
-    }
-
-    @FXML
-    private void gestionsearch(ActionEvent event) throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("searchDate.fxml"));
-            Parent root = loader.load();   
-      idTable.getScene().setRoot(root);
-    }
-   
     
 }

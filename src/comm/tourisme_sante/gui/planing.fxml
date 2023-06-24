@@ -31,9 +31,33 @@
          <Font size="22.0" />
       </font>
    </Text>
-   <VBox layoutX="-5.0" prefHeight="843.0" prefWidth="236.0" style="-fx-background-color: #181b22;">
+   <Pane layoutX="231.0" layoutY="46.0" prefHeight="89.0" prefWidth="1420.0" style="-fx-background-color: #5a5958;">
       <children>
-         <Pane prefHeight="145.0" prefWidth="236.0">
+         <Label layoutX="31.0" layoutY="27.0" text="Gestion/Planing d'un medecin" textFill="WHITE" />
+         <Label fx:id="idnommedecin" layoutX="31.0" layoutY="45.0" prefHeight="27.0" prefWidth="299.0" text="Planing de medecin" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <HBox alignment="CENTER" layoutX="404.0" layoutY="203.0" prefHeight="44.0" prefWidth="716.0" spacing="88.75">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER" />
+         <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mo" textAlignment="CENTER" />
+         <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu" textAlignment="CENTER" />
+         <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We" textAlignment="CENTER" />
+         <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Th" textAlignment="CENTER" />
+         <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr" textAlignment="CENTER" />
+         <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sa" textAlignment="CENTER" />
+      </children>
+      <padding>
+         <Insets right="9.0" />
+      </padding>
+   </HBox>
+   <VBox prefHeight="842.0" prefWidth="233.0" style="-fx-background-color: #181b22;">
+      <children>
+         <Pane prefHeight="145.0" prefWidth="227.0">
             <children>
                <ImageView fitHeight="114.0" fitWidth="114.0" layoutX="57.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                   <image>
@@ -70,35 +94,7 @@
                <ImageView fitHeight="51.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
          </Button>
-         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestioncommande" prefHeight="41.0" prefWidth="227.0" text="Gestion Commandes" textFill="WHITE">
-            <padding>
-               <Insets left="21.0" />
-            </padding>
-            <font>
-               <Font name="System Bold" size="13.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <graphic>
-               <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic>
-         </Button>
-         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="227.0" text="Gestion Agence" textFill="WHITE">
-            <padding>
-               <Insets left="21.0" />
-            </padding>
-            <font>
-               <Font name="System Bold" size="13.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <graphic>
-               <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic>
-         </Button>
-         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionrendezvous" prefHeight="41.0" prefWidth="227.0" text="Gestion Rendez-vous" textFill="WHITE">
+         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionagence" prefHeight="41.0" prefWidth="227.0" text="Gestion Agence" textFill="WHITE">
             <padding>
                <Insets left="21.0" />
             </padding>
@@ -126,100 +122,28 @@
                <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
          </Button>
-         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backType" prefHeight="41.0" prefWidth="227.0" text="Gestion Type Intervention" textFill="WHITE">
+         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestiontransport" prefHeight="41.0" prefWidth="227.0" text="Gestion Transport" textFill="WHITE">
             <padding>
                <Insets left="21.0" />
             </padding>
             <font>
                <Font name="System Bold" size="13.0" />
             </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
             <graphic>
                <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
          </Button>
-         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backInter" prefHeight="41.0" prefWidth="227.0" text="Gestion Intervention" textFill="WHITE">
+         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionhotel" prefHeight="41.0" prefWidth="227.0" text="Gestion Hotel" textFill="WHITE">
             <padding>
                <Insets left="21.0" />
             </padding>
             <font>
                <Font name="System Bold" size="13.0" />
             </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <graphic>
-               <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic>
-         </Button>
-         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backOffre" prefHeight="41.0" prefWidth="227.0" text="Gestion Offre" textFill="WHITE">
-            <padding>
-               <Insets left="21.0" />
-            </padding>
-            <font>
-               <Font name="System Bold" size="13.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <graphic>
-               <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic>
-         </Button>
-         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backReserv" prefHeight="41.0" prefWidth="227.0" text="Gestion Reservation" textFill="WHITE">
-            <padding>
-               <Insets left="21.0" />
-            </padding>
-            <font>
-               <Font name="System Bold" size="13.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <graphic>
-               <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic>
-         </Button>
-         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#gestionpanier" prefHeight="41.0" prefWidth="227.0" text="Gestion panier" textFill="WHITE">
-            <padding>
-               <Insets left="21.0" />
-            </padding>
-            <font>
-               <Font name="System Bold" size="13.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
             <graphic>
                <ImageView fitHeight="37.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
          </Button>
       </children>
    </VBox>
-   <Pane layoutX="231.0" layoutY="46.0" prefHeight="89.0" prefWidth="1420.0" style="-fx-background-color: #5a5958;">
-      <children>
-         <Label layoutX="31.0" layoutY="27.0" text="Gestion/Planing d'un medecin" textFill="WHITE" />
-         <Label fx:id="idnommedecin" layoutX="31.0" layoutY="45.0" prefHeight="27.0" prefWidth="299.0" text="Planing de medecin" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="18.0" />
-            </font>
-         </Label>
-      </children>
-   </Pane>
-   <HBox alignment="CENTER" layoutX="404.0" layoutY="203.0" prefHeight="44.0" prefWidth="716.0" spacing="88.75">
-      <children>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER" />
-         <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mo" textAlignment="CENTER" />
-         <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu" textAlignment="CENTER" />
-         <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We" textAlignment="CENTER" />
-         <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Th" textAlignment="CENTER" />
-         <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr" textAlignment="CENTER" />
-         <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sa" textAlignment="CENTER" />
-      </children>
-      <padding>
-         <Insets right="9.0" />
-      </padding>
-   </HBox>
 </AnchorPane>

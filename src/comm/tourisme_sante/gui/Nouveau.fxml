@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comm.tourisme_sante.gui.NouveauController">
+      <children>
+      <AnchorPane id="AnchorPane" layoutY="3.0" prefHeight="977.0" prefWidth="1765.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label layoutX="338.0" layoutY="335.0" text="Nouveau mot de pass">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font></Label>
+            <Label layoutX="338.0" layoutY="473.0" text="Confirmer nouveau de pass">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font></Label>
+            <TextField fx:id="tfnouveau" layoutX="703.0" layoutY="324.0" prefHeight="53.0" prefWidth="307.0" />
+            <TextField fx:id="tfconfirm" layoutX="703.0" layoutY="462.0" prefHeight="53.0" prefWidth="307.0" />
+            <Button layoutX="979.0" layoutY="655.0" mnemonicParsing="false" onAction="#nouveaumotdepass" prefHeight="63.0" prefWidth="194.0" style="-fx-background-color: #ffcc00;" text="Valider" textFill="#fcfcfc">
+               <font>
+                  <Font size="27.0" />
+               </font></Button>
+            <ImageView fitHeight="166.0" fitWidth="518.0" layoutX="1038.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/alerte-mot-de-passe-logo.png" />
+               </image>
+            </ImageView>
+            <VBox layoutX="20.0" layoutY="-42.0" prefHeight="1008.0" prefWidth="232.0" style="-fx-background-color: #181b22;">
+               <children>
+                  <Pane prefHeight="145.0" prefWidth="227.0">
+                     <children>
+                        <ImageView fitHeight="114.0" fitWidth="114.0" layoutX="37.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/logotourism.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="251.0" layoutY="50.0" prefHeight="89.0" prefWidth="1514.0" style="-fx-background-color: #5a5958;">
+         <children>
+            <Label layoutX="31.0" layoutY="24.0" text="Gestion Mot de passe" textFill="WHITE" />
+            <Label layoutX="31.0" layoutY="45.0" prefHeight="27.0" prefWidth="299.0" text="Confirmation mot de passe" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

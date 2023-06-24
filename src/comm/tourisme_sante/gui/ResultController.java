@@ -151,14 +151,12 @@ ObservableList<Reservation> reservationList = FXCollections.observableList(sr.af
         idTable.getScene().setRoot(root);
     }
 
-    @FXML
     private void gestionmedecin(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
         Parent root = loader.load();
         idTable.getScene().setRoot(root);
     }
 
-   @FXML
     private void backType(ActionEvent event) throws IOException {
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
@@ -167,7 +165,6 @@ ObservableList<Reservation> reservationList = FXCollections.observableList(sr.af
              idTable.getScene().setRoot(root);
     }
 
-    @FXML
     private void backInter(ActionEvent event)  throws IOException  {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
             Parent root = loader.load();
@@ -185,7 +182,6 @@ ObservableList<Reservation> reservationList = FXCollections.observableList(sr.af
       idTable.getScene().setRoot(root);
     }
 
-    @FXML
     private void gestionoffre(ActionEvent event) throws IOException {
                   FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
             Parent root = loader.load();
@@ -201,7 +197,6 @@ ObservableList<Reservation> reservationList = FXCollections.observableList(sr.af
            idTable.getScene().setRoot(root);
     }
 
-    @FXML
     private void gestionproduit(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
             Parent root = loader.load();   
@@ -221,8 +216,14 @@ ObservableList<Reservation> reservationList = FXCollections.observableList(sr.af
             Parent root = loader.load();   
       idTable.getScene().setRoot(root);
     }
-   
 
+      @FXML
+    private void gestionutilisateur(ActionEvent event) throws IOException {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("GestionClient.fxml"));
+            Parent root = loader.load();   
+      idTable.getScene().setRoot(root);
+    }
+    
     
     
 }

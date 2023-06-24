@@ -166,21 +166,19 @@ public class AfficherCommandesController implements Initializable {
     }
 
    
-    @FXML
+     @FXML
     private void gestionrendezvous(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaceRDV.fxml"));
         Parent root = loader.load();
         tableCommandes.getScene().setRoot(root);
     }
 
-    @FXML
     private void gestionmedecin(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("interfacemedecin.fxml"));
         Parent root = loader.load();
         tableCommandes.getScene().setRoot(root);
     }
 
-   @FXML
     private void backType(ActionEvent event) throws IOException {
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Fullcrud.fxml"));
@@ -189,7 +187,6 @@ public class AfficherCommandesController implements Initializable {
              tableCommandes.getScene().setRoot(root);
     }
 
-    @FXML
     private void backInter(ActionEvent event)  throws IOException  {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FullInter.fxml"));
             Parent root = loader.load();
@@ -197,31 +194,28 @@ public class AfficherCommandesController implements Initializable {
              tableCommandes.getScene().setRoot(root);
     }
 
-        @FXML
-    private void gestionoffre(ActionEvent event) throws IOException {
-                  FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
-            Parent root = loader.load();
-         
-      tableCommandes.getScene().setRoot(root);
-    }
-
-    @FXML
-    private void reservationgs(ActionEvent event) throws IOException {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
+     @FXML
+    private void backReserv(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationGui.fxml"));
             Parent root = loader.load();
          
            tableCommandes.getScene().setRoot(root);
     }
 
-    @FXML
-    private void gestioncommande(ActionEvent event) throws IOException {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
+    private void backOffre(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
             Parent root = loader.load();
-         
       tableCommandes.getScene().setRoot(root);
     }
 
     @FXML
+    private void gestioncommande(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandes.fxml"));
+            Parent root = loader.load();   
+      tableCommandes.getScene().setRoot(root);
+
+    }
+
     private void gestionproduit(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduits.fxml"));
             Parent root = loader.load();   
@@ -230,11 +224,24 @@ public class AfficherCommandesController implements Initializable {
 
     @FXML
     private void gestionpanier(ActionEvent event) throws IOException {
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFront.fxml"));
             Parent root = loader.load();   
       tableCommandes.getScene().setRoot(root);
     }
 
+      @FXML
+    private void gestionutilisateur(ActionEvent event) throws IOException {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("GestionClient.fxml"));
+            Parent root = loader.load();   
+      tableCommandes.getScene().setRoot(root);
+    }
+
+     @FXML
+    private void gestionsearch(ActionEvent event) throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("searchDate.fxml"));
+            Parent root = loader.load();   
+      tableCommandes.getScene().setRoot(root);
+    }
 
     
 }
