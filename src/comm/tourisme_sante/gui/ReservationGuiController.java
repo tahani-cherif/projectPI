@@ -89,8 +89,7 @@ public class ReservationGuiController implements Initializable{
     void ajouterOffre(ActionEvent event) {
         ServiceReservation sr = new ServiceReservation();
   for (Map.Entry ele : map.entrySet()) {
-            if(ele.getValue().equals(CBAgence.getValue())){
-                System.out.println("id agance : "+Integer.parseInt(ele.getKey().toString()));
+            if(ele.getValue().equals(CBAgence.getValue())){     
                   sr.ajouter(new Reservation(Date.valueOf(TFDateDebut.getText()),Date.valueOf(TFDateFin.getText()),Integer.parseInt(ele.getKey().toString()), Integer.parseInt(TFUser.getText()),Integer.parseInt(TFHotel.getText()),Integer.parseInt(TFTransport.getText())));
             }
         }
@@ -118,11 +117,13 @@ public class ReservationGuiController implements Initializable{
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-    for (Map.Entry ele : map.entrySet()) {
+     for (Map.Entry ele : map.entrySet()) {
             if(ele.getValue().equals(CBAgence.getValue())){     
-                           sr.modifier(new Reservation(Date.valueOf(TFDateDebut.getText()),Date.valueOf(TFDateFin.getText()),Integer.parseInt(ele.getKey().toString()), Integer.parseInt(TFUser.getText()),Integer.parseInt(TFHotel.getText()),Integer.parseInt(TFTransport.getText())));
+                  sr.modifier(new Reservation(Date.valueOf(TFDateDebut.getText()),Date.valueOf(TFDateFin.getText()),Integer.parseInt(ele.getKey().toString()), Integer.parseInt(TFUser.getText()),Integer.parseInt(TFHotel.getText()),Integer.parseInt(TFTransport.getText())));
+
             }
         }
+    
 
          ObservableList<Reservation> medecinList = FXCollections.observableList(sr.afficher());
         idTable.setItems(medecinList);

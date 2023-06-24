@@ -81,6 +81,46 @@ public class FXMLDocumentController implements Initializable {
     
    @FXML
     void ajouterOffre(ActionEvent event) {
+            if (TFNom.getText().isEmpty())    
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez remplir un nom");
+         return; 
+        } 
+        
+         if ( !TFNom.getText().matches("[a-zA-Z]+")) 
+           
+        {  JOptionPane.showMessageDialog(null,"Vous devez inserer seulement des lettres");
+         return; 
+        } 
+        if (TFType.getText().isEmpty())
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez remplir un type");
+           return;
+        }
+        
+        if ( !TFType.getText().matches("[a-zA-Z]+")) 
+           
+        {  JOptionPane.showMessageDialog(null,"Vous devez inserer seulement des lettres");
+         return; 
+        }
+         if ( TFPrix.getText().isEmpty())    
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez remplir un prix");
+         return; 
+        } 
+        
+         if ( ! TFPrix.getText().matches(".*[0-9].*")) 
+           
+        {  JOptionPane.showMessageDialog(null,"Vous devez inserer que des chiffres au niveau du champs (Prix)");
+         return; 
+        }  
+         if ( TFPourcentage.getText().isEmpty())    
+        { JOptionPane.showMessageDialog(null,"Erreur! champ obligatoire, vous devez remplir un pourcentage");
+         return; 
+        } 
+        
+         if ( !TFPourcentage.getText().matches(".*[0-9].*")) 
+           
+        {  JOptionPane.showMessageDialog(null,"Vous devez inserer que des chiffres au niveau du champs (Pourcentage)");
+         return; 
+        }  
         so.ajouter(new Offre(parseDouble(TFPourcentage.getText()),parseDouble(TFPrix.getText()),TFNom.getText(),TFType.getText()));
         JOptionPane.showMessageDialog(null, "Offre ajoutée !");
        // medecinList.add(new medecins(TFNom.getText(),TFEmail.getText(),TFAdresse.getText(),parseInt(TFNumero.getText()),TFSpecialite.getText()));
