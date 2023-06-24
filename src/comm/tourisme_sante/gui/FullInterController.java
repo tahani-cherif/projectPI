@@ -126,7 +126,7 @@ public class FullInterController implements Initializable {
        
        
        
-       TableColumn<Interventions, Void> colBtn = new TableColumn("Supprimer");
+       TableColumn<Interventions, Void> colBtn = new TableColumn("Supprimer"); //callback cellule creer personalisé
        Callback<TableColumn<Interventions, Void>, TableCell<Interventions, Void>> cellFactory = new Callback<TableColumn<Interventions, Void>, TableCell<Interventions, Void>>() {
             @Override
             public TableCell<Interventions, Void> call(final TableColumn<Interventions, Void> param) {
@@ -191,7 +191,7 @@ tl.getColumns().add(colBtn);
             {
                 map.put(inter.getId(), inter.getFullName());
             }
-            for (Map.Entry ele : map.entrySet()) {
+            for (Map.Entry ele : map.entrySet()) {     //ele instance de map.entry (map,unique clevaleur)
                listInterventions.add(ele.getValue());
             }
 
@@ -224,7 +224,7 @@ tl.getColumns().add(colBtn);
     
     
     
-      public void showInterventions(){
+      public void showInterventions(){       //ObservableList est une interface dans JavaFX qui représente une liste observable,
         ObservableList<Interventions> listType = FXCollections.observableArrayList(ss.afficher());
        
         colNom.setCellValueFactory(new PropertyValueFactory<>("nomType"));
@@ -248,8 +248,8 @@ tl.getColumns().add(colBtn);
          FilteredList<Interventions> filterbyNomType = new FilteredList<>(listType, b -> true);
 		
 		// 2. Set the filter Predicate whenever the filter changes.
-		searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(Interventions -> {
+		searchField.textProperty().addListener((observable, oldValue, newValue) -> {     //envoie des donnees
+			filteredData.setPredicate(Interventions -> {           //prédicat détermine quelles données doivent être incluses dans la liste filtrée
 				// If filter text is empty, display all persons.
 								
 				if (newValue == null || newValue.isEmpty()) {
