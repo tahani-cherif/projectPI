@@ -2,8 +2,10 @@ package comm.tourisme_sante.gui;
 
 
 import com.tourisme_sante.entities.Agence;
+import com.tourisme_sante.entities.Hotel;
 import com.tourisme_sante.entities.Reservation;
 import comm.tourisme_sante.services.ServiceAgence;
+import comm.tourisme_sante.services.ServiceHotel;
 import comm.tourisme_sante.services.ServiceReservation;
 import java.io.IOException;
 import java.net.URL;
@@ -62,7 +64,7 @@ public class ReservationGuiController implements Initializable{
     private TableColumn<Reservation, Integer> columnHotel;
 
     @FXML
-    private TableColumn<Reservation, Integer> columnUser;
+    private TableColumn<Reservation, String> columnUser;
 
     @FXML
     private TableColumn<Reservation, Integer> columnTransport;
@@ -87,7 +89,8 @@ public class ReservationGuiController implements Initializable{
     void ajouterOffre(ActionEvent event) {
         ServiceReservation sr = new ServiceReservation();
   for (Map.Entry ele : map.entrySet()) {
-            if(ele.getValue().equals(CBAgence.getValue())){     
+            if(ele.getValue().equals(CBAgence.getValue())){
+                System.out.println("id agance : "+Integer.parseInt(ele.getKey().toString()));
                   sr.ajouter(new Reservation(Date.valueOf(TFDateDebut.getText()),Date.valueOf(TFDateFin.getText()),Integer.parseInt(ele.getKey().toString()), Integer.parseInt(TFUser.getText()),Integer.parseInt(TFHotel.getText()),Integer.parseInt(TFTransport.getText())));
             }
         }
@@ -102,8 +105,40 @@ public class ReservationGuiController implements Initializable{
        TFUser.setText("");
     }
 
+              ServiceReservation sr = new ServiceReservation();
+    private  Reservation x=null;
     @FXML
     void modiffierOffre(ActionEvent event) {
+        
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation de modifier offre");
+        alert.setHeaderText("Confirmation de modifier offre");
+        alert.setContentText("Êtes-vous sûr?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+    for (Map.Entry ele : map.entrySet()) {
+            if(ele.getValue().equals(CBAgence.getValue())){     
+                           sr.modifier(new Reservation(Date.valueOf(TFDateDebut.getText()),Date.valueOf(TFDateFin.getText()),Integer.parseInt(ele.getKey().toString()), Integer.parseInt(TFUser.getText()),Integer.parseInt(TFHotel.getText()),Integer.parseInt(TFTransport.getText())));
+            }
+        }
+
+         ObservableList<Reservation> medecinList = FXCollections.observableList(sr.afficher());
+        idTable.setItems(medecinList);
+         TFHotel.setText("");
+          TFDateDebut.setText("");
+          TFDateFin.setText("");
+          TFTransport.setText("");
+           TFUser.setText("");
+        } else {
+            TFHotel.setText("");
+          TFDateDebut.setText("");
+          TFDateFin.setText("");
+          TFTransport.setText("");
+           TFUser.setText("");
+        }
+
 
     }
 
@@ -111,21 +146,35 @@ public class ReservationGuiController implements Initializable{
 
     }
 
-    @FXML
+      @FXML
     void selectionmedecin(MouseEvent event) {
+        
+       x=idTable.getSelectionModel().getSelectedItem();
+        TFDateDebut.setText(x.getDateDebut().toString() );
+                TFDateFin.setText(x.getDateFin().toString());
+
+        TFHotel.setText(""+x.getIdHotels());
+        TFTransport.setText(""+x.getIdTransport());
+       TFUser.setText(""+x.getIdUser());
+       CBAgence.setValue(""+x.getNom());
+        System.out.println(x.getNom());
+        
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ServiceAgence Sa=new ServiceAgence();
+        ServiceHotel Sh=new ServiceHotel();
         ServiceReservation sr=new ServiceReservation();
  List<Agence> m = Sa.afficher();
+ List<Hotel> h = Sh.afficher();
             
             for(int i=0 ; i<m.size();i++)
         {
            map.put(m.get(i).getId(),m.get(i).getNom());
         }
+    
         ObservableList list = FXCollections.observableArrayList();
        for (Map.Entry ele : map.entrySet()) {
                 list.add(ele.getValue());
@@ -135,9 +184,9 @@ public class ReservationGuiController implements Initializable{
        
          columnDebut.setCellValueFactory(new PropertyValueFactory<Reservation,Date>("dateDebut"));
         columnFin.setCellValueFactory(new PropertyValueFactory<Reservation,Date>("dateFin"));
-        columnHotel.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("idHotels"));
+        columnHotel.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("nomHotel"));
         columnTransport.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("idTransport"));
-        columnUser.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("idUser"));
+        columnUser.setCellValueFactory(new PropertyValueFactory<Reservation,String>("nomUser"));
         columnAgence.setCellValueFactory(new PropertyValueFactory<Reservation,String>("nom"));
 ObservableList<Reservation> reservationList = FXCollections.observableList(sr.afficher());
         System.out.println(sr.afficher());

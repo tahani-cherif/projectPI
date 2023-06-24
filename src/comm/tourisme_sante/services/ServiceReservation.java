@@ -64,13 +64,14 @@ public class ServiceReservation implements services<Reservation> {
 List<Reservation> list = new ArrayList<>();
         
         String req = "SELECT * FROM reservation";
-        String req2="SELECT dateDebut,reservation.id,dateFin,idAgence,idUser,idTransport,idHotels,agence.nom FROM reservation join agence on reservation.idAgence=agence.id";
+        String req2="SELECT dateDebut,reservation.id,dateFin,reservation.idAgence,idUser,idTransport,idHotels,agence.nom,hotel.nom as nomHotel,utilisateur.prenom as nomUser FROM agence JOIN reservation on agence.id=reservation.idAgence JOIN transport on reservation.idTransport=transport.id JOIN hotel on reservation.idHotels=hotel.id JOIN utilisateur on reservation.idUser =utilisateur.id;";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req2);
             while(rs.next()) {
-                list.add(new Reservation(rs.getInt("id"), rs.getDate("dateDebut"), rs.getDate("dateFin"), rs.getInt("idAgence"), rs.getInt("idUser"), rs.getInt("idHotels"), rs.getInt("idTransport"),rs.getString("nom")));
+                list.add(new Reservation(rs.getInt("id"), rs.getDate("dateDebut"), rs.getDate("dateFin"), rs.getInt("idAgence"), rs.getInt("idUser"), rs.getInt("idHotels"), rs.getInt("idTransport"),rs.getString("nom"),rs.getString("nomHotel"),rs.getString("nomUser")));
             }
+            System.out.println("comm.tourisme_sante.services.ServiceReservation.afficher()"+list);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

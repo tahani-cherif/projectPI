@@ -3,6 +3,7 @@ package com.tourisme_sante.entities;
 import java.util.Date;
 
 public class Reservation {
+    
 	private int id;
 	private Date dateDebut;
 	private Date dateFin;
@@ -11,6 +12,18 @@ public class Reservation {
     private int idHotels;
     private int idTransport;
     private String nom;   
+     private String nomHotel;
+        private String nomUser; 
+
+    public String getNomUser() {
+        return nomUser;
+    }
+
+    public void setNomUser(String nomUser) {
+        this.nomUser = nomUser;
+    }
+     
+     
     
 
     public Reservation( Date dateDebut, Date dateFin, int idAgence, int idUser, int idHotels,
@@ -46,12 +59,38 @@ public class Reservation {
         this.idTransport = idTransport;
         this.nom = nom;
     }
+        public Reservation(int id, Date dateDebut, Date dateFin, int idAgence, int idUser, int idHotels, int idTransport, String nom,String nomHotel) {
+        this.id = id;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.idAgence = idAgence;
+        this.idUser = idUser;
+        this.idHotels = idHotels;
+        this.idTransport = idTransport;
+        this.nom = nom;
+        this.nomHotel = nomHotel;
+    }
+            public Reservation(int id, Date dateDebut, Date dateFin, int idAgence, int idUser, int idHotels, int idTransport, String nom,String nomHotel,String nomUser) {
+        this.id = id;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.idAgence = idAgence;
+        this.idUser = idUser;
+        this.idHotels = idHotels;
+        this.idTransport = idTransport;
+        this.nom = nom;
+        this.nomHotel = nomHotel;
+        this.nomUser =nomUser;
+    }
     
 	public int getId() {
 		return id;
 	}
         public String getNom() {
 		return nom;
+	}
+        public String getNomHotel() {
+		return nomHotel;
 	}
 	public void setId(int id) {
 		this.id = id;
@@ -61,6 +100,9 @@ public class Reservation {
 	}
         public void setNom(String nom) {
 		this.nom = nom;
+	}
+          public void setNomHotel(String nomHotel) {
+		this.nomHotel = nomHotel;
 	}
 	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
